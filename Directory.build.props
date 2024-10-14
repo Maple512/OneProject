@@ -1,0 +1,11 @@
+<Project>
+    <PropertyGroup>
+        <RootName>OneF</RootName>
+
+        <!-- Net Version -->
+        <NetStandard>netstandard2.0</NetStandard>
+        <NetFramework>net9.0</NetFramework>
+        <WPFFramework>$(NetFramework)-windows</WPFFramework>
+
+    </PropertyGroup>
+</Project>

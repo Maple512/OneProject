@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <Import Project="../common.props"/>
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>$(WPFFramework)</TargetFramework>
+        <UseWPF>true</UseWPF>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Using Include="System.Windows"/>
+        <Using Include="System.Windows.Controls"/>
+        <Using Include="System.Windows.Controls.Primitives"/>
+        <Using Include="System.Windows.Data"/>
+        <Using Include="System.Windows.Documents"/>
+        <Using Include="System.Windows.Input"/>
+        <Using Include="System.Windows.Media"/>
+        <Using Include="CommunityToolkit.Mvvm.ComponentModel"/>
+        <Using Include="CommunityToolkit.Mvvm.Input"/>
+        <Using Include="System.Windows.Media.Colors" Alias="SysColors"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="CliWrap"/>
+        <PackageReference Include="CommunityToolkit.Mvvm"/>
+        <PackageReference Include="Humanizer"/>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection"/>
+        <PackageReference Include="Microsoft.Extensions.Http.Polly"/>
+        <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf"/>
+        <PackageReference Include="Serilog.Extensions.Logging"/>
+        <PackageReference Include="Serilog.Sinks.Async"/>
+        <PackageReference Include="Serilog.Sinks.File"/>
+    </ItemGroup>
+
+</Project>
