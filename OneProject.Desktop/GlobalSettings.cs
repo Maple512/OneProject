@@ -38,7 +38,7 @@ public record GlobalSettings
     public static void Load(ILogger logger, string? directory = null)
     {
         Root = directory ?? AppDomain.CurrentDomain.BaseDirectory;
-        Version = Assembly.GetExecutingAssembly().GetName().Version!.ToString();
+        Version = Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion!;
         FilePath = Path.Combine(Root, FileName);
 
         logger.LogInformation($"Root: {Root}");
