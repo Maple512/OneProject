@@ -1,22 +1,26 @@
-﻿namespace OneProject.Desktop;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+namespace OneProject.Desktop;
 
-/// <summary>
-/// Interaction logic for MainWindow.xaml
-/// </summary>
+using System.ComponentModel;
+using System.Windows;
+
 public partial class MainWindow : Window
 {
     public MainWindow()
     {
         InitializeComponent();
+    }
+
+    protected override void OnClosing(CancelEventArgs e)
+    {
+        GlobalSettings.Instance.Windows.MainWindowState = WindowState;
+        GlobalSettings.Instance.Windows.MainWindowHeight = Height;
+        GlobalSettings.Instance.Windows.MainWindowWidth = Width;
+        GlobalSettings.Instance.Windows.MainWindowTop = Top;
+        GlobalSettings.Instance.Windows.MainWindowLeft = Left;
+        GlobalSettings.Instance.Windows.FontFamily = FontFamily.Source;
+
+        GlobalSettings.Instance.Save();
+
+        base.OnClosing(e);
     }
 }

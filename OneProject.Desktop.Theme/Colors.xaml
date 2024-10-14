@@ -1,0 +1,42 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Color x:Key="Color.White0">#00FFFFFF</Color>
+    <Color x:Key="Color.White50">#0CFFFFFF</Color>
+    <Color x:Key="Color.White100">#19FFFFFF</Color>
+    <Color x:Key="Color.White200">#33FFFFFF</Color>
+    <Color x:Key="Color.White300">#4CFFFFFF</Color>
+    <Color x:Key="Color.White400">#66FFFFFF</Color>
+    <Color x:Key="Color.White500">#7FFFFFFF</Color>
+    <Color x:Key="Color.White600">#99FFFFFF</Color>
+    <Color x:Key="Color.White700">#B2FFFFFF</Color>
+    <Color x:Key="Color.White800">#CCFFFFFF</Color>
+    <Color x:Key="Color.White900">#E5FFFFFF</Color>
+    <Color x:Key="Color.White1000">#FFFFFFFF</Color>
+
+    <Color x:Key="Color.Neutral50">#FF212121</Color>
+    <Color x:Key="Color.Neutral100">#FF323232</Color>
+    <Color x:Key="Color.Neutral200">#FF454545</Color>
+    <Color x:Key="Color.Neutral300">#FF616161</Color>
+    <Color x:Key="Color.Neutral400">#FF757575</Color>
+    <Color x:Key="Color.Neutral500">#FF868686</Color>
+    <Color x:Key="Color.Neutral600">#FFA8A8A8</Color>
+    <Color x:Key="Color.Neutral700">#FFB9B9B9</Color>
+    <Color x:Key="Color.Neutral800">#FFD8D8D8</Color>
+    <Color x:Key="Color.Neutral900">#FFF1F1F1</Color>
+    <Color x:Key="Color.Neutral1000">#FFFFFFFF</Color>
+
+    <Color x:Key="Color.Black0">#00000000</Color>
+    <Color x:Key="Color.Black50">#0C000000</Color>
+    <Color x:Key="Color.Black100">#19000000</Color>
+    <Color x:Key="Color.Black200">#33000000</Color>
+    <Color x:Key="Color.Black300">#4C000000</Color>
+    <Color x:Key="Color.Black400">#66000000</Color>
+    <Color x:Key="Color.Black500">#7F000000</Color>
+    <Color x:Key="Color.Black600">#99000000</Color>
+    <Color x:Key="Color.Black700">#B2000000</Color>
+    <Color x:Key="Color.Black800">#CC000000</Color>
+    <Color x:Key="Color.Black900">#E5000000</Color>
+    <Color x:Key="Color.Black1000">#FF000000</Color>
+    
+</ResourceDictionary>

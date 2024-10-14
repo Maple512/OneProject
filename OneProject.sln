@@ -5,7 +5,7 @@ VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Desktop", "Desktop", "{8516DC9F-795F-46E0-ADEF-4BBACF0D8FC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneProject.Desktop", "OneProject.Desktop\OneProject.Desktop.csproj", "{1EC603BC-2A26-4CCC-AF77-68EC5C1C2F67}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneProject.Desktop", "OneProject.Desktop\OneProject.Desktop.csproj", "{1EC603BC-2A26-4CCC-AF77-68EC5C1C2F67}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0FA7F277-A246-49CB-8AC3-12BBB9E26690}"
 	ProjectSection(SolutionItems) = preProject
@@ -19,6 +19,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneProject.Desktop.Theme", "OneProject.Desktop.Theme\OneProject.Desktop.Theme.csproj", "{D67749D3-E195-4770-ADA9-D5A95E0708B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneProject", "OneProject\OneProject.csproj", "{FEAECEE7-7397-44B0-BAA7-5704CF9423AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneProject.Win32Native", "OneProject.Win32Native\OneProject.Win32Native.csproj", "{EC243AF2-CB2A-4D1C-8513-F93DE87291F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneProject.Test", "OneProject.Test\OneProject.Test.csproj", "{344EE9C3-E4F3-4B4C-8F10-101485349341}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,12 +37,29 @@ Global
 		{1EC603BC-2A26-4CCC-AF77-68EC5C1C2F67}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EC603BC-2A26-4CCC-AF77-68EC5C1C2F67}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1EC603BC-2A26-4CCC-AF77-68EC5C1C2F67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D67749D3-E195-4770-ADA9-D5A95E0708B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D67749D3-E195-4770-ADA9-D5A95E0708B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D67749D3-E195-4770-ADA9-D5A95E0708B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D67749D3-E195-4770-ADA9-D5A95E0708B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEAECEE7-7397-44B0-BAA7-5704CF9423AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEAECEE7-7397-44B0-BAA7-5704CF9423AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEAECEE7-7397-44B0-BAA7-5704CF9423AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEAECEE7-7397-44B0-BAA7-5704CF9423AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC243AF2-CB2A-4D1C-8513-F93DE87291F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC243AF2-CB2A-4D1C-8513-F93DE87291F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC243AF2-CB2A-4D1C-8513-F93DE87291F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC243AF2-CB2A-4D1C-8513-F93DE87291F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{344EE9C3-E4F3-4B4C-8F10-101485349341}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{344EE9C3-E4F3-4B4C-8F10-101485349341}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{344EE9C3-E4F3-4B4C-8F10-101485349341}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{344EE9C3-E4F3-4B4C-8F10-101485349341}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1EC603BC-2A26-4CCC-AF77-68EC5C1C2F67} = {8516DC9F-795F-46E0-ADEF-4BBACF0D8FC6}
+		{D67749D3-E195-4770-ADA9-D5A95E0708B3} = {8516DC9F-795F-46E0-ADEF-4BBACF0D8FC6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {526F0FF2-A087-4EF2-B451-667BA5184F81}
