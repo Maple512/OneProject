@@ -17,7 +17,7 @@ dotnet_style_qualification_for_event = false:silent
 dotnet_style_require_accessibility_modifiers = for_non_interface_members:silent
 
 # Json & Markdown
-[{*.json,*.yaml,*.md}]
+[{*.json,*.yaml,*.yml,*.md}]
 tab_width   = 2
 indent_size = 2
 

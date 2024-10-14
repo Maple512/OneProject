@@ -1,0 +1,44 @@
+name: Publish Release
+
+# 推送tag时触发
+on:
+  push:
+    tags:
+      - v**
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: olegtarasov/get-tag@v2.1.3
+        env:
+          FileName: OneProject.Dekstop_$GIT_TAG_NAME
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "9.0.x"
+
+      - name: restory
+        run: dotnet restore
+
+      - name: build
+        run: dotnet build
+
+      - name: test
+        run: dotnet test --no-restore --no-build
+
+      - name: publish
+        run: dotnet publish -c Release --no-build --no-restore -o ./${{env.FileName}}
+
+      - name: zip
+        uses: thedoctor0/zip-release@0.7.5
+        with:
+          type: zip
+          filename: ${{env.FileName}}.zip
+          path: ${{env.FileName}}
+
+      - name: release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "${{env.FileName}}.zip"
+          token: ${{secrets.RELEASE_TOKEN}}
