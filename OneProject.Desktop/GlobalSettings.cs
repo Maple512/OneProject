@@ -2,6 +2,7 @@ namespace OneProject;
 
 using System;
 using System.IO;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -23,6 +24,8 @@ public record GlobalSettings
 
     public static string FilePath = null!;
 
+    public static string Version = null!;
+
     public WindowSettings Windows { get; set; } = new();
 
     public void Save()
@@ -35,12 +38,14 @@ public record GlobalSettings
     public static void Load(ILogger logger, string? directory = null)
     {
         Root = directory ?? AppDomain.CurrentDomain.BaseDirectory;
+        Version = Assembly.GetExecutingAssembly().GetName().Version!.ToString();
+        FilePath = Path.Combine(Root, FileName);
+
         logger.LogInformation($"Root: {Root}");
+        logger.LogInformation($"Version: {Version}");
         logger.LogInformation($"OS: {Environment.OSVersion}, {RuntimeInformation.OSArchitecture}, {Environment.MachineName}");
         logger.LogInformation($"Process: {Environment.ProcessId}, {Environment.ProcessorCount}");
         logger.LogInformation($"NET: {RuntimeInformation.FrameworkDescription}, {RuntimeInformation.ProcessArchitecture}");
-
-        FilePath = Path.Combine(Root, FileName);
 
         if(File.Exists(FilePath) == false)
         {

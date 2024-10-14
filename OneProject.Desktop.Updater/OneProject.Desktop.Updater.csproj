@@ -6,7 +6,6 @@
         <OutputType>WinExe</OutputType>
         <TargetFramework>$(WPFFramework)</TargetFramework>
         <UseWPF>true</UseWPF>
-        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <PackageIcon>logo_128.ico</PackageIcon>
         <ApplicationIcon>assets\logo_128.ico</ApplicationIcon>
     </PropertyGroup>
@@ -40,8 +39,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\OneProject.Desktop.Theme\OneProject.Desktop.Theme.csproj" />
-      <ProjectReference Include="..\OneProject\OneProject.csproj" />
+        <ProjectReference Include="..\OneProject.Desktop.Theme\OneProject.Desktop.Theme.csproj" />
+        <ProjectReference Include="..\OneProject\OneProject.csproj" />
     </ItemGroup>
 
     <ItemGroup>

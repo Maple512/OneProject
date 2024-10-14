@@ -22,7 +22,7 @@
 
     <ItemGroup>
         <PackageReference Include="CommunityToolkit.Mvvm"/>
-        <PackageReference Include="Humanizer"/>
+        <PackageReference Include="Humanizer.Core"/>
         <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf"/>
     </ItemGroup>
     
