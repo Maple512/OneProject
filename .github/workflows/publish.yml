@@ -37,12 +37,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
     outputs:
-      Tag: ${{steps.Tag.outputs.exists}}
+      HasTag: ${{steps.Tag.outputs.exists}}
       Version: ${{steps.Version.outputs.first_match}}
 
   Push:
     needs: Build
-    if: ${{needs.Build.outputs.Tag == 'true'}}
+    if: ${{needs.Build.outputs.HasTag == 'false'}}
     runs-on: windows-latest
     env:
       ZipName: OneProject.Desktop_v${{needs.Build.outputs.Version}}_x64
