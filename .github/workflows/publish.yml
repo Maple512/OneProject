@@ -75,7 +75,7 @@ jobs:
           path: ${{env.ZipName}}
 
       - name: push release
-        uses: ncipollo/release-action@v2
+        uses: ncipollo/release-action@v1
         with:
           token: ${{secrets.ACTION_TOKEN}}
           name: v${{needs.Build.outputs.Version}}
