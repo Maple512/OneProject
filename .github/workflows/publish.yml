@@ -56,8 +56,8 @@ jobs:
           dotnet-version: "9.0.x"
           dotnet-quality: "preview"
 
-      - name: dotnet restory
-        run: dotnet restore -c Release
+      - name: dotnet restore
+        run: dotnet restore
 
       - name: dotnet build
         run: dotnet build -c Release
@@ -72,8 +72,8 @@ jobs:
         uses: thedoctor0/zip-release@0.7.5
         with:
           type: zip
-          filename: ${{env.ZipName}}.zip
           path: ${{env.ZipName}}
+          filename: ${{env.ZipName}}.zip
 
       - name: push release
         uses: ncipollo/release-action@v1
