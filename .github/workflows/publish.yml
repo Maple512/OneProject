@@ -44,23 +44,24 @@ jobs:
     needs: Build
     if: ${{needs.Build.outputs.HasTag == 'false'}}
     runs-on: windows-latest
-    # working-directory: ./
     env:
       ZipName: OneProject.Desktop_v${{needs.Build.outputs.Version}}_x64
       prerelease: ${{contains(needs.Build.outputs.Version,'rc')}}
     # work-directory: ${{steps.Tag.outputs.Package}}
     steps:
       # - run: echo "${{toJson(needs)}}" >> $GITHUB_OUTPUT
-      - run: pwd
-      - run: ls
-      - run: tree
-      # - uses: actions/setup-dotnet@v4
-      #   with:
-      #     dotnet-version: "9.0.x"
-      #     dotnet-quality: "preview"
+      # - run: pwd
+      # - run: ls
+      # - run: tree
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "9.0.x"
+          dotnet-quality: "preview"
 
-      # - name: dotnet restory
-      #   run: dotnet restore
+      - run: cd OneProject
+
+      - name: dotnet restory
+        run: dotnet restore
 
       # - name: dotnet build
       #   run: dotnet build
