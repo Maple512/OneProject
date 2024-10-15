@@ -16,7 +16,7 @@ jobs:
         uses: olegtarasov/get-tag@v2.1.3
         id: Tag
         with:
-          tagRegex: "(?<Name>)_v(?<Version>)"
+          tagRegex: "(<Name>)_v(<Version>)"
 
       - name: Show Tag
         run: |
