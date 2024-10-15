@@ -35,8 +35,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 		.github\workflows\publish.yml = .github\workflows\publish.yml
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneProject.Desktop.Updater", "OneProject.Desktop.Updater\OneProject.Desktop.Updater.csproj", "{476FA46B-4504-407A-88DC-D1E113118A9A}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,10 +61,6 @@ Global
 		{344EE9C3-E4F3-4B4C-8F10-101485349341}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{344EE9C3-E4F3-4B4C-8F10-101485349341}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{344EE9C3-E4F3-4B4C-8F10-101485349341}.Release|Any CPU.Build.0 = Release|Any CPU
-		{476FA46B-4504-407A-88DC-D1E113118A9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{476FA46B-4504-407A-88DC-D1E113118A9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{476FA46B-4504-407A-88DC-D1E113118A9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{476FA46B-4504-407A-88DC-D1E113118A9A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -75,7 +69,6 @@ Global
 		{1EC603BC-2A26-4CCC-AF77-68EC5C1C2F67} = {8516DC9F-795F-46E0-ADEF-4BBACF0D8FC6}
 		{D67749D3-E195-4770-ADA9-D5A95E0708B3} = {8516DC9F-795F-46E0-ADEF-4BBACF0D8FC6}
 		{E566BE25-A753-475B-A4A5-145D9027F8FC} = {21BBDE1A-D1F0-47BF-9C1F-6A0C54FF7DFF}
-		{476FA46B-4504-407A-88DC-D1E113118A9A} = {8516DC9F-795F-46E0-ADEF-4BBACF0D8FC6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {526F0FF2-A087-4EF2-B451-667BA5184F81}
