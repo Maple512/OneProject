@@ -66,7 +66,7 @@ jobs:
         run: dotnet test --no-restore --no-build
 
       - name: dotnet publish
-        run: dotnet publish -c Release --no-build --no-restore -o ./${{env.ZipName}}
+        run: dotnet publish ./OneProject.Desktop -c Release --no-build --no-restore -o ./${{env.ZipName}}
 
       - name: zip
         uses: thedoctor0/zip-release@0.7.5
