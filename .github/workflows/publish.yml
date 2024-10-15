@@ -42,11 +42,11 @@ jobs:
 
   Push:
     needs: Check
-    if: ${{needs.Build.outputs.HasTag == 'false'}}
+    if: ${{needs.Check.outputs.HasTag == 'false'}}
     runs-on: windows-latest
     env:
-      ZipName: OneProject.Desktop_v${{needs.Build.outputs.Version}}
-      prerelease: ${{contains(needs.Build.outputs.Version,'rc')}}
+      ZipName: OneProject.Desktop_v${{needs.Check.outputs.Version}}
+      prerelease: ${{contains(needs.Check.outputs.Version,'rc')}}
     steps:
       # - run: echo "${{toJson(needs)}}" >> $GITHUB_OUTPUT
       - uses: actions/checkout@v4
@@ -75,7 +75,7 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           token: ${{secrets.ACTION_TOKEN}}
-          name: v${{needs.Build.outputs.Version}}
-          tag: v${{needs.Build.outputs.Version}}
+          name: v${{needs.Check.outputs.Version}}
+          tag: v${{needs.Check.outputs.Version}}
           prerelease: ${{env.prerelease}}
           artifacts: ${{env.ZipName}}.zip
