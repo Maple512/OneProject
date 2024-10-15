@@ -6,13 +6,13 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v9.0": {
-      "OneProject.Desktop/0.0.1-rc.24101401": {
+      "OneProject.Desktop/0.0.1-rc.24101511": {
         "dependencies": {
           "CliWrap": "3.6.6",
           "Microsoft.Extensions.DependencyInjection": "9.0.0-preview.5.24306.7",
           "Microsoft.Extensions.Http.Polly": "9.0.0-preview.5.24306.11",
-          "OneProject": "0.0.1-rc.24101401",
-          "OneProject.Desktop.Theme": "0.0.1-rc.24101401",
+          "OneProject": "0.0.1-rc.24101511",
+          "OneProject.Desktop.Theme": "0.0.1-rc.24101511",
           "Serilog.Extensions.Logging": "8.0.1-dev-10391",
           "Serilog.Sinks.Async": "2.0.0",
           "Serilog.Sinks.File": "6.0.0"
@@ -282,12 +282,12 @@
         }
       },
       "System.Diagnostics.DiagnosticSource/9.0.0-preview.5.24306.7": {},
-      "OneProject/0.0.1-rc.24101401": {
+      "OneProject/0.0.1-rc.24101511": {
         "runtime": {
           "OneProject.dll": {}
         }
       },
-      "OneProject.Desktop.Theme/0.0.1-rc.24101401": {
+      "OneProject.Desktop.Theme/0.0.1-rc.24101511": {
         "dependencies": {
           "CommunityToolkit.Mvvm": "8.2.2",
           "Humanizer.Core": "2.14.1",
@@ -300,7 +300,7 @@
     }
   },
   "libraries": {
-    "OneProject.Desktop/0.0.1-rc.24101401": {
+    "OneProject.Desktop/0.0.1-rc.24101511": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -480,12 +480,12 @@
       "path": "system.diagnostics.diagnosticsource/9.0.0-preview.5.24306.7",
       "hashPath": "system.diagnostics.diagnosticsource.9.0.0-preview.5.24306.7.nupkg.sha512"
     },
-    "OneProject/0.0.1-rc.24101401": {
+    "OneProject/0.0.1-rc.24101511": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "OneProject.Desktop.Theme/0.0.1-rc.24101401": {
+    "OneProject.Desktop.Theme/0.0.1-rc.24101511": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
