@@ -19,10 +19,9 @@ jobs:
           tagRegex: "(?<Name>)_v(?<Version>)"
 
       - name: Show Tag
-        shell: pwsh
         run: |
-          echo "$steps.Tag.outputs.Name"
-          echo "$steps.Tag.outputs.Version"
+          echo "${{steps.Tag.outputs.Name}}"
+          echo "${{steps.Tag.outputs.Version}}"
 
       # - uses: actions/setup-dotnet@v4
       #   with:
