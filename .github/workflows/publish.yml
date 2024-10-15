@@ -9,7 +9,7 @@ on:
     #     required: true
 
 jobs:
-  Build:
+  Check:
     runs-on: windows-latest
     steps:
       - name: Checkout
@@ -41,13 +41,12 @@ jobs:
       Version: ${{steps.Version.outputs.first_match}}
 
   Push:
-    needs: Build
+    needs: Check
     if: ${{needs.Build.outputs.HasTag == 'false'}}
     runs-on: windows-latest
     env:
       ZipName: OneProject.Desktop_v${{needs.Build.outputs.Version}}
       prerelease: ${{contains(needs.Build.outputs.Version,'rc')}}
-    # work-directory: ${{steps.Tag.outputs.Package}}
     steps:
       # - run: echo "${{toJson(needs)}}" >> $GITHUB_OUTPUT
       - uses: actions/checkout@v4
@@ -61,9 +60,6 @@ jobs:
 
       - name: dotnet build
         run: dotnet build -c Release
-
-      # - name: dotnet test
-      #   run: dotnet test --no-restore --no-build -c Release
 
       - name: dotnet publish
         run: dotnet publish ./OneProject.Desktop -c Release --no-build --no-restore -o ./${{env.ZipName}}
