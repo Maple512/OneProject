@@ -44,41 +44,46 @@ jobs:
     needs: Build
     if: ${{needs.Build.outputs.HasTag == 'false'}}
     runs-on: windows-latest
+    # working-directory: ./
     env:
       ZipName: OneProject.Desktop_v${{needs.Build.outputs.Version}}_x64
       prerelease: ${{contains(needs.Build.outputs.Version,'rc')}}
     # work-directory: ${{steps.Tag.outputs.Package}}
     steps:
       # - run: echo "${{toJson(needs)}}" >> $GITHUB_OUTPUT
-      - uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: "9.0.x"
-          dotnet-quality: "preview"
+      - run: |
+          echo "${{toJson(github)}}" >> $GITHUB_OUTPUT
+          pwd
+          ls
+      # - uses: actions/setup-dotnet@v4
+      #   with:
+      #     dotnet-version: "9.0.x"
+      #     dotnet-quality: "preview"
 
-      - name: dotnet restory
-        run: dotnet restore
+      # - name: dotnet restory
+      #   run: dotnet restore
 
-      - name: dotnet build
-        run: dotnet build
+      # - name: dotnet build
+      #   run: dotnet build
 
-      - name: dotnet test
-        run: dotnet test --no-restore --no-build
+      # - name: dotnet test
+      #   run: dotnet test --no-restore --no-build
 
-      - name: dotnet publish
-        run: dotnet publish -c Release -a x64 --no-build --no-restore -o ./${{env.ZipName}}
+      # - name: dotnet publish
+      #   run: dotnet publish -c Release -a x64 --no-build --no-restore -o ./${{env.ZipName}}
 
-      - name: zip
-        uses: thedoctor0/zip-release@0.7.5
-        with:
-          type: zip
-          filename: ${{env.ZipName}}.zip
-          path: ${{env.ZipName}}
+      # - name: zip
+      #   uses: thedoctor0/zip-release@0.7.5
+      #   with:
+      #     type: zip
+      #     filename: ${{env.ZipName}}.zip
+      #     path: ${{env.ZipName}}
 
-      - name: push release
-        uses: ncipollo/release-action@v1
-        with:
-          token: ${{secrets.ACTION_TOKEN}}
-          name: v${{needs.Build.outputs.Version}}
-          tag: v${{needs.Build.outputs.Version}}
-          prerelease: ${{env.prerelease}}
-          artifacts: ${{env.ZipName}}.zip
+      # - name: push release
+      #   uses: ncipollo/release-action@v1
+      #   with:
+      #     token: ${{secrets.ACTION_TOKEN}}
+      #     name: v${{needs.Build.outputs.Version}}
+      #     tag: v${{needs.Build.outputs.Version}}
+      #     prerelease: ${{env.prerelease}}
+      #     artifacts: ${{env.ZipName}}.zip
