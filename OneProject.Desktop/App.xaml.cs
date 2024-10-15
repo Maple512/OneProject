@@ -9,6 +9,8 @@ using System.Windows;
 using System.Windows.Threading;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using OneProject.Infrastructures;
 using Serilog;
 using Serilog.Core;
 using Serilog.Events;
@@ -69,6 +71,8 @@ public partial class App : Application
         //_ = new ResourceDictionary();
 
         Log.Logger.Information($"Application Start, Args: {e.Args.JoinAsString()}");
+
+        Task.Run(() => Services.GetRequiredService<VersionChecker>().GetLatestVersionAsync());
     }
 
     protected override void OnExit(ExitEventArgs e)
@@ -141,12 +145,16 @@ public partial class App : Application
 
         var services = new ServiceCollection();
 
+        services.AddHttpClient();
+
         services.AddLogging(builder =>
         {
             builder.AddSerilog(Log.Logger);
         });
 
         //services.AddDownload();
+
+        services.AddTransient<VersionChecker>();
 
         return services.BuildServiceProvider();
     }
@@ -159,6 +167,8 @@ public partial class App : Application
 #else
             .MinimumLevel.Information()
 #endif
+            .MinimumLevel.Override("System", LogEventLevel.Error)
+            .MinimumLevel.Override("Microsoft", LogEventLevel.Error)
             .WriteTo.Async(config =>
             {
                 config.Conditional(c => c.Level == LogEventLevel.Debug, sink =>

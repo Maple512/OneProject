@@ -1,13 +1,11 @@
 <Project>
 
     <PropertyGroup>
-        <LangVersion>preview</LangVersion>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <NoWarn>$(NoWarn);IDE0058;IDE0290;CA2254;CS1591;CA1416;</NoWarn>
         <RootNamespace>OneProject</RootNamespace>
         <Version>0.0.1</Version>
-        <!--<Version>0.0.1-rc.241014</Version>-->
     </PropertyGroup>
 
     <ItemGroup>

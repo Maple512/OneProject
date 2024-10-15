@@ -12,7 +12,7 @@
   - [ ] 注册表操作
 - 基础功能
   - [x] 单例应用程序：仅启动一个应用程序
-  - [ ] 利用Github Action自动推送Release
+  - [x] 利用Github Action自动推送Release
   - [ ] 自动更新：启动时，连接github，自动更新
 
 ## 其他

@@ -9,6 +9,7 @@
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <PackageIcon>logo_128.ico</PackageIcon>
         <ApplicationIcon>assets\logo_128.ico</ApplicationIcon>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
     </PropertyGroup>
 
     <ItemGroup>
