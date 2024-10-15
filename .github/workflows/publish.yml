@@ -17,7 +17,7 @@ jobs:
 
       - name: Read common.props
         id: CommonProps
-        uses: juliangruber/read-file-action@v3
+        uses: juliangruber/read-file-action@v1
         with:
           path: ./common.props
 
