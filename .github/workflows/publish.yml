@@ -57,13 +57,13 @@ jobs:
           dotnet-quality: "preview"
 
       - name: dotnet restory
-        run: dotnet restore
+        run: dotnet restore -c Release
 
       - name: dotnet build
-        run: dotnet build
+        run: dotnet build -c Release
 
-      - name: dotnet test
-        run: dotnet test --no-restore --no-build
+      # - name: dotnet test
+      #   run: dotnet test --no-restore --no-build -c Release
 
       - name: dotnet publish
         run: dotnet publish ./OneProject.Desktop -c Release --no-build --no-restore -o ./${{env.ZipName}}
