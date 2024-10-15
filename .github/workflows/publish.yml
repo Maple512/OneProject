@@ -1,4 +1,4 @@
-name: Publish to release
+name: Push to release
 
 on:
   workflow_dispatch:
@@ -40,53 +40,45 @@ jobs:
       Tag: ${{steps.Tag.outputs.exists}}
       Version: ${{steps.Version.outputs.first_match}}
 
-      # - name: Get Version From Tag
-      #   uses: olegtarasov/get-tag@v2.1.3
-      #   id: Tag
-      #   with:
-      #     tagRegex: "Release[_](?<Package>.*)_v(?<Version>.*)"
-
-      # - name: Show Tag
-      #   run: |
-      #     echo "${{steps.Tag.outputs.Package}}"
-      #     echo "${{steps.Tag.outputs.Version}}"
-      #   env:
-      #     NeedsPackage: ${{contains(steps.Tag.outputs.Package,'Desktop')}}
-
-      # - uses: actions/setup-dotnet@v4
-      #   with:
-      #     dotnet-version: "9.0.x"
-      #     dotnet-quality: "preview"
-
-      # - name: restory
-      #   run: dotnet restore
-
-      # - name: build
-      #   run: dotnet build
-
-      # - name: test
-      #   run: dotnet test --no-restore --no-build
-
   Push:
     needs: Build
-    # if: ${{needs.Build.}}
+    if: ${{needs.Build.outputs.Tag == 'true'}}
     runs-on: windows-latest
+    env:
+      ZipName: OneProject.Desktop_v${{needs.Build.outputs.Version}}_x64
+      prerelease: ${{contains(needs.Build.outputs.Version,'rc')}}
     # work-directory: ${{steps.Tag.outputs.Package}}
     steps:
-      - run: |
-          echo "${{toJson(needs)}}" >> $GITHUB_OUTPUT
-  # - name: publish
-  #   run: dotnet publish -c Release --no-build --no-restore -o ./${{steps.Tag.outputs.Name}}_${{steps.Tag.outputs.Version}}
+      # - run: echo "${{toJson(needs)}}" >> $GITHUB_OUTPUT
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "9.0.x"
+          dotnet-quality: "preview"
 
-  # - name: zip
-  #   uses: thedoctor0/zip-release@0.7.5
-  #   with:
-  #     type: zip
-  #     filename: ${{env.FileName}}.zip
-  #     path: ${{env.FileName}}
+      - name: dotnet restory
+        run: dotnet restore
 
-  # - name: push release
-  #   uses: ncipollo/release-action@v1
-  #   with:
-  #     artifacts: "${{env.FileName}}.zip"
-  #     token: ${{secrets.RELEASE_TOKEN}}
+      - name: dotnet build
+        run: dotnet build
+
+      - name: dotnet test
+        run: dotnet test --no-restore --no-build
+
+      - name: dotnet publish
+        run: dotnet publish -c Release -a x64 --no-build --no-restore -o ./${{env.ZipName}}
+
+      - name: zip
+        uses: thedoctor0/zip-release@0.7.5
+        with:
+          type: zip
+          filename: ${{env.ZipName}}.zip
+          path: ${{env.ZipName}}
+
+      - name: push release
+        uses: ncipollo/release-action@v2
+        with:
+          token: ${{secrets.ACTION_TOKEN}}
+          name: v${{needs.Build.outputs.Version}}
+          tag: v${{needs.Build.outputs.Version}}
+          prerelease: ${{env.prerelease}}
+          artifacts: ${{env.ZipName}}.zip
