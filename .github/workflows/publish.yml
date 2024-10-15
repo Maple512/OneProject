@@ -52,16 +52,16 @@ jobs:
       # - run: echo "${{toJson(needs)}}" >> $GITHUB_OUTPUT
       # - run: pwd
       # - run: ls
-      # - run: tree
-      - uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: "9.0.x"
-          dotnet-quality: "preview"
+      - run: Get-ChildItem .
+      # - uses: actions/setup-dotnet@v4
+      #   with:
+      #     dotnet-version: "9.0.x"
+      #     dotnet-quality: "preview"
 
-      - run: cd OneProject
+      # - run: cd OneProject
 
-      - name: dotnet restory
-        run: dotnet restore
+      # - name: dotnet restory
+      #   run: dotnet restore
 
       # - name: dotnet build
       #   run: dotnet build
