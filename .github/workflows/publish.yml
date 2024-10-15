@@ -22,7 +22,7 @@ jobs:
           path: ./common.props
 
       - name: Get version
-        id: version
+        id: Version
         uses: AsasInnab/regex-action@v1
         with:
           regex_pattern: "(?<=>)[^<>]+(?=</Version>)"
@@ -33,12 +33,12 @@ jobs:
         uses: mukunku/tag-exists-action@v1.6.0
         id: Tag
         with:
-          tag: ${{ steps.version.outputs.first_match }}
+          tag: ${{ steps.Version.outputs.first_match }}
         env:
           GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
     outputs:
-      Tag: ${{steps.Tag}}
-      Version: ${{steps.version}}
+      Tag: ${{steps.Tag.outputs.exists}}
+      Version: ${{steps.Version.outputs.first_match}}
 
       # - name: Get Version From Tag
       #   uses: olegtarasov/get-tag@v2.1.3
