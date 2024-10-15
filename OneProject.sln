@@ -37,8 +37,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneProject.Desktop.Updater", "OneProject.Desktop.Updater\OneProject.Desktop.Updater.csproj", "{476FA46B-4504-407A-88DC-D1E113118A9A}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "OneProject.Desktop.Setuper", "OneProject.Desktop.Setuper\OneProject.Desktop.Setuper.vdproj", "{B3D7D7A1-59AE-442B-9212-97406E656BE2}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,8 +67,6 @@ Global
 		{476FA46B-4504-407A-88DC-D1E113118A9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{476FA46B-4504-407A-88DC-D1E113118A9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{476FA46B-4504-407A-88DC-D1E113118A9A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B3D7D7A1-59AE-442B-9212-97406E656BE2}.Debug|Any CPU.ActiveCfg = Debug
-		{B3D7D7A1-59AE-442B-9212-97406E656BE2}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,7 +76,6 @@ Global
 		{D67749D3-E195-4770-ADA9-D5A95E0708B3} = {8516DC9F-795F-46E0-ADEF-4BBACF0D8FC6}
 		{E566BE25-A753-475B-A4A5-145D9027F8FC} = {21BBDE1A-D1F0-47BF-9C1F-6A0C54FF7DFF}
 		{476FA46B-4504-407A-88DC-D1E113118A9A} = {8516DC9F-795F-46E0-ADEF-4BBACF0D8FC6}
-		{B3D7D7A1-59AE-442B-9212-97406E656BE2} = {8516DC9F-795F-46E0-ADEF-4BBACF0D8FC6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {526F0FF2-A087-4EF2-B451-667BA5184F81}
