@@ -1,9 +1,12 @@
 name: Publish to release
 
 on:
-  push:
-    tags:
-      - Release**_v**
+  workflow_dispatch:
+    # inputs:
+    #   tag_name:
+    #     required: true
+    #   pre_release:
+    #     required: true
 
 jobs:
   Build:
@@ -12,18 +15,43 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Get Version From Tag
-        uses: olegtarasov/get-tag@v2.1.3
+      - name: Read common.props
+        id: CommonProps
+        uses: juliangruber/read-file-action@v3
+        with:
+          path: ./common.props
+
+      - name: Get version
+        id: version
+        uses: AsasInnab/regex-action@v1
+        with:
+          regex_pattern: "(?<=>)[^<>]+(?=</Version>)"
+          regex_flags: "gim"
+          search_string: "${{ steps.CommonProps.outputs.content }}"
+
+      - name: Determine if the tag exists
+        uses: mukunku/tag-exists-action@v1.6.0
         id: Tag
         with:
-          tagRegex: "Release[_](?<Package>.*)_v(?<Version>.*)"
-
-      - name: Show Tag
-        run: |
-          echo "${{steps.Tag.outputs.Package}}"
-          echo "${{steps.Tag.outputs.Version}}"
+          tag: ${{ steps.version.outputs.first_match }}
         env:
-          NeedsPackage: ${{contains(steps.Tag.outputs.Package,'Desktop')}}
+          GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
+    outputs:
+      Tag: ${{steps.Tag}}
+      Version: ${{steps.version}}
+
+      # - name: Get Version From Tag
+      #   uses: olegtarasov/get-tag@v2.1.3
+      #   id: Tag
+      #   with:
+      #     tagRegex: "Release[_](?<Package>.*)_v(?<Version>.*)"
+
+      # - name: Show Tag
+      #   run: |
+      #     echo "${{steps.Tag.outputs.Package}}"
+      #     echo "${{steps.Tag.outputs.Version}}"
+      #   env:
+      #     NeedsPackage: ${{contains(steps.Tag.outputs.Package,'Desktop')}}
 
       # - uses: actions/setup-dotnet@v4
       #   with:
@@ -47,18 +75,18 @@ jobs:
     steps:
       - run: |
           echo "${{toJson(needs)}}" >> $GITHUB_OUTPUT
-      # - name: publish
-      #   run: dotnet publish -c Release --no-build --no-restore -o ./${{steps.Tag.outputs.Name}}_${{steps.Tag.outputs.Version}}
+  # - name: publish
+  #   run: dotnet publish -c Release --no-build --no-restore -o ./${{steps.Tag.outputs.Name}}_${{steps.Tag.outputs.Version}}
 
-      # - name: zip
-      #   uses: thedoctor0/zip-release@0.7.5
-      #   with:
-      #     type: zip
-      #     filename: ${{env.FileName}}.zip
-      #     path: ${{env.FileName}}
+  # - name: zip
+  #   uses: thedoctor0/zip-release@0.7.5
+  #   with:
+  #     type: zip
+  #     filename: ${{env.FileName}}.zip
+  #     path: ${{env.FileName}}
 
-      # - name: push release
-      #   uses: ncipollo/release-action@v1
-      #   with:
-      #     artifacts: "${{env.FileName}}.zip"
-      #     token: ${{secrets.RELEASE_TOKEN}}
+  # - name: push release
+  #   uses: ncipollo/release-action@v1
+  #   with:
+  #     artifacts: "${{env.FileName}}.zip"
+  #     token: ${{secrets.RELEASE_TOKEN}}
