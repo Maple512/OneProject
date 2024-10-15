@@ -51,9 +51,9 @@ jobs:
     # work-directory: ${{steps.Tag.outputs.Package}}
     steps:
       # - run: echo "${{toJson(needs)}}" >> $GITHUB_OUTPUT
-      - run: |
-          pwd
-          ls
+      - run: pwd
+      - run: ls
+      - run: tree
       # - uses: actions/setup-dotnet@v4
       #   with:
       #     dotnet-version: "9.0.x"
