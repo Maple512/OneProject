@@ -52,7 +52,6 @@ jobs:
     steps:
       # - run: echo "${{toJson(needs)}}" >> $GITHUB_OUTPUT
       - run: |
-          echo "${{toJson(github)}}" >> $GITHUB_OUTPUT
           pwd
           ls
       # - uses: actions/setup-dotnet@v4
