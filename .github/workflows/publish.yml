@@ -46,7 +46,7 @@ jobs:
     # work-directory: ${{steps.Tag.outputs.Package}}
     steps:
       - run: |
-          echo ${{toJson(needs)}} >> $GITHUB_OUTPUT
+          echo "${{toJson(needs)}}" >> $GITHUB_OUTPUT
       # - name: publish
       #   run: dotnet publish -c Release --no-build --no-restore -o ./${{steps.Tag.outputs.Name}}_${{steps.Tag.outputs.Version}}
 
