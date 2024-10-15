@@ -1,12 +1,12 @@
-name: Desktop publish to release
+name: Publish to release
 
-# 推送tag时触发
 on:
   push:
     tags:
-      - Desktop_v**
+      - Release**
+
 jobs:
-  Publish:
+  Build:
     runs-on: windows-latest
     steps:
       - name: Checkout
@@ -16,32 +16,36 @@ jobs:
         uses: olegtarasov/get-tag@v2.1.3
         id: Tag
         with:
-          tagRegex: "(?<Package>.*)_v(?<Version>.*)"
+          tagRegex: "Release(?<_Package>.*)"
 
       - name: Show Tag
         run: |
           echo "${{steps.Tag.outputs.Package}}"
-          echo "${{steps.Tag.outputs.Version}}"
+        env:
+          NeedsPackage: ${{contains(steps.Tag.outputs.Package,'Dekstop')}}
 
-      # - uses: actions/setup-dotnet@v4
-      #   with:
-      #     dotnet-version: "9.0.x"
-      #     dotnet-quality: "preview"
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "9.0.x"
+          dotnet-quality: "preview"
 
-      # - name: restory
-      #   run: dotnet restore
+      - name: restory
+        run: dotnet restore
 
-      # - name: build
-      #   run: dotnet build
+      - name: build
+        run: dotnet build
 
-      # - name: test
-      #   run: dotnet test --no-restore --no-build
-
-      # - name: cd Desktop
-      #   run:
-
+      - name: test
+        run: dotnet test --no-restore --no-build
+  Push:
+    needs: Build
+    # if: ${{needs.Build.}}
+    runs-on: windows-latest
+    # work-directory: ${{steps.Tag.outputs.Package}}
+    steps:
+      - run: |
+          echo ${{needs.Build}}
       # - name: publish
-      #   working-directory: ./OneProject.Dekstop
       #   run: dotnet publish -c Release --no-build --no-restore -o ./${{steps.Tag.outputs.Name}}_${{steps.Tag.outputs.Version}}
 
       # - name: zip
