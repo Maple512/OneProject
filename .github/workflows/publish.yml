@@ -20,7 +20,9 @@ jobs:
 
       - name: Show Tag
         shell: pwsh
-        run: echo "$steps.Tag.outputs"
+        run: |
+          echo "$steps.Tag.outputs.Name"
+          echo "$steps.Tag.outputs.Version"
 
       # - uses: actions/setup-dotnet@v4
       #   with:
