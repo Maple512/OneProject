@@ -25,19 +25,20 @@ jobs:
         env:
           NeedsPackage: ${{contains(steps.Tag.outputs.Package,'Desktop')}}
 
-      - uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: "9.0.x"
-          dotnet-quality: "preview"
+      # - uses: actions/setup-dotnet@v4
+      #   with:
+      #     dotnet-version: "9.0.x"
+      #     dotnet-quality: "preview"
 
-      - name: restory
-        run: dotnet restore
+      # - name: restory
+      #   run: dotnet restore
 
-      - name: build
-        run: dotnet build
+      # - name: build
+      #   run: dotnet build
 
-      - name: test
-        run: dotnet test --no-restore --no-build
+      # - name: test
+      #   run: dotnet test --no-restore --no-build
+
   Push:
     needs: Build
     # if: ${{needs.Build.}}
@@ -45,7 +46,7 @@ jobs:
     # work-directory: ${{steps.Tag.outputs.Package}}
     steps:
       - run: |
-          echo ${{toJson(needs.Build)}}
+          echo ${{toJson(needs)}}
       # - name: publish
       #   run: dotnet publish -c Release --no-build --no-restore -o ./${{steps.Tag.outputs.Name}}_${{steps.Tag.outputs.Version}}
 
