@@ -6,7 +6,7 @@ on:
     tags:
       - Desktop_v**
 jobs:
-  build:
+  Publish:
     runs-on: windows-latest
     steps:
       - name: Checkout
@@ -20,7 +20,7 @@ jobs:
 
       - name: Show Tag
         shell: pwsh
-        run: echo "$steps.Tag"
+        run: echo "$steps.Tag.outputs"
 
       # - uses: actions/setup-dotnet@v4
       #   with:
