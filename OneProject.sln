@@ -19,8 +19,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneProject.Desktop.Theme", "OneProject.Desktop.Theme\OneProject.Desktop.Theme.csproj", "{D67749D3-E195-4770-ADA9-D5A95E0708B3}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneProject", "OneProject\OneProject.csproj", "{FEAECEE7-7397-44B0-BAA7-5704CF9423AE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneProject.Win32Native", "OneProject.Win32Native\OneProject.Win32Native.csproj", "{EC243AF2-CB2A-4D1C-8513-F93DE87291F4}"
@@ -45,10 +43,6 @@ Global
 		{1EC603BC-2A26-4CCC-AF77-68EC5C1C2F67}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EC603BC-2A26-4CCC-AF77-68EC5C1C2F67}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1EC603BC-2A26-4CCC-AF77-68EC5C1C2F67}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D67749D3-E195-4770-ADA9-D5A95E0708B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D67749D3-E195-4770-ADA9-D5A95E0708B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D67749D3-E195-4770-ADA9-D5A95E0708B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D67749D3-E195-4770-ADA9-D5A95E0708B3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FEAECEE7-7397-44B0-BAA7-5704CF9423AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FEAECEE7-7397-44B0-BAA7-5704CF9423AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FEAECEE7-7397-44B0-BAA7-5704CF9423AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -67,7 +61,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1EC603BC-2A26-4CCC-AF77-68EC5C1C2F67} = {8516DC9F-795F-46E0-ADEF-4BBACF0D8FC6}
-		{D67749D3-E195-4770-ADA9-D5A95E0708B3} = {8516DC9F-795F-46E0-ADEF-4BBACF0D8FC6}
 		{E566BE25-A753-475B-A4A5-145D9027F8FC} = {21BBDE1A-D1F0-47BF-9C1F-6A0C54FF7DFF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution

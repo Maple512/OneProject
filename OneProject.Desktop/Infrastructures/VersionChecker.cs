@@ -1,4 +1,4 @@
-namespace OneProject.Infrastructures;
+namespace OneProject.Desktop.Infrastructures;
 using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -9,6 +9,7 @@ using Microsoft.Extensions.Logging;
 
 public class VersionChecker
 {
+    // api docs: https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28#get-the-latest-release
     private const string uri = "https://api.github.com/repos/maple512/oneproject/releases/latest";
     private readonly IHttpClientFactory _httpClientFactory;
     private readonly ILogger _logger;

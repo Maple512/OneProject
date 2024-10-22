@@ -10,7 +10,7 @@ using System.Windows.Threading;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using OneProject.Infrastructures;
+using OneProject.Desktop.Infrastructures;
 using Serilog;
 using Serilog.Core;
 using Serilog.Events;

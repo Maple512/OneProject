@@ -1,4 +1,4 @@
-namespace OneProject;
+namespace OneProject.Desktop;
 
 using System;
 using System.IO;

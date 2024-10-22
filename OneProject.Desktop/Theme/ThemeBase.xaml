@@ -57,5 +57,7 @@
     <system:Double x:Key="Number.Pressed.Opacity" po:Freeze="true">.9</system:Double>
     <system:Double x:Key="Number.IconSize" po:Freeze="true">15</system:Double>
     <system:Double x:Key="Number.MenuWidth" po:Freeze="true">130</system:Double>
+
+    <GridLength x:Key="GridLength.MenuWidth" po:Freeze="true">130</GridLength>
     
 </ResourceDictionary>
