@@ -11,7 +11,7 @@ using Microsoft.Extensions.Logging;
 [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
 public record GlobalSettings
 {
-    const string FileName = "settings.json";
+    private const string FileName = "settings.json";
 
     public static GlobalSettings Instance { get; private set; } = null!;
     //public static string FullFileName = Path.Combine(Directory, "settings.json");
@@ -27,6 +27,8 @@ public record GlobalSettings
     public static string Version = null!;
 
     public WindowSettings Windows { get; set; } = new();
+
+    public ThemeSettings Theme { get; set; } = new();
 
     public void Save()
     {
@@ -51,6 +53,8 @@ public record GlobalSettings
         {
             Instance = new();
 
+            Instance.Save();
+
             return;
         }
 
@@ -74,9 +78,16 @@ public record GlobalSettings
 
         public string? FontFamily { get; set; }
     }
+
+    public class ThemeSettings
+    {
+        public bool IsLight { get; set; }
+
+        public string? Color { get; set; }
+    }
 }
 
-[JsonSourceGenerationOptions(WriteIndented = true)]
+[JsonSourceGenerationOptions(WriteIndented = true, PropertyNamingPolicy = JsonKnownNamingPolicy.SnakeCaseLower)]
 [JsonSerializable(typeof(GlobalSettings))]
 public partial class GlobalSettingsContext : JsonSerializerContext
 {

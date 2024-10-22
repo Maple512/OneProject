@@ -1,0 +1,26 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Color x:Key="Color.White0">#19FFFFFF</Color>
+    <Color x:Key="Color.White1">#32FFFFFF</Color>
+    <Color x:Key="Color.White2">#4BFFFFFF</Color>
+    <Color x:Key="Color.White3">#64FFFFFF</Color>
+    <Color x:Key="Color.White4">#7DFFFFFF</Color>
+    <Color x:Key="Color.White5">#96FFFFFF</Color>
+    <Color x:Key="Color.White6">#AFFFFFFF</Color>
+    <Color x:Key="Color.White7">#C8FFFFFF</Color>
+    <Color x:Key="Color.White8">#E1FFFFFF</Color>
+    <Color x:Key="Color.White9">#FFFFFFFF</Color>
+
+    <Color x:Key="Color.Black0">#19000000</Color>
+    <Color x:Key="Color.Black1">#32000000</Color>
+    <Color x:Key="Color.Black2">#4B000000</Color>
+    <Color x:Key="Color.Black3">#64000000</Color>
+    <Color x:Key="Color.Black4">#7D000000</Color>
+    <Color x:Key="Color.Black5">#96000000</Color>
+    <Color x:Key="Color.Black6">#AF000000</Color>
+    <Color x:Key="Color.Black7">#C8000000</Color>
+    <Color x:Key="Color.Black8">#E1000000</Color>
+    <Color x:Key="Color.Black9">#FF000000</Color>
+
+</ResourceDictionary>

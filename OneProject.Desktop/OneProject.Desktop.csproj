@@ -33,7 +33,6 @@
     <ItemGroup>
         <PackageReference Include="CliWrap" />
         <PackageReference Include="CommunityToolkit.Mvvm" />
-        <PackageReference Include="Humanizer.Core" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
         <PackageReference Include="Microsoft.Extensions.Http.Polly" />
         <PackageReference Include="Serilog.Extensions.Logging" />
@@ -42,6 +41,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\OneProject.Desktop.Theme\OneProject.Desktop.Theme.csproj" />
       <ProjectReference Include="..\OneProject\OneProject.csproj" />
     </ItemGroup>
 

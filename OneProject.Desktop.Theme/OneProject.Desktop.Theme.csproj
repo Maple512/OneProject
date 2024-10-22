@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <Import Project="../common.props" />
+
+    <PropertyGroup>
+        <TargetFramework>$(WPFFramework)</TargetFramework>
+        <UseWPF>true</UseWPF>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Using Include="System.Windows" />
+        <Using Include="System.Windows.Controls" />
+        <Using Include="System.Windows.Controls.Primitives" />
+        <Using Include="System.Windows.Data" />
+        <Using Include="System.Windows.Documents" />
+        <Using Include="System.Windows.Input" />
+        <Using Include="System.Windows.Media" />
+        <Using Include="System.Windows.Media.Colors" Alias="SysColors" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Humanizer.Core" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\OneProject\OneProject.csproj" />
+    </ItemGroup>
+
+</Project>

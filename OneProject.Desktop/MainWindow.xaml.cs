@@ -6,12 +6,14 @@ using System.ComponentModel;
 using System.Windows;
 using OneProject.Desktop.Infrastructures;
 using OneProject.Desktop.Pages;
+using OneProject.Desktop.Theme;
 using OneProject.Desktop.ViewModels;
 
 public partial class MainWindow : Window
 {
     public MainWindow()
     {
+
         InitializeComponent();
     }
 
@@ -20,6 +22,9 @@ public partial class MainWindow : Window
         base.OnInitialized(e);
 
         Title = nameof(OneProject);
+
+        ThemeText.Text = ThemeManager.CurrentTheme.Color.ToString();
+        ThemeChangeBtn.Content = ThemeManager.CurrentTheme.IsLight ? "亮色" : "暗色";
 
         WindowState = GlobalSettings.Instance.Windows.MainWindowState;
         Height = GlobalSettings.Instance.Windows.MainWindowHeight;
@@ -59,8 +64,20 @@ public partial class MainWindow : Window
         GlobalSettings.Instance.Windows.MainWindowLeft = Left;
         GlobalSettings.Instance.Windows.FontFamily = FontFamily.Source;
 
+        GlobalSettings.Instance.Theme.Color = ThemeManager.CurrentTheme.Color.ToString();
+        GlobalSettings.Instance.Theme.IsLight = ThemeManager.CurrentTheme.IsLight;
+
         GlobalSettings.Instance.Save();
 
         base.OnClosing(e);
+    }
+
+    private void OnThemeBtnClick(object sender, RoutedEventArgs e)
+    {
+        var color = (Color)ColorConverter.ConvertFromString(ThemeText.Text);
+
+        ThemeManager.ChangeTheme(Application.Current, color);
+
+        ThemeChangeBtn.Content = ThemeManager.CurrentTheme.IsLight ? "亮色" : "暗色";
     }
 }

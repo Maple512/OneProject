@@ -33,6 +33,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 		.github\workflows\publish.yml = .github\workflows\publish.yml
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneProject.Desktop.Theme", "OneProject.Desktop.Theme\OneProject.Desktop.Theme.csproj", "{DC255EDA-FB4B-409C-8E72-DA5B75752893}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,13 +57,19 @@ Global
 		{344EE9C3-E4F3-4B4C-8F10-101485349341}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{344EE9C3-E4F3-4B4C-8F10-101485349341}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{344EE9C3-E4F3-4B4C-8F10-101485349341}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC255EDA-FB4B-409C-8E72-DA5B75752893}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC255EDA-FB4B-409C-8E72-DA5B75752893}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC255EDA-FB4B-409C-8E72-DA5B75752893}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC255EDA-FB4B-409C-8E72-DA5B75752893}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1EC603BC-2A26-4CCC-AF77-68EC5C1C2F67} = {8516DC9F-795F-46E0-ADEF-4BBACF0D8FC6}
+		{21BBDE1A-D1F0-47BF-9C1F-6A0C54FF7DFF} = {0FA7F277-A246-49CB-8AC3-12BBB9E26690}
 		{E566BE25-A753-475B-A4A5-145D9027F8FC} = {21BBDE1A-D1F0-47BF-9C1F-6A0C54FF7DFF}
+		{DC255EDA-FB4B-409C-8E72-DA5B75752893} = {8516DC9F-795F-46E0-ADEF-4BBACF0D8FC6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {526F0FF2-A087-4EF2-B451-667BA5184F81}

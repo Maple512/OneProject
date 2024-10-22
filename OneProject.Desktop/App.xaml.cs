@@ -10,7 +10,9 @@ using System.Windows.Threading;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.Windows.Themes;
 using OneProject.Desktop.Infrastructures;
+using OneProject.Desktop.Theme;
 using Serilog;
 using Serilog.Core;
 using Serilog.Events;
@@ -35,6 +37,8 @@ public partial class App : Application
         Services = ConfigureServices();
 
         Logger = Services.GetRequiredService<ILogger<App>>();
+
+        var resource = Current.Resources;
 
         InitializeComponent();
 
@@ -66,9 +70,9 @@ public partial class App : Application
 
         SaveProcessId();
 
-        //_ = Current.Resources.MergedDictionaries[0];
+        var theme = GlobalSettings.Instance.Theme;
 
-        //_ = new ResourceDictionary();
+        ThemeManager.Initialize(this, theme.Color, theme.IsLight);
 
         Log.Logger.Information($"Application Start, Args: {e.Args.JoinAsString()}");
 
@@ -93,7 +97,7 @@ public partial class App : Application
     /// </summary>
     private static void SaveProcessId()
     {
-        var processId = Process.GetCurrentProcess().Id;
+        var processId = Environment.ProcessId;
 
         _memoryFile = MemoryMappedFile.CreateNew(MemoryMappedFileName, 32 * 1024);
 
