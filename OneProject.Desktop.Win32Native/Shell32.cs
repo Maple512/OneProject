@@ -1,4 +1,5 @@
-namespace OneProject.Win32Native;
+namespace OneProject.Desktop.Win32Native;
+
 using System;
 using System.Runtime.InteropServices;
 

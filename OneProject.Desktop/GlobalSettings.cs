@@ -83,7 +83,7 @@ public record GlobalSettings
     {
         public bool IsLight { get; set; }
 
-        public string? Color { get; set; }
+        public string? Background { get; set; }
     }
 }
 

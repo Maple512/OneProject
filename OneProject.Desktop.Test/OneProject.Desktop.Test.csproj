@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <Import Project="../common.test.props" />
+
+    <PropertyGroup>
+        <TargetFramework>$(WPFFramework)</TargetFramework>
+        <UseWPF>true</UseWPF>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\OneProject.Desktop.Win32Native\OneProject.Desktop.Win32Native.csproj" />
+      <ProjectReference Include="..\OneProject.Desktop\OneProject.Desktop.csproj" />
+      <ProjectReference Include="..\OneProject.Test\OneProject.Test.csproj" />
+    </ItemGroup>
+
+</Project>

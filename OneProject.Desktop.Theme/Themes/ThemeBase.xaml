@@ -27,8 +27,6 @@
     <SolidColorBrush x:Key="Brush.Black8" Color="{StaticResource Color.Black8}" po:Freeze="true" />
     <SolidColorBrush x:Key="Brush.Black9" Color="{StaticResource Color.Black9}" po:Freeze="true" />
 
-    
-
     <SolidColorBrush x:Key="Brush.Info" Color="#FF3A8CFF" po:Freeze="true" />
     <SolidColorBrush x:Key="Brush.Success" Color="#FF52C41A" po:Freeze="true" />
     <SolidColorBrush x:Key="Brush.Warn" Color="#FFFAAD14" po:Freeze="true" />
@@ -39,11 +37,14 @@
     <Thickness x:Key="Number.BorderThickness.Underline" po:Freeze="true">0,0,0,0.8</Thickness>
 
     <system:Double x:Key="Number.Height" po:Freeze="true">35</system:Double>
+    <system:Double x:Key="Number.Window.Height" po:Freeze="true">35</system:Double>
     <system:Double x:Key="Number.Disabled.Opacity" po:Freeze="true">.5</system:Double>
     <system:Double x:Key="Number.Pressed.Opacity" po:Freeze="true">.9</system:Double>
     <system:Double x:Key="Number.IconSize" po:Freeze="true">15</system:Double>
-    <system:Double x:Key="Number.MenuWidth" po:Freeze="true">130</system:Double>
+    <system:Double x:Key="Number.Menu.Width" po:Freeze="true">130</system:Double>
+    <system:Double x:Key="Number.Menu.Height" po:Freeze="true">35</system:Double>
 
-    <GridLength x:Key="GridLength.MenuWidth" po:Freeze="true">130</GridLength>
-    
+    <DropShadowEffect x:Key="Shadow.Default" BlurRadius="7" Direction="270" Opacity="0.45" RenderingBias="Performance" ShadowDepth="2"
+            Color="Black" />
+
 </ResourceDictionary>

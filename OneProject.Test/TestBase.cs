@@ -67,27 +67,27 @@ public abstract class TestBase<TLogger>
             {
                 config.Conditional(c => c.Level == LogEventLevel.Debug, sink =>
                 {
-                    sink.File("Logs/log_debug.log", outputTemplate: OutputTemlpate,
+                    sink.File("../../../Logs/log_debug.log", outputTemplate: OutputTemlpate,
                         rollingInterval: RollingInterval.Day);
                 })
                     .WriteTo.Conditional(c => c.Level == LogEventLevel.Information, sink =>
                     {
-                        sink.File("Logs/log_information.log", outputTemplate: OutputTemlpate,
+                        sink.File("../../../Logs/log_information.log", outputTemplate: OutputTemlpate,
                             rollingInterval: RollingInterval.Day);
                     })
                     .WriteTo.Conditional(c => c.Level == LogEventLevel.Warning, sink =>
                     {
-                        sink.File("Logs/log_warning.log", outputTemplate: OutputTemlpate,
+                        sink.File("../../../Logs/log_warning.log", outputTemplate: OutputTemlpate,
                             rollingInterval: RollingInterval.Day);
                     })
                     .WriteTo.Conditional(c => c.Level == LogEventLevel.Error, sink =>
                     {
-                        sink.File("Logs/log_error.log", outputTemplate: OutputTemlpate,
+                        sink.File("../../../Logs/log_error.log", outputTemplate: OutputTemlpate,
                             rollingInterval: RollingInterval.Day);
                     })
                     .WriteTo.Conditional(c => c.Level == LogEventLevel.Fatal, sink =>
                     {
-                        sink.File("Logs/log_fatal.log", outputTemplate: OutputTemlpate,
+                        sink.File("../../../Logs/log_fatal.log", outputTemplate: OutputTemlpate,
                             rollingInterval: RollingInterval.Day);
                     });
             })

@@ -1,12 +1,11 @@
 <Application x:Class="OneProject.Desktop.App" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:theme="http://github.com/maple512/oneproject.desktop/themes"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:themes="http://github.com/maple512/oneproject.desktop/themes"
         StartupUri="MainWindow.xaml">
 
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <!--Source="pack://application:,,,/OneProject.Desktop.Theme;component/Themes/Theme.xaml"-->
-                <theme:DesktopTheme Color="#FF40A9FF" IsLight="True" />
+                <themes:DesktopTheme Source="pack://application:,,,/OneProject.Desktop.Theme;component/Themes/Theme.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/OneProject.Desktop.Theme;component/Themes/Defaults.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

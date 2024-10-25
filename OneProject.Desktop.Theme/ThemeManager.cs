@@ -15,7 +15,7 @@ public static class ThemeManager
 
         _index = app.Resources.MergedDictionaries.IndexOf(resource);
 
-        CurrentTheme = resource;
+        CurrentTheme = DesktopTheme.Initialize(resource);
 
         if(!string.IsNullOrEmpty(color))
         {
@@ -23,12 +23,11 @@ public static class ThemeManager
         }
     }
 
-    public static void ChangeTheme(Application app, Color parmaryColor, bool isLight = true)
+    public static void ChangeTheme(Application app, Color background, bool isLight = true)
     {
         app.Resources.MergedDictionaries.RemoveAt(_index);
 
-        CurrentTheme.Color = parmaryColor;
-        CurrentTheme.IsLight = isLight;
+        CurrentTheme.Change(background, isLight);
 
         app.Resources.MergedDictionaries.Insert(_index, CurrentTheme);
     }

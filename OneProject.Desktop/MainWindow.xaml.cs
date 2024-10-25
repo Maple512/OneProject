@@ -7,13 +7,13 @@ using System.Windows;
 using OneProject.Desktop.Infrastructures;
 using OneProject.Desktop.Pages;
 using OneProject.Desktop.Theme;
+using OneProject.Desktop.Theme.Themes;
 using OneProject.Desktop.ViewModels;
 
-public partial class MainWindow : Window
+public partial class MainWindow : OPWindow
 {
     public MainWindow()
     {
-
         InitializeComponent();
     }
 
@@ -23,8 +23,8 @@ public partial class MainWindow : Window
 
         Title = nameof(OneProject);
 
-        ThemeText.Text = ThemeManager.CurrentTheme.Color.ToString();
-        ThemeChangeBtn.Content = ThemeManager.CurrentTheme.IsLight ? "亮色" : "暗色";
+        //ThemeText.Text = ThemeManager.CurrentTheme.Background.ToString();
+        //ThemeChangeBtn.Content = ThemeManager.CurrentTheme.IsLight ? "亮色" : "暗色";
 
         WindowState = GlobalSettings.Instance.Windows.MainWindowState;
         Height = GlobalSettings.Instance.Windows.MainWindowHeight;
@@ -45,11 +45,11 @@ public partial class MainWindow : Window
 
         ObservableCollection<MenuItemModel> menus =
         [
-            MenuItemModel.Create<Home>("首页"),
-            MenuItemModel.Create<WindowsReg>("注册表"),
+            MenuItemModel.Create<Home>("首页",IconKind.Home),
+            MenuItemModel.Create<WindowsReg>("注册表",IconKind.Windows_Registy),
         ];
 
-        DataContext = new MainWindowModel("OneProject", GlobalSettings.Version, menus);
+        DataContext = new MainWindowModel(menus);
     }
 
     //private void OnSelectedItemChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -64,7 +64,7 @@ public partial class MainWindow : Window
         GlobalSettings.Instance.Windows.MainWindowLeft = Left;
         GlobalSettings.Instance.Windows.FontFamily = FontFamily.Source;
 
-        GlobalSettings.Instance.Theme.Color = ThemeManager.CurrentTheme.Color.ToString();
+        GlobalSettings.Instance.Theme.Background = ThemeManager.CurrentTheme.Background.ToString();
         GlobalSettings.Instance.Theme.IsLight = ThemeManager.CurrentTheme.IsLight;
 
         GlobalSettings.Instance.Save();
@@ -72,12 +72,12 @@ public partial class MainWindow : Window
         base.OnClosing(e);
     }
 
-    private void OnThemeBtnClick(object sender, RoutedEventArgs e)
-    {
-        var color = (Color)ColorConverter.ConvertFromString(ThemeText.Text);
+    //private void OnThemeBtnClick(object sender, RoutedEventArgs e)
+    //{
+    //    var color = (Color)ColorConverter.ConvertFromString(ThemeText.Text);
 
-        ThemeManager.ChangeTheme(Application.Current, color);
+    //    ThemeManager.ChangeTheme(Application.Current, color);
 
-        ThemeChangeBtn.Content = ThemeManager.CurrentTheme.IsLight ? "亮色" : "暗色";
-    }
+    //    ThemeChangeBtn.Content = ThemeManager.CurrentTheme.IsLight ? "亮色" : "暗色";
+    //}
 }

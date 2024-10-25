@@ -1,0 +1,11 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Color x:Key="Color.Light">#FFF1F1F1</Color>
+    <Color x:Key="Color.Dark">#FF323232</Color>
+
+    <SolidColorBrush x:Key="Brush.Foreground" Color="{StaticResource Color.Light}" />
+    <SolidColorBrush x:Key="Brush.Background" Color="#FF40A9FF" />
+    <SolidColorBrush x:Key="Brush.Border" Color="#FF40A9FF" Opacity=".3" />
+    <SolidColorBrush x:Key="Brush.Window.Background" Color="{StaticResource Color.Light}" />
+    <SolidColorBrush x:Key="Brush.Window.Foreground" Color="{StaticResource Color.Dark}" />
+</ResourceDictionary>

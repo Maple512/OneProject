@@ -6,6 +6,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Windows;
+using System.Windows.Interop;
 using System.Windows.Threading;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -66,17 +67,22 @@ public partial class App : Application
 
         base.OnStartup(e);
 
+        // 默认指定硬件加速
+        RenderOptions.ProcessRenderMode = RenderMode.Default;
+
         GlobalSettings.Load(Logger);
 
         SaveProcessId();
 
         var theme = GlobalSettings.Instance.Theme;
 
-        ThemeManager.Initialize(this, theme.Color, theme.IsLight);
+        ThemeManager.Initialize(this, theme.Background, theme.IsLight);
 
         Log.Logger.Information($"Application Start, Args: {e.Args.JoinAsString()}");
 
         Task.Run(() => Services.GetRequiredService<VersionChecker>().GetLatestVersionAsync());
+
+        Task.Run(() => WindowsThemeListener.Listen(Current));
     }
 
     protected override void OnExit(ExitEventArgs e)

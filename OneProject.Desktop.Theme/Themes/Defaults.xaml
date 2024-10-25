@@ -2,5 +2,7 @@
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/OneProject.Desktop.Theme;component/Themes/ThemeBase.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/OneProject.Desktop.Theme;component/Themes/OPIcon.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/OneProject.Desktop.Theme;component/Themes/Shadows.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
