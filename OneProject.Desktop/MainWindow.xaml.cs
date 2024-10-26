@@ -46,7 +46,7 @@ public partial class MainWindow : OPWindow
         ObservableCollection<MenuItemModel> menus =
         [
             MenuItemModel.Create<Home>("首页",IconKind.Home),
-            MenuItemModel.Create<WindowsReg>("注册表",IconKind.Windows_Registy),
+            MenuItemModel.Create<WindowsRegistry>("注册表",IconKind.Windows_Registy),
         ];
 
         DataContext = new MainWindowModel(menus);
@@ -64,7 +64,7 @@ public partial class MainWindow : OPWindow
         GlobalSettings.Instance.Windows.MainWindowLeft = Left;
         GlobalSettings.Instance.Windows.FontFamily = FontFamily.Source;
 
-        GlobalSettings.Instance.Theme.Background = ThemeManager.CurrentTheme.Background.ToString();
+        GlobalSettings.Instance.Theme.Background = ThemeManager.CurrentTheme.Main.ToString();
         GlobalSettings.Instance.Theme.IsLight = ThemeManager.CurrentTheme.IsLight;
 
         GlobalSettings.Instance.Save();

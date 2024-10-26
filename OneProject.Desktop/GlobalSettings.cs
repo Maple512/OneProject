@@ -18,7 +18,7 @@ public record GlobalSettings
 
     //public static string DownloadPath => Path.Combine(Directory, "Downloads");
 
-    //public static string TempPath => Path.Combine(Directory, "Temps");
+    public static string TempPath => Path.Combine(Root, "Temps");
 
     public static string Root = null!;
 

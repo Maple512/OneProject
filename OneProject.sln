@@ -33,9 +33,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneProject.Desktop.Theme", "OneProject.Desktop.Theme\OneProject.Desktop.Theme.csproj", "{DC255EDA-FB4B-409C-8E72-DA5B75752893}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneProject.Desktop.Test", "OneProject.Desktop.Test\OneProject.Desktop.Test.csproj", "{41FDA252-FE1D-48A2-B02E-6C4EA1DF3EFD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneProject.Desktop.Test", "OneProject.Desktop.Test\OneProject.Desktop.Test.csproj", "{41FDA252-FE1D-48A2-B02E-6C4EA1DF3EFD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneProject.Desktop.Win32Native", "OneProject.Desktop.Win32Native\OneProject.Desktop.Win32Native.csproj", "{EC4EB937-2D1B-44BE-B645-FF388C9591CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneProject.Desktop.Win32Native", "OneProject.Desktop.Win32Native\OneProject.Desktop.Win32Native.csproj", "{EC4EB937-2D1B-44BE-B645-FF388C9591CA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructures", "Infrastructures", "{AA79ED57-4871-4213-AD91-361A9CFB2C05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneProject.WindowsManagment", "OneProject.WindowsManagment\OneProject.WindowsManagment.csproj", "{1C5FE330-8A02-48AB-B685-143AC90E765F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneProject.WindowsManagment.Test", "OneProject.WindowsManagment.Test\OneProject.WindowsManagment.Test.csproj", "{F87881AC-CD84-415A-8B7A-4DD13D62F2D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,6 +73,14 @@ Global
 		{EC4EB937-2D1B-44BE-B645-FF388C9591CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC4EB937-2D1B-44BE-B645-FF388C9591CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC4EB937-2D1B-44BE-B645-FF388C9591CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C5FE330-8A02-48AB-B685-143AC90E765F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C5FE330-8A02-48AB-B685-143AC90E765F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C5FE330-8A02-48AB-B685-143AC90E765F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C5FE330-8A02-48AB-B685-143AC90E765F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F87881AC-CD84-415A-8B7A-4DD13D62F2D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F87881AC-CD84-415A-8B7A-4DD13D62F2D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F87881AC-CD84-415A-8B7A-4DD13D62F2D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F87881AC-CD84-415A-8B7A-4DD13D62F2D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -78,6 +92,8 @@ Global
 		{DC255EDA-FB4B-409C-8E72-DA5B75752893} = {8516DC9F-795F-46E0-ADEF-4BBACF0D8FC6}
 		{41FDA252-FE1D-48A2-B02E-6C4EA1DF3EFD} = {8516DC9F-795F-46E0-ADEF-4BBACF0D8FC6}
 		{EC4EB937-2D1B-44BE-B645-FF388C9591CA} = {8516DC9F-795F-46E0-ADEF-4BBACF0D8FC6}
+		{1C5FE330-8A02-48AB-B685-143AC90E765F} = {AA79ED57-4871-4213-AD91-361A9CFB2C05}
+		{F87881AC-CD84-415A-8B7A-4DD13D62F2D4} = {AA79ED57-4871-4213-AD91-361A9CFB2C05}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {526F0FF2-A087-4EF2-B451-667BA5184F81}

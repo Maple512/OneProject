@@ -24,10 +24,11 @@
         <Setter Property="Height" Value="{StaticResource Number.Height}" />
         <Setter Property="IconSize" Value="{StaticResource Number.IconSize}" />
         <Setter Property="CornerRadius" Value="{StaticResource Number.CornerRadius}" />
-        <Setter Property="Background" Value="{DynamicResource Brush.Background}" />
-        <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground}" />
+        <Setter Property="Background" Value="{StaticResource Brush.Main}" />
+        <Setter Property="Foreground" Value="{StaticResource Brush.A}" />
+        <Setter Property="TextElement.Foreground" Value="{StaticResource Brush.A}" />
         <Setter Property="BorderThickness" Value="{StaticResource Number.BorderThickness}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource Brush.Border}" />
+        <Setter Property="BorderBrush" Value="{StaticResource Brush.Border}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type themes:OPButton}">
@@ -40,7 +41,7 @@
                                     Path=(assists:ShadowElevationAssist.Elevation),
                                     Converter={x:Static converters:ShadowElevationConverter.Instance}}" />
                             <themes:OPStackPanel x:Name="P_ButtonPanel" Orientation="Horizontal" HorizontalAlignment="Center" Space="5"
-                                    Margin="6,0" VerticalAlignment="Center">
+                                    Margin="20,0" VerticalAlignment="Center">
                                 <themes:OPIcon x:Name="P_LoadingIcon" Width="{TemplateBinding IconSize}"
                                         Foreground="{TemplateBinding Foreground}" Kind="Loading" Visibility="Collapsed"
                                         RenderTransformOrigin="0.5,0.5">
@@ -54,8 +55,7 @@
                                 <ContentPresenter x:Name="P_ButtonContentPresenter"
                                         HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                         VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}"
-                                        ContentTemplate="{TemplateBinding ContentTemplate}"
-                                        TextElement.Foreground="{TemplateBinding Foreground}"
+                                        ContentTemplate="{TemplateBinding ContentTemplate}" TextElement.FontSize="16"
                                         Visibility="{TemplateBinding Content,Converter={StaticResource NotNullToVisibleConverter}}" />
                             </themes:OPStackPanel>
                         </Grid>
@@ -92,8 +92,8 @@
                 <Setter Property="Opacity" Value="{StaticResource Number.Disabled.Opacity}" />
             </Trigger>
             <Trigger Property="Type" Value="Primary">
-                <Setter Property="Background" Value="{DynamicResource Brush.Background}" />
-                <Setter Property="Foreground" Value="{DynamicResource Brush.Foreground}" />
+                <Setter Property="Background" Value="{StaticResource Brush.Main}" />
+                <Setter Property="Foreground" Value="{StaticResource Brush.A}" />
                 <Setter Property="BorderThickness" Value="0" />
             </Trigger>
             <Trigger Property="Type" Value="Text">

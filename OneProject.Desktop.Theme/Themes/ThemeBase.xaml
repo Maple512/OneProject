@@ -27,14 +27,19 @@
     <SolidColorBrush x:Key="Brush.Black8" Color="{StaticResource Color.Black8}" po:Freeze="true" />
     <SolidColorBrush x:Key="Brush.Black9" Color="{StaticResource Color.Black9}" po:Freeze="true" />
 
+    <SolidColorBrush x:Key="Brush.Main" Color="{DynamicResource Color.Main}" po:Freeze="true" />
+    <SolidColorBrush x:Key="Brush.A" Color="{DynamicResource Color.A}" po:Freeze="true" />
+    <SolidColorBrush x:Key="Brush.B" Color="{DynamicResource Color.B}" po:Freeze="true" />
+    <SolidColorBrush x:Key="Brush.Border" Color="{DynamicResource Color.Main}" Opacity=".4" po:Freeze="true" />
+
     <SolidColorBrush x:Key="Brush.Info" Color="#FF3A8CFF" po:Freeze="true" />
     <SolidColorBrush x:Key="Brush.Success" Color="#FF52C41A" po:Freeze="true" />
     <SolidColorBrush x:Key="Brush.Warn" Color="#FFFAAD14" po:Freeze="true" />
     <SolidColorBrush x:Key="Brush.Error" Color="#FFB00020" po:Freeze="true" />
 
     <CornerRadius x:Key="Number.CornerRadius" po:Freeze="true">5</CornerRadius>
-    <Thickness x:Key="Number.BorderThickness" po:Freeze="true">0.8</Thickness>
-    <Thickness x:Key="Number.BorderThickness.Underline" po:Freeze="true">0,0,0,0.8</Thickness>
+    <Thickness x:Key="Number.BorderThickness" po:Freeze="true">0.7</Thickness>
+    <Thickness x:Key="Number.BorderThickness.Underline" po:Freeze="true">0,0,0,0.78</Thickness>
 
     <system:Double x:Key="Number.Height" po:Freeze="true">35</system:Double>
     <system:Double x:Key="Number.Window.Height" po:Freeze="true">35</system:Double>
@@ -43,8 +48,5 @@
     <system:Double x:Key="Number.IconSize" po:Freeze="true">15</system:Double>
     <system:Double x:Key="Number.Menu.Width" po:Freeze="true">130</system:Double>
     <system:Double x:Key="Number.Menu.Height" po:Freeze="true">35</system:Double>
-
-    <DropShadowEffect x:Key="Shadow.Default" BlurRadius="7" Direction="270" Opacity="0.45" RenderingBias="Performance" ShadowDepth="2"
-            Color="Black" />
 
 </ResourceDictionary>

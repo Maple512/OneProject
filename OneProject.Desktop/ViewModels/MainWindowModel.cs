@@ -13,7 +13,7 @@ public partial class MainWindowModel : ObservableObject
     public MainWindowModel(ObservableCollection<MenuItemModel> pages)
     {
         Menus = pages;
-        SelectedItem = pages[selectedIndex];
+        SelectedItem = pages[1];
     }
 
     public ObservableCollection<MenuItemModel> Menus { get; }

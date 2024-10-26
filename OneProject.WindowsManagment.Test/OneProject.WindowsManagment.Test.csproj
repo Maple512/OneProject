@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <Import Project="../common.test.props" />
+
+    <PropertyGroup>
+        <TargetFramework>$(NETFramework)</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\OneProject.Test\OneProject.Test.csproj" />
+      <ProjectReference Include="..\OneProject.WindowsManagment\OneProject.WindowsManagment.csproj" />
+    </ItemGroup>
+
+</Project>

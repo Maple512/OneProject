@@ -35,32 +35,29 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <ListBox Grid.Column="0" BorderThickness="0" ItemsSource="{Binding Menus}" SelectedIndex="{Binding SelectedIndex}"
-                    SelectedItem="{Binding SelectedItem, UpdateSourceTrigger=PropertyChanged}"
-                    Background="{DynamicResource Brush.Window.Background}">
+                    SelectedItem="{Binding SelectedItem, UpdateSourceTrigger=PropertyChanged}" Background="{StaticResource Brush.A}">
                 <ListBox.ItemContainerStyle>
                     <Style TargetType="ListBoxItem">
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="ListBoxItem">
-                                    <Border x:Name="B_MenuItem" Height="{StaticResource Number.Menu.Height}" Margin="2"
-                                            Padding="10"
+                                    <Border x:Name="B_MenuItem" Height="{StaticResource Number.Menu.Height}" Margin="2" Padding="10"
                                             CornerRadius="{StaticResource Number.CornerRadius}">
                                         <Grid ClipToBounds="False">
                                             <Grid>
-                                                <Border x:Name="B_MouseOver" Background="{DynamicResource Brush.Background}" Opacity="0" />
+                                                <Border x:Name="B_MouseOver" Background="{StaticResource Brush.Main}" Opacity="0" />
                                                 <Border x:Name="B_Selected" Opacity="0" />
                                             </Grid>
                                             <Grid>
                                                 <ContentPresenter />
                                             </Grid>
                                         </Grid>
-
                                     </Border>
                                     <ControlTemplate.Triggers>
                                         <Trigger Property="IsSelected" Value="True">
-                                            <Setter TargetName="B_MenuItem" Property="Background" Value="{DynamicResource Brush.Background}" />
+                                            <Setter TargetName="B_MenuItem" Property="Background" Value="{StaticResource Brush.Main}" />
                                             <Setter TargetName="B_MenuItem" Property="TextElement.Foreground"
-                                                    Value="{DynamicResource Brush.Foreground}" />
+                                                    Value="{StaticResource Brush.A}" />
                                         </Trigger>
                                     </ControlTemplate.Triggers>
                                 </ControlTemplate>
@@ -78,10 +75,9 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <themes:OPCard Grid.Column="1">
-                <ContentControl Content="{Binding SelectedItem.Content, UpdateSourceTrigger=PropertyChanged,FallbackValue={x:Null}}"
-                        HorizontalContentAlignment="Left" VerticalContentAlignment="Top" />
-            </themes:OPCard>
+            <ContentControl Grid.Column="1"
+                    Content="{Binding SelectedItem.Content, UpdateSourceTrigger=PropertyChanged,FallbackValue={x:Null}}"
+                    HorizontalContentAlignment="Left" VerticalContentAlignment="Top" />
         </Grid>
     </themes:OPWindow.Content>
 

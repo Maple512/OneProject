@@ -10,12 +10,12 @@
 
     <Style TargetType="{x:Type themes:OPWindow}" BasedOn="{StaticResource {x:Type Window}}">
         <Setter Property="CornerRadius" Value="{StaticResource Number.CornerRadius}" />
-        <Setter Property="Background" Value="{DynamicResource Brush.Window.Background }" />
+        <Setter Property="Background" Value="{StaticResource Brush.A }" />
         <Setter Property="WindowStyle" Value="None" />
         <Setter Property="RenderOptions.BitmapScalingMode" Value="HighQuality" />
         <Setter Property="RenderOptions.ClearTypeHint" Value="Enabled" />
         <Setter Property="UseLayoutRounding" Value="True" />
-        <Setter Property="TextElement.Foreground" Value="{DynamicResource Brush.Window.Foreground}" />
+        <Setter Property="TextElement.Foreground" Value="{StaticResource Brush.B}" />
         <Setter Property="TextElement.FontWeight" Value="Regular" />
         <Setter Property="TextElement.FontSize" Value="12" />
         <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
@@ -38,8 +38,8 @@
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
 
-                            <Grid x:Name="WindowTitle" Grid.Row="0" Background="{DynamicResource Brush.Background}"
-                                    TextElement.Foreground="{DynamicResource Brush.Foreground}">
+                            <Grid x:Name="WindowTitle" Grid.Row="0" Background="{StaticResource Brush.Main}"
+                                    TextElement.Foreground="{StaticResource Brush.A}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="auto" />

@@ -8,43 +8,39 @@ public class DesktopTheme : ResourceDictionary, IThemeResourceDictionary
     private static Color _dark = (Color)ColorConverter.ConvertFromString("#323232");
 
     public bool IsLight { get; set; }
-    public Color Background { get; set; }
-    public Color Foreground { get; set; }
-    public Color WindowBackground { get; set; }
-    public Color WindowForeground { get; set; }
+    public Color Main { get; set; }
+    public Color A { get; set; }
+    public Color B { get; set; }
 
     public static DesktopTheme Initialize(ResourceDictionary resource)
     {
         var theme = (DesktopTheme)resource;
 
-        theme.Foreground = ((SolidColorBrush)resource["Brush.Foreground"]).Color;
-        theme.Background = ((SolidColorBrush)resource["Brush.Background"]).Color;
-        theme.WindowForeground = ((SolidColorBrush)resource["Brush.Window.Foreground"]).Color;
-        theme.WindowBackground = ((SolidColorBrush)resource["Brush.Window.Background"]).Color;
-        theme.IsLight = theme.Foreground.IsLight();
+        theme.Main = (Color)resource["Color.Main"];
+        theme.A = (Color)resource["Color.A"];
+        theme.B = (Color)resource["Color.B"];
+        theme.IsLight = theme.A.IsLight();
 
         return theme;
     }
 
-    public void Change(Color background, bool isLight = true)
+    public void Change(Color color, bool isLight = true)
     {
-        if(Background != background)
+        if(Main != color)
         {
-            Background = background;
+            Main = color;
 
-            this["Brush.Background"] = new SolidColorBrush(Background);
+            this["Color.Main"] = Main;
         }
 
         if(IsLight != isLight)
         {
             IsLight = isLight;
-            Foreground = IsLight ? _light : _dark;
-            WindowForeground = IsLight ? _light : _dark;
-            WindowBackground = IsLight ? _dark : _light;
+            A = IsLight ? _light : _dark;
+            B = IsLight ? _dark : _light;
 
-            this["Brush.Foreground"] = new SolidColorBrush(Foreground);
-            this["Brush.Window.Foreground"] = new SolidColorBrush(WindowForeground);
-            this["Brush.Window.Background"] = new SolidColorBrush(WindowBackground);
+            this["Color.A"] = A;
+            this["Color.B"] = B;
         }
     }
 }

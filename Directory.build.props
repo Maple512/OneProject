@@ -1,7 +1,7 @@
 <Project>
     <PropertyGroup>
         <NetStandard>netstandard2.0</NetStandard>
-        <NetFramework>net8.0</NetFramework>
+        <NetFramework>net9.0</NetFramework>
         <WPFFramework>$(NetFramework)-windows</WPFFramework>
     </PropertyGroup>
 </Project>

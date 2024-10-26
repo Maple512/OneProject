@@ -23,7 +23,7 @@ public class WindowsThemeListener
     {
         var color = AccentColorSet.ActiveSet["SystemAccent"];
 
-        color.A = 0x4c;
+        //color.A = 0x4c;
 
         ThemeManager.ChangeTheme(app, color);
     }

@@ -12,11 +12,12 @@
     <converters:TrueToVisibleConverter x:Key="BoolToVisibilityConverter" />
 
     <Style TargetType="{x:Type themes:OPCard}">
-        <Setter Property="Background" Value="{DynamicResource Brush.Window.Background}" />
+        <Setter Property="Background" Value="{StaticResource Brush.A}" />
         <!--<Setter Property="assists:LoadingAssist.IsLoading" Value="False" />-->
-        <Setter Property="Margin" Value="2" />
+        <Setter Property="Margin" Value="3" />
         <Setter Property="Padding" Value="5" />
         <Setter Property="Focusable" Value="False" />
+        <Setter Property="TextElement.Foreground" Value="{StaticResource Brush.B}" />
         <Setter Property="CornerRadius" Value="{StaticResource Number.CornerRadius}" />
         <Setter Property="Template">
             <Setter.Value>
@@ -46,11 +47,10 @@
                                         <RowDefinition Height="auto" />
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
+                                    <!--Background="{StaticResource Brush.Main}"-->
                                     <Border x:Name="CardHeaderBorder" Padding="{TemplateBinding Padding}" Grid.Row="0"
-                                            BorderBrush="{DynamicResource Brush.Border}"
+                                            BorderBrush="{StaticResource Brush.Border}"
                                             BorderThickness="{StaticResource Number.BorderThickness.Underline}"
-                                            Background="{DynamicResource Brush.Background}"
-                                            TextElement.Foreground="{DynamicResource Brush.Foreground}"
                                             Visibility="{TemplateBinding HasHeader}" VerticalAlignment="Center">
                                         <Grid>
                                             <ContentPresenter Content="{TemplateBinding Header}"

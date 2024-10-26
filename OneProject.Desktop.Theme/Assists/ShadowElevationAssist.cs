@@ -47,7 +47,7 @@ internal static class ShadowElevationInfo
         const string uri = "pack://application:,,,/OneProject.Desktop.Theme;component/Themes/Shadows.xaml";
         var resources = new ResourceDictionary { Source = new(uri, UriKind.Absolute), };
 
-        _container = new()
+        _container = new Dictionary<Elevation, DropShadowEffect?>()
         {
             { Elevation.Se1, resources["Shadow1"] as DropShadowEffect },
             { Elevation.Se2, resources["Shadow2"] as DropShadowEffect },
