@@ -1,4 +1,5 @@
 namespace OneProject.Desktop.Theme.Themes;
+
 using System.Windows;
 using OneProject.Desktop.Theme.Infrastructures;
 

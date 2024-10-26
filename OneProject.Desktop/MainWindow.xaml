@@ -2,7 +2,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:OneProject.Desktop"
         xmlns:themes="http://github.com/maple512/oneproject.desktop/themes" mc:Ignorable="d" MinHeight="700" MinWidth="1000"
-        xmlns:models="clr-namespace:OneProject.Desktop.ViewModels" d:DataContext="{d:DesignInstance models:MainWindowModel}">
+         Icon="./assets/logo_32.ico" xmlns:models="clr-namespace:OneProject.Desktop.ViewModels"
+        d:DataContext="{d:DesignInstance models:MainWindowModel}">
 
     <themes:OPWindow.Resources>
         <ResourceDictionary>
@@ -34,47 +35,55 @@
                         Width="{Binding Source={StaticResource Number.Menu.Width},Converter={StaticResource DoubleGridLengthConverter}}" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <ListBox Grid.Column="0" BorderThickness="0" ItemsSource="{Binding Menus}" SelectedIndex="{Binding SelectedIndex}"
-                    SelectedItem="{Binding SelectedItem, UpdateSourceTrigger=PropertyChanged}" Background="{StaticResource Brush.A}">
-                <ListBox.ItemContainerStyle>
-                    <Style TargetType="ListBoxItem">
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="ListBoxItem">
-                                    <Border x:Name="B_MenuItem" Height="{StaticResource Number.Menu.Height}" Margin="2" Padding="10"
-                                            CornerRadius="{StaticResource Number.CornerRadius}">
-                                        <Grid ClipToBounds="False">
-                                            <Grid>
-                                                <Border x:Name="B_MouseOver" Background="{StaticResource Brush.Main}" Opacity="0" />
-                                                <Border x:Name="B_Selected" Opacity="0" />
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <ListBox Grid.Row="0" BorderThickness="0" ItemsSource="{Binding Menus}" SelectedIndex="{Binding SelectedIndex}"
+                        SelectedItem="{Binding SelectedItem, UpdateSourceTrigger=PropertyChanged}" Background="{StaticResource Brush.A}">
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListBoxItem">
+                                        <Border x:Name="B_MenuItem" Height="{StaticResource Number.Menu.Height}" Margin="2" Padding="10">
+                                            <Grid ClipToBounds="False">
+                                                <Grid>
+                                                    <Border x:Name="B_MouseOver" Background="{StaticResource Brush.Main}" Opacity="0" />
+                                                    <Border x:Name="B_Selected" Opacity="0" />
+                                                </Grid>
+                                                <Grid>
+                                                    <ContentPresenter />
+                                                </Grid>
                                             </Grid>
-                                            <Grid>
-                                                <ContentPresenter />
-                                            </Grid>
-                                        </Grid>
-                                    </Border>
-                                    <ControlTemplate.Triggers>
-                                        <Trigger Property="IsSelected" Value="True">
-                                            <Setter TargetName="B_MenuItem" Property="Background" Value="{StaticResource Brush.Main}" />
-                                            <Setter TargetName="B_MenuItem" Property="TextElement.Foreground"
-                                                    Value="{StaticResource Brush.A}" />
-                                        </Trigger>
-                                    </ControlTemplate.Triggers>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </ListBox.ItemContainerStyle>
-                <ListBox.ItemTemplate>
-                    <DataTemplate DataType="{x:Type models:MenuItemModel}">
-                        <themes:OPStackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
-                            <themes:OPIcon Kind="{Binding Icon}"
-                                    Visibility="{Binding Icon,Converter={StaticResource NotNullToVisibleConverter}}" />
-                            <TextBlock Text="{Binding Title}" Style="{StaticResource H6}" />
-                        </themes:OPStackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsSelected" Value="True">
+                                                <Setter TargetName="B_MenuItem" Property="BorderBrush" Value="{StaticResource Brush.Main}" />
+                                                <Setter TargetName="B_MenuItem" Property="BorderThickness" Value="3,0,0,0" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate DataType="{x:Type models:MenuItemModel}">
+                            <themes:OPStackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
+                                <themes:OPIcon Kind="{Binding Icon}"
+                                        Visibility="{Binding Icon,Converter={StaticResource NotNullToVisibleConverter}}" />
+                                <TextBlock Text="{Binding Title}" Style="{StaticResource H6}" />
+                            </themes:OPStackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <ItemsControl Grid.Row="1">
+                    <themes:OPButton Content="关于" Icon="About" Type="Text" Foreground="{StaticResource Brush.B}" Margin="2" Padding="10"
+                            HorizontalAlignment="Left" Command="{Binding OpenAboutWindowCommand}" />
+                </ItemsControl>
+            </Grid>
             <ContentControl Grid.Column="1"
                     Content="{Binding SelectedItem.Content, UpdateSourceTrigger=PropertyChanged,FallbackValue={x:Null}}"
                     HorizontalContentAlignment="Left" VerticalContentAlignment="Top" />

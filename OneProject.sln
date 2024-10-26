@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Desktop", "Desktop", "{8516DC9F-795F-46E0-ADEF-4BBACF0D8FC6}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneProject.Desktop", "OneProject.Desktop\OneProject.Desktop.csproj", "{1EC603BC-2A26-4CCC-AF77-68EC5C1C2F67}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0FA7F277-A246-49CB-8AC3-12BBB9E26690}"
@@ -37,11 +35,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneProject.Desktop.Test", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneProject.Desktop.Win32Native", "OneProject.Desktop.Win32Native\OneProject.Desktop.Win32Native.csproj", "{EC4EB937-2D1B-44BE-B645-FF388C9591CA}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructures", "Infrastructures", "{AA79ED57-4871-4213-AD91-361A9CFB2C05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneProject.WindowsManagment", "OneProject.WindowsManagment\OneProject.WindowsManagment.csproj", "{1C5FE330-8A02-48AB-B685-143AC90E765F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneProject.WindowsManagment", "OneProject.WindowsManagment\OneProject.WindowsManagment.csproj", "{1C5FE330-8A02-48AB-B685-143AC90E765F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneProject.WindowsManagment.Test", "OneProject.WindowsManagment.Test\OneProject.WindowsManagment.Test.csproj", "{F87881AC-CD84-415A-8B7A-4DD13D62F2D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneProject.WindowsManagment.Test", "OneProject.WindowsManagment.Test\OneProject.WindowsManagment.Test.csproj", "{F87881AC-CD84-415A-8B7A-4DD13D62F2D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -86,14 +82,8 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{1EC603BC-2A26-4CCC-AF77-68EC5C1C2F67} = {8516DC9F-795F-46E0-ADEF-4BBACF0D8FC6}
 		{21BBDE1A-D1F0-47BF-9C1F-6A0C54FF7DFF} = {0FA7F277-A246-49CB-8AC3-12BBB9E26690}
 		{E566BE25-A753-475B-A4A5-145D9027F8FC} = {21BBDE1A-D1F0-47BF-9C1F-6A0C54FF7DFF}
-		{DC255EDA-FB4B-409C-8E72-DA5B75752893} = {8516DC9F-795F-46E0-ADEF-4BBACF0D8FC6}
-		{41FDA252-FE1D-48A2-B02E-6C4EA1DF3EFD} = {8516DC9F-795F-46E0-ADEF-4BBACF0D8FC6}
-		{EC4EB937-2D1B-44BE-B645-FF388C9591CA} = {8516DC9F-795F-46E0-ADEF-4BBACF0D8FC6}
-		{1C5FE330-8A02-48AB-B685-143AC90E765F} = {AA79ED57-4871-4213-AD91-361A9CFB2C05}
-		{F87881AC-CD84-415A-8B7A-4DD13D62F2D4} = {AA79ED57-4871-4213-AD91-361A9CFB2C05}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {526F0FF2-A087-4EF2-B451-667BA5184F81}

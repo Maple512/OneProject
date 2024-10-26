@@ -38,10 +38,10 @@
                                     Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}"
                                     BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"
                                     SnapsToDevicePixels="True" ToolTip="{TemplateBinding ToolTip}" Cursor="{TemplateBinding Cursor}" Effect="{Binding RelativeSource={RelativeSource TemplatedParent},
-                                    Path=(assists:ShadowElevationAssist.Elevation),
-                                    Converter={x:Static converters:ShadowElevationConverter.Instance}}" />
-                            <themes:OPStackPanel x:Name="P_ButtonPanel" Orientation="Horizontal" HorizontalAlignment="Center" Space="5"
-                                    Margin="20,0" VerticalAlignment="Center">
+                Path=(assists:ShadowElevationAssist.Elevation),
+                Converter={x:Static converters:ShadowElevationConverter.Instance}}" />
+                            <themes:OPStackPanel x:Name="P_ButtonPanel" Orientation="Horizontal" HorizontalAlignment="Center" Margin="15,0"
+                                    VerticalAlignment="Center">
                                 <themes:OPIcon x:Name="P_LoadingIcon" Width="{TemplateBinding IconSize}"
                                         Foreground="{TemplateBinding Foreground}" Kind="Loading" Visibility="Collapsed"
                                         RenderTransformOrigin="0.5,0.5">
