@@ -1,21 +1,22 @@
 namespace OneProject.Desktop.Pages;
 
 using System;
+using OneProject.Desktop.Theme.Componets;
 
 public partial class Home : UserControl
 {
     public Home()
     {
         InitializeComponent();
+
+        SendMessageBtn.Click += OnSendMessageBtnClick;
     }
 
-    public override void BeginInit()
+    private void OnSendMessageBtnClick(object sender, RoutedEventArgs e)
     {
-        base.BeginInit();
-    }
+        var type = RandomHelper.GetRandomOf(NotificationType.Info, NotificationType.Success, NotificationType.Warn,
+            NotificationType.Error);
 
-    protected override void OnInitialized(EventArgs e)
-    {
-        base.OnInitialized(e);
+        NotificationManager.AddNotification($"{DateTime.Now:mm:ss}: 随机消息", type);
     }
 }

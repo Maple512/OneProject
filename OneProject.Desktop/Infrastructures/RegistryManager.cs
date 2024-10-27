@@ -109,7 +109,7 @@ public class RegistryManager
         await ExportAsync(RegistryType.HKEY_CURRENT_CONFIG.FastToString(), hkcc);
         await RemoveFileFirstLineAsync(hkcc);
 
-        await FileHelper.AppendToAsync(target,hkcr, hkcu, hklm, hku, hkcc);
+        await FileHelper.AppendToAsync(target, hkcr, hkcu, hklm, hku, hkcc);
 
         hkcr.Delete();
         hkcu.Delete();
@@ -118,29 +118,27 @@ public class RegistryManager
         hkcc.Delete();
     }
 
-    static async Task RemoveFileFirstLineAsync(FileInfo file)
+    private static async Task RemoveFileFirstLineAsync(FileInfo file)
     {
-        string tempFile = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+        var tempFile = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
 
         try
         {
             // 以读取模式打开源文件
-            using(FileStream sourceStream = new FileStream(file.FullName, FileMode.Open, FileAccess.Read, FileShare.Read))
+            using(var sourceStream = new FileStream(file.FullName, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
                 // 以写入模式打开临时文件
-                using(FileStream tempStream = new FileStream(tempFile, FileMode.CreateNew, FileAccess.Write))
+                using var tempStream = new FileStream(tempFile, FileMode.CreateNew, FileAccess.Write);
+                // 使用StreamReader读取第一行，不写入
+                using(var reader = new StreamReader(sourceStream))
                 {
-                    // 使用StreamReader读取第一行，不写入
-                    using(StreamReader reader = new StreamReader(sourceStream))
-                    {
-                        await reader.ReadLineAsync();
-                    }
-
-                    // 使用BufferedStream提高复制效率
-                    using BufferedStream bufferedStream = new BufferedStream(sourceStream, 64 * 1024); // 使用80KB缓冲区
-                                                                                                       // 将剩余内容从源文件复制到目标文件
-                    await bufferedStream.CopyToAsync(tempStream);
+                    await reader.ReadLineAsync();
                 }
+
+                // 使用BufferedStream提高复制效率
+                using var bufferedStream = new BufferedStream(sourceStream, 64 * 1024); // 使用80KB缓冲区
+                                                                                        // 将剩余内容从源文件复制到目标文件
+                await bufferedStream.CopyToAsync(tempStream);
             }
 
             // 删除原文件

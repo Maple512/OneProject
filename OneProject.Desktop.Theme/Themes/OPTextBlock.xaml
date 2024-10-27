@@ -5,29 +5,45 @@
         <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 
+    <!--Content-->
+    <Style x:Key="H7"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource TextBlockBase}">
+        <Setter Property="FontSize"
+                Value="12" />
+    </Style>
+    <Style x:Key="H6"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource TextBlockBase}">
+        <Setter Property="FontSize"
+                Value="14" />
+    </Style>
+    <Style x:Key="H5"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource TextBlockBase}">
+        <Setter Property="FontSize"
+                Value="16" />
+    </Style>
+    <!--Title-->
+    <Style x:Key="H4"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource TextBlockBase}">
+        <Setter Property="FontSize"
+                Value="20" />
+    </Style>
+    <Style x:Key="H3"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource TextBlockBase}">
+        <Setter Property="FontSize"
+                Value="24" />
+    </Style>
+    <Style x:Key="H2"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource TextBlockBase}">
+        <Setter Property="FontSize"
+                Value="30" />
+    </Style>
     <Style x:Key="H1" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}">
         <Setter Property="FontSize" Value="38" />
     </Style>
-    <Style x:Key="H2" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}">
-        <Setter Property="FontSize" Value="30" />
-    </Style>
-    <Style x:Key="H3" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}">
-        <Setter Property="FontSize" Value="24" />
-    </Style>
-    <!--Title Default-->
-    <Style x:Key="H4" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}">
-        <Setter Property="FontSize" Value="20" />
-    </Style>
-    <Style x:Key="H5" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}">
-        <Setter Property="FontSize" Value="16" />
-    </Style>
-
-    <Style x:Key="H6" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}">
-        <Setter Property="FontSize" Value="14" />
-    </Style>
-    <!--Content Default-->
-    <Style x:Key="H7" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}">
-        <Setter Property="FontSize" Value="12" />
-    </Style>
-    
 </ResourceDictionary>

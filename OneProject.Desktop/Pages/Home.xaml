@@ -1,8 +1,49 @@
-<UserControl x:Class="OneProject.Desktop.Pages.Home" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:themes="http://github.com/maple512/oneproject.desktop/themes" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800">
-    <themes:OPCard>
-        <TextBlock Text="首页" />
+<UserControl x:Class="OneProject.Desktop.Pages.Home"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:themes="http://github.com/maple512/oneproject.desktop/themes"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/OneProject.Desktop.Theme;component/Themes/OPTextBlock.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <themes:OPCard Title="首页"
+                   Icon="Home">
+        <themes:OPCard.TitleAction>
+            <themes:OPStackPanel>
+                <themes:OPButton x:Name="SendMessageBtn" Content="发个消息"  />
+            </themes:OPStackPanel>
+        </themes:OPCard.TitleAction>
+        <Grid Grid.IsSharedSizeScope="True">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"
+                               SharedSizeGroup="SharedHeight" />
+                <RowDefinition Height="*"
+                               SharedSizeGroup="SharedHeight" />
+            </Grid.RowDefinitions>
+
+            <themes:OPCard>
+                <themes:OPStackPanel Orientation="Vertical">
+                    <themes:OPButton Content="Defaults Button"
+                                     Type="Default" />
+                    <themes:OPButton Content="Primary Button"
+                                     Type="Primary" />
+                    <themes:OPButton Content="Text Button"
+                                     Type="Text" />
+                </themes:OPStackPanel>
+            </themes:OPCard>
+        </Grid>
+
     </themes:OPCard>
 </UserControl>

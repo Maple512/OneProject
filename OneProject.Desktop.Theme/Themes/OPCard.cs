@@ -11,15 +11,14 @@ public class OPCard : ContentControl
     public static readonly DependencyProperty TitleProperty
         = PropertyHelper.Register<object, OPCard>(nameof(Title));
 
-    public static readonly DependencyProperty HeaderProperty
-        = PropertyHelper.Register<object, OPCard>(nameof(Header));
+    public static readonly DependencyProperty IconProperty
+        = PropertyHelper.Register<IconKind?, OPCard>(nameof(Icon));
 
     public static readonly DependencyProperty TitleActionProperty
         = PropertyHelper.Register<object, OPCard>(nameof(TitleAction));
 
     public static readonly DependencyProperty HasHeaderProperty
-        = PropertyHelper.Register<Visibility, OPCard>(nameof(HasHeader),
-            new FrameworkPropertyMetadata(Visibility.Collapsed));
+        = PropertyHelper.Register<bool, OPCard>(nameof(HasHeader), false);
 
     public static readonly DependencyProperty CornerRadiusProperty
         = PropertyHelper.Register<CornerRadius, OPCard>(nameof(CornerRadius), new(0),
@@ -34,10 +33,16 @@ public class OPCard : ContentControl
     static OPCard()
         => DefaultStyleKeyProperty.OverrideMetadata(typeof(OPCard), new FrameworkPropertyMetadata(typeof(OPCard)));
 
-    public object Header
+    public IconKind? Icon
     {
-        get => GetValue(HeaderProperty);
-        set => SetValue(HeaderProperty, value);
+        get => (IconKind?)GetValue(IconProperty);
+        set => SetValue(IconProperty, value);
+    }
+
+    public bool HasHeader
+    {
+        get => (bool)GetValue(HasHeaderProperty);
+        set => SetValue(HasHeaderProperty, value);
     }
 
     public object Title
@@ -52,12 +57,6 @@ public class OPCard : ContentControl
         set => SetValue(TitleActionProperty, value);
     }
 
-    public Visibility HasHeader
-    {
-        get => (Visibility)GetValue(HasHeaderProperty);
-        set => SetValue(HasHeaderProperty, value);
-    }
-
     public bool ClipContent
     {
         get => (bool)GetValue(ClipContentProperty);
@@ -70,9 +69,12 @@ public class OPCard : ContentControl
 
         _clipBorder = Template.FindName(ClipBorderPartName, this) as Border;
 
-        HasHeader = Header is null && Title is null && TitleAction is null
-            ? Visibility.Collapsed
-            : Visibility.Visible;
+        HasHeader = Icon is not null || Title is not null;
+    }
+
+    protected override void OnInitialized(EventArgs e)
+    {
+        base.OnInitialized(e);
     }
 
     protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)

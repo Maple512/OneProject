@@ -20,7 +20,7 @@ public class OPButton : Button
     #region Properties
 
     public static readonly DependencyProperty TypeProperty
-        = PropertyHelper.Register<OPButtonType, OPButton>(nameof(Type));
+        = PropertyHelper.Register<OPButtonType, OPButton>(nameof(Type), OPButtonType.Primary);
 
     public OPButtonType Type
     {
@@ -47,7 +47,7 @@ public class OPButton : Button
     }
 
     public static readonly DependencyProperty IconProperty =
-        PropertyHelper.Register<IconKind?, OPButton >(nameof(Icon));
+        PropertyHelper.Register<IconKind?, OPButton>(nameof(Icon));
 
     public IconKind? Icon
     {
