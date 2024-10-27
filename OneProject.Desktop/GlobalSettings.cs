@@ -1,12 +1,6 @@
 namespace OneProject.Desktop;
 
-using System;
-using System.IO;
-using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-using Microsoft.Extensions.Logging;
 
 [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
 public record GlobalSettings
@@ -43,11 +37,11 @@ public record GlobalSettings
         Version = Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion!;
         FilePath = Path.Combine(Root, FileName);
 
-        logger.LogInformation($"Root: {Root}");
-        logger.LogInformation($"Version: {Version}");
-        logger.LogInformation($"OS: {Environment.OSVersion}, {RuntimeInformation.OSArchitecture}, {Environment.MachineName}");
-        logger.LogInformation($"Process: {Environment.ProcessId}, {Environment.ProcessorCount}");
-        logger.LogInformation($"NET: {RuntimeInformation.FrameworkDescription}, {RuntimeInformation.ProcessArchitecture}");
+        logger.Information($"Root: {Root}");
+        logger.Information($"Version: {Version}");
+        logger.Information($"OS: {Environment.OSVersion}, {RuntimeInformation.OSArchitecture}, {Environment.MachineName}");
+        logger.Information($"Process: {Environment.ProcessId}, {Environment.ProcessorCount}");
+        logger.Information($"NET: {RuntimeInformation.FrameworkDescription}, {RuntimeInformation.ProcessArchitecture}");
 
         if(File.Exists(FilePath) == false)
         {

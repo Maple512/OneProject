@@ -3,7 +3,7 @@ namespace OneProject.Desktop;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Windows;
+using OneProject.Desktop.Componets;
 using OneProject.Desktop.Infrastructures;
 using OneProject.Desktop.Pages;
 using OneProject.Desktop.Theme;
@@ -20,6 +20,8 @@ public partial class MainWindow : OPWindow
     protected override void OnInitialized(EventArgs e)
     {
         base.OnInitialized(e);
+
+        NotificationManager.Initialization(P_NotificationBox);
 
         Title = nameof(OneProject);
 
@@ -104,4 +106,11 @@ public partial class MainWindow : OPWindow
 
     //    ThemeChangeBtn.Content = ThemeManager.CurrentTheme.IsLight ? "亮色" : "暗色";
     //}
+
+    //_notificationBox = GetTemplateChild(NotificationBox) as NotificationBox;
+
+    //    NotificationManager.Initialization(_notificationBox!, model =>
+    //    {
+    //        _logger.Invoke($"Notify [{model.Type}]: {model.Content}");
+    //    });
 }

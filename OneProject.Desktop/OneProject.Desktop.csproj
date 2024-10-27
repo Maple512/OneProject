@@ -33,9 +33,10 @@
         <Using Include="System.Windows.Documents" />
         <Using Include="System.Windows.Input" />
         <Using Include="System.Windows.Media" />
+        <Using Include="System.Windows.Media.Colors" Alias="SysColors" />
         <Using Include="CommunityToolkit.Mvvm.ComponentModel" />
         <Using Include="CommunityToolkit.Mvvm.Input" />
-        <Using Include="System.Windows.Media.Colors" Alias="SysColors" />
+        <Using Include="Serilog" />
     </ItemGroup>
 
     <ItemGroup>
@@ -50,7 +51,6 @@
         <PackageReference Include="CommunityToolkit.Mvvm" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
         <PackageReference Include="Microsoft.Extensions.Http.Polly" />
-        <PackageReference Include="Serilog.Extensions.Logging" />
         <PackageReference Include="Serilog.Sinks.Async" />
         <PackageReference Include="Serilog.Sinks.File" />
     </ItemGroup>
@@ -60,6 +60,12 @@
       <ProjectReference Include="..\OneProject.Desktop.Win32Native\OneProject.Desktop.Win32Native.csproj" />
       <ProjectReference Include="..\OneProject.WindowsManagment\OneProject.WindowsManagment.csproj" />
       <ProjectReference Include="..\OneProject\OneProject.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Componets\NotificationBox.xaml.cs">
+        <SubType>Code</SubType>
+      </Compile>
     </ItemGroup>
 
 </Project>

@@ -1,7 +1,6 @@
-namespace OneProject.Desktop.Theme.Componets;
+namespace OneProject.Desktop.Componets;
 
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -51,6 +50,7 @@ public partial class NotificationBox : UserControl
     }
 }
 
+[FastEnum.Extensions]
 public enum NotificationType
 {
     Info,
@@ -59,38 +59,39 @@ public enum NotificationType
     Error,
 }
 
-public class NotificationModel(string content, NotificationType type, double duration = 5)
+public class NotificationModel(string content, NotificationType type)
 {
     public int Id { get; set; }
-    public string Content { get; set; } = content;
-    public bool IsPause { get; set; } = false;
-    public NotificationType Type { get; set; } = type;
-    public double Duration { get; set; } = duration;
+    public string Content { get; } = content;
+    public NotificationType Type { get; } = type;
 }
 
 public static class NotificationManager
 {
-    private static NotificationBox _box = null!;
+    private static NotificationBox? _box;
 
-    public static void Initialization(NotificationBox box) => _box = box;
+    public static void Initialization(NotificationBox box)
+    {
+        _box = Check.NotNull(box);
+    }
 
     public static void AddNotification(string? content, NotificationType type = NotificationType.Info)
     {
-        Check.NotNull(_box);
-
         if(content is null or { Length: 0, })
         {
             return;
         }
 
-        _box.AddNotification(new(content, type));
+        var model = new NotificationModel(content, type);
+
+        _box?.AddNotification(model);
+
+        Log.Logger.Information($"Notify[{type.FastToString()}]: {content}");
     }
 
     public static void RemoveAllNotification()
     {
-        Check.NotNull(_box);
-
-        _box.RemoveAll();
+        _box?.RemoveAll();
     }
 }
 

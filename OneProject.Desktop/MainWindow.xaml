@@ -5,6 +5,7 @@
                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                  xmlns:local="clr-namespace:OneProject.Desktop"
                  xmlns:themes="http://github.com/maple512/oneproject.desktop/themes"
+                 xmlns:components="clr-namespace:OneProject.Desktop.Componets"
                  mc:Ignorable="d"
                  MinHeight="700"
                  MinWidth="1000"
@@ -34,163 +35,171 @@
 
     <themes:OPWindow.Content>
         <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition
-                        Width="{Binding Source={StaticResource Number.Menu.Width},Converter={StaticResource DoubleGridLengthConverter}}" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="auto" />
-                </Grid.RowDefinitions>
-                <ListBox Grid.Row="0"
-                         BorderThickness="0"
-                         ItemsSource="{Binding Menus}"
-                         SelectedIndex="{Binding SelectedIndex}"
-                         SelectedItem="{Binding SelectedItem, UpdateSourceTrigger=PropertyChanged}"
-                         Background="Transparent">
-                    <ListBox.ItemContainerStyle>
-                        <Style TargetType="ListBoxItem">
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="ListBoxItem">
-                                        <Border x:Name="B_MenuItem"
-                                                Height="{StaticResource Number.Menu.Height}"
-                                                SnapsToDevicePixels="True">
-                                            <VisualStateManager.VisualStateGroups>
-                                                <VisualStateGroup Name="CommonStates">
-                                                    <VisualStateGroup.Transitions>
-                                                        <VisualTransition GeneratedDuration="0:0:0.3"
-                                                                          To="Normal">
-                                                            <VisualTransition.GeneratedEasingFunction>
-                                                                <CircleEase EasingMode="EaseOut" />
-                                                            </VisualTransition.GeneratedEasingFunction>
-                                                        </VisualTransition>
-                                                    </VisualStateGroup.Transitions>
-                                                    <VisualState Name="Normal" />
-                                                    <VisualState Name="MouseOver">
-                                                        <Storyboard>
-                                                            <DoubleAnimation Storyboard.TargetName="B_MouseOver"
-                                                                             Storyboard.TargetProperty="Opacity"
-                                                                             To=".3"
-                                                                             Duration="0" />
-                                                            <DoubleAnimation Storyboard.TargetName="C_Content"
-                                                                             Storyboard.TargetProperty="RenderTransform.ScaleX"
-                                                                             To="1.07"
-                                                                             Duration="0:0:0.1">
-                                                                <DoubleAnimation.EasingFunction>
-                                                                    <PowerEase Power="1"
-                                                                               EasingMode="EaseIn" />
-                                                                </DoubleAnimation.EasingFunction>
-                                                            </DoubleAnimation>
-                                                            <DoubleAnimation Storyboard.TargetName="C_Content"
-                                                                             Storyboard.TargetProperty="RenderTransform.ScaleY"
-                                                                             To="1.07"
-                                                                             Duration="0:0:0.1">
-                                                                <DoubleAnimation.EasingFunction>
-                                                                    <PowerEase Power="1"
-                                                                               EasingMode="EaseIn" />
-                                                                </DoubleAnimation.EasingFunction>
-                                                            </DoubleAnimation>
-                                                        </Storyboard>
-                                                    </VisualState>
-                                                    <VisualState Name="Disabled" />
-                                                </VisualStateGroup>
-                                                <VisualStateGroup Name="SelectionStates">
-                                                    <VisualStateGroup.Transitions>
-                                                        <VisualTransition GeneratedDuration="0:0:0.6" />
-                                                    </VisualStateGroup.Transitions>
-                                                    <VisualState Name="Selected">
-                                                        <Storyboard>
-                                                            <DoubleAnimation Storyboard.TargetName="B_Selected"
-                                                                             Storyboard.TargetProperty="Opacity"
-                                                                             To="1"
-                                                                             Duration="0" />
-                                                        </Storyboard>
-                                                    </VisualState>
-                                                    <VisualState Name="Unselected" />
-                                                    <VisualState Name="SelectedUnfocused">
-                                                        <Storyboard>
-                                                            <DoubleAnimation Storyboard.TargetName="B_Selected"
-                                                                             Storyboard.TargetProperty="Opacity"
-                                                                             To="1"
-                                                                             Duration="0" />
-                                                        </Storyboard>
-                                                    </VisualState>
-                                                </VisualStateGroup>
-                                            </VisualStateManager.VisualStateGroups>
-                                            <Grid Height="{Binding RelativeSource={RelativeSource AncestorType=Border, AncestorLevel=1},Path=ActualHeight}"
-                                                  Width="{Binding RelativeSource={RelativeSource AncestorType=Border, AncestorLevel=1},Path=ActualWidth}">
-                                                <Border x:Name="B_MouseOver"
-                                                        Background="{DynamicResource Brush.Main}"
-                                                        Opacity="0" />
-                                                <Border x:Name="B_Selected"
-                                                        BorderBrush="{DynamicResource Brush.Main}"
-                                                        BorderThickness="3,0,0,0"
-                                                        Opacity="0" />
-                                                <ContentPresenter x:Name="C_Content">
-                                                    <ContentPresenter.RenderTransform>
-                                                        <ScaleTransform ScaleX="1"
-                                                                        ScaleY="1" />
-                                                    </ContentPresenter.RenderTransform>
-                                                </ContentPresenter>
-                                            </Grid>
-                                        </Border>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
-                    </ListBox.ItemContainerStyle>
-                    <ListBox.ItemTemplate>
-                        <DataTemplate DataType="{x:Type models:MenuItemModel}">
-                            <Border Padding="10">
-                                <themes:OPStackPanel HorizontalAlignment="Left"
-                                                     VerticalAlignment="Center"
-                                                     Orientation="Horizontal">
-                                    <themes:OPIcon Kind="{Binding Icon}"
-                                                   Visibility="{Binding Icon,Converter={StaticResource NotNullToVisibleConverter}}" />
-                                    <TextBlock Text="{Binding Title}"
-                                               Style="{StaticResource H5}" />
-                                </themes:OPStackPanel>
-                            </Border>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-                <Border Grid.Row="1"
-                        BorderThickness="0,1,0,0"
-                        BorderBrush="{DynamicResource Brush.Border}">
-                    <ItemsControl>
-                        <ItemsControl.Resources>
-                            <ResourceDictionary>
-                                <Style x:Key="S_OPButton"
-                                       TargetType="themes:OPButton">
-                                    <Setter Property="Type"
-                                            Value="Text" />
-                                    <Setter Property="Padding"
-                                            Value="11,0" />
-                                    <Setter Property="HorizontalAlignment"
-                                            Value="Left" />
-                                    <Setter Property="TextElement.Foreground"
-                                            Value="{DynamicResource Brush.B}" />
-                                </Style>
-                            </ResourceDictionary>
-                        </ItemsControl.Resources>
-                        <themes:OPButton Style="{StaticResource S_OPButton}"
-                                         Content="关于"
-                                         Icon="About"
-                                         Width="{Binding RelativeSource={RelativeSource AncestorLevel=1,AncestorType=ItemsControl},Path=ActualWidth}"
-HorizontalAlignment="Left"
-                                         HorizontalContentAlignment="Left"
-                                         Command="{Binding OpenAboutWindowCommand}" />
-                    </ItemsControl>
-                </Border>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition
+                            Width="{Binding Source={StaticResource Number.Menu.Width},Converter={StaticResource DoubleGridLengthConverter}}" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <ListBox Grid.Row="0"
+                             BorderThickness="0"
+                             ItemsSource="{Binding Menus}"
+                             SelectedIndex="{Binding SelectedIndex}"
+                             SelectedItem="{Binding SelectedItem, UpdateSourceTrigger=PropertyChanged}"
+                             Background="Transparent">
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="ListBoxItem">
+                                            <Border x:Name="B_MenuItem"
+                                                    Height="{StaticResource Number.Menu.Height}"
+                                                    SnapsToDevicePixels="True">
+                                                <VisualStateManager.VisualStateGroups>
+                                                    <VisualStateGroup Name="CommonStates">
+                                                        <VisualStateGroup.Transitions>
+                                                            <VisualTransition GeneratedDuration="0:0:0.3"
+                                                                              To="Normal">
+                                                                <VisualTransition.GeneratedEasingFunction>
+                                                                    <CircleEase EasingMode="EaseOut" />
+                                                                </VisualTransition.GeneratedEasingFunction>
+                                                            </VisualTransition>
+                                                        </VisualStateGroup.Transitions>
+                                                        <VisualState Name="Normal" />
+                                                        <VisualState Name="MouseOver">
+                                                            <Storyboard>
+                                                                <DoubleAnimation Storyboard.TargetName="B_MouseOver"
+                                                                                 Storyboard.TargetProperty="Opacity"
+                                                                                 To=".3"
+                                                                                 Duration="0" />
+                                                                <DoubleAnimation Storyboard.TargetName="C_Content"
+                                                                                 Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                                                                 To="1.07"
+                                                                                 Duration="0:0:0.1">
+                                                                    <DoubleAnimation.EasingFunction>
+                                                                        <PowerEase Power="1"
+                                                                                   EasingMode="EaseIn" />
+                                                                    </DoubleAnimation.EasingFunction>
+                                                                </DoubleAnimation>
+                                                                <DoubleAnimation Storyboard.TargetName="C_Content"
+                                                                                 Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                                                                 To="1.07"
+                                                                                 Duration="0:0:0.1">
+                                                                    <DoubleAnimation.EasingFunction>
+                                                                        <PowerEase Power="1"
+                                                                                   EasingMode="EaseIn" />
+                                                                    </DoubleAnimation.EasingFunction>
+                                                                </DoubleAnimation>
+                                                            </Storyboard>
+                                                        </VisualState>
+                                                        <VisualState Name="Disabled" />
+                                                    </VisualStateGroup>
+                                                    <VisualStateGroup Name="SelectionStates">
+                                                        <VisualStateGroup.Transitions>
+                                                            <VisualTransition GeneratedDuration="0:0:0.6" />
+                                                        </VisualStateGroup.Transitions>
+                                                        <VisualState Name="Selected">
+                                                            <Storyboard>
+                                                                <DoubleAnimation Storyboard.TargetName="B_Selected"
+                                                                                 Storyboard.TargetProperty="Opacity"
+                                                                                 To="1"
+                                                                                 Duration="0" />
+                                                            </Storyboard>
+                                                        </VisualState>
+                                                        <VisualState Name="Unselected" />
+                                                        <VisualState Name="SelectedUnfocused">
+                                                            <Storyboard>
+                                                                <DoubleAnimation Storyboard.TargetName="B_Selected"
+                                                                                 Storyboard.TargetProperty="Opacity"
+                                                                                 To="1"
+                                                                                 Duration="0" />
+                                                            </Storyboard>
+                                                        </VisualState>
+                                                    </VisualStateGroup>
+                                                </VisualStateManager.VisualStateGroups>
+                                                <Grid Height="{Binding RelativeSource={RelativeSource AncestorType=Border, AncestorLevel=1},Path=ActualHeight}"
+                                                      Width="{Binding RelativeSource={RelativeSource AncestorType=Border, AncestorLevel=1},Path=ActualWidth}">
+                                                    <Border x:Name="B_MouseOver"
+                                                            Background="{DynamicResource Brush.Main}"
+                                                            Opacity="0" />
+                                                    <Border x:Name="B_Selected"
+                                                            BorderBrush="{DynamicResource Brush.Main}"
+                                                            BorderThickness="3,0,0,0"
+                                                            Opacity="0" />
+                                                    <ContentPresenter x:Name="C_Content">
+                                                        <ContentPresenter.RenderTransform>
+                                                            <ScaleTransform ScaleX="1"
+                                                                            ScaleY="1" />
+                                                        </ContentPresenter.RenderTransform>
+                                                    </ContentPresenter>
+                                                </Grid>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate DataType="{x:Type models:MenuItemModel}">
+                                <Border Padding="10">
+                                    <themes:OPStackPanel HorizontalAlignment="Left"
+                                                         VerticalAlignment="Center"
+                                                         Orientation="Horizontal">
+                                        <themes:OPIcon Kind="{Binding Icon}"
+                                                       Visibility="{Binding Icon,Converter={StaticResource NotNullToVisibleConverter}}" />
+                                        <TextBlock Text="{Binding Title}"
+                                                   Style="{StaticResource H5}" />
+                                    </themes:OPStackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <Border Grid.Row="1"
+                            BorderThickness="0,1,0,0"
+                            BorderBrush="{DynamicResource Brush.Border}">
+                        <ItemsControl>
+                            <ItemsControl.Resources>
+                                <ResourceDictionary>
+                                    <Style x:Key="S_OPButton"
+                                           TargetType="themes:OPButton">
+                                        <Setter Property="Type"
+                                                Value="Text" />
+                                        <Setter Property="Padding"
+                                                Value="11,0" />
+                                        <Setter Property="HorizontalAlignment"
+                                                Value="Left" />
+                                        <Setter Property="TextElement.Foreground"
+                                                Value="{DynamicResource Brush.B}" />
+                                    </Style>
+                                </ResourceDictionary>
+                            </ItemsControl.Resources>
+                            <themes:OPButton Style="{StaticResource S_OPButton}"
+                                             Content="关于"
+                                             Icon="About"
+                                             Width="{Binding RelativeSource={RelativeSource AncestorLevel=1,AncestorType=ItemsControl},Path=ActualWidth}"
+                                             HorizontalAlignment="Left"
+                                             HorizontalContentAlignment="Left"
+                                             Command="{Binding OpenAboutWindowCommand}" />
+                        </ItemsControl>
+                    </Border>
+                </Grid>
+                <ContentControl Grid.Column="1"
+                                Background="Transparent"
+                                Content="{Binding SelectedItem.Content, UpdateSourceTrigger=PropertyChanged,FallbackValue={x:Null}}"
+                                HorizontalContentAlignment="Left"
+                                VerticalContentAlignment="Top" />
             </Grid>
-            <ContentControl Grid.Column="1"
-                            Background="Transparent"
-                            Content="{Binding SelectedItem.Content, UpdateSourceTrigger=PropertyChanged,FallbackValue={x:Null}}"
-                            HorizontalContentAlignment="Left"
-                            VerticalContentAlignment="Top" />
+
+            <!--消息提示-->
+            <Grid HorizontalAlignment="Center"
+                  VerticalAlignment="Top">
+                <components:NotificationBox x:Name="P_NotificationBox" />
+            </Grid>
         </Grid>
     </themes:OPWindow.Content>
 

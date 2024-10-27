@@ -3,15 +3,11 @@ namespace OneProject.Desktop;
 using System.IO;
 using System.IO.MemoryMappedFiles;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Threading;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Microsoft.Windows.Themes;
 using OneProject.Desktop.Infrastructures;
 using OneProject.Desktop.Theme;
 using Serilog;
@@ -37,8 +33,6 @@ public partial class App : Application
 
         Services = ConfigureServices();
 
-        Logger = Services.GetRequiredService<ILogger<App>>();
-
         var resource = Current.Resources;
 
         InitializeComponent();
@@ -49,8 +43,6 @@ public partial class App : Application
     public static new App Current => (App)Application.Current;
 
     public IServiceProvider Services { get; }
-
-    public Microsoft.Extensions.Logging.ILogger Logger { get; }
 
     private void OnUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         => Log.Logger.Error("{0}", e.Exception);
@@ -70,7 +62,7 @@ public partial class App : Application
         // 默认指定硬件加速
         RenderOptions.ProcessRenderMode = RenderMode.Default;
 
-        GlobalSettings.Load(Logger);
+        GlobalSettings.Load(Log.Logger);
 
         SaveProcessId();
 
@@ -157,10 +149,10 @@ public partial class App : Application
 
         services.AddHttpClient();
 
-        services.AddLogging(builder =>
-        {
-            builder.AddSerilog(Log.Logger);
-        });
+        //services.AddLogging(builder =>
+        //{
+        //    builder.AddSerilog(Log.Logger);
+        //});
 
         //services.AddDownload();
 

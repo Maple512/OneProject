@@ -1,7 +1,7 @@
 namespace OneProject.Desktop.Pages;
 
 using System;
-using OneProject.Desktop.Theme.Componets;
+using OneProject.Desktop.Componets;
 
 public partial class Home : UserControl
 {

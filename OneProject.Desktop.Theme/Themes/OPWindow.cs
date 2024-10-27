@@ -1,14 +1,12 @@
 namespace OneProject.Desktop.Theme.Themes;
 
 using System.Windows;
-using OneProject.Desktop.Theme.Componets;
 using OneProject.Desktop.Theme.Infrastructures;
 
 [TemplatePart(Name = MinButton, Type = typeof(Button))]
 [TemplatePart(Name = MaxButton, Type = typeof(Button))]
 [TemplatePart(Name = RestoreButton, Type = typeof(Button))]
 [TemplatePart(Name = CloseButton, Type = typeof(Button))]
-[TemplatePart(Name = NotificationBox, Type = typeof(NotificationBox))]
 public class OPWindow : Window
 {
     private const string MinButton = "B_Min";
@@ -30,7 +28,6 @@ public class OPWindow : Window
     private Button? _maxButton;
     private Button? _minButton;
     private Button? _restoreButton;
-    private NotificationBox? _notificationBox;
 
     static OPWindow() => DefaultStyleKeyProperty.OverrideMetadata<OPWindow>();
 
@@ -119,10 +116,6 @@ public class OPWindow : Window
         {
             _closeButton.Click += (_, _) => Close();
         }
-
-        _notificationBox = GetTemplateChild(NotificationBox) as NotificationBox;
-
-        NotificationManager.Initialization(_notificationBox!);
     }
 
     protected override void OnInitialized(EventArgs e)
