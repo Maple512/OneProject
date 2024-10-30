@@ -1,0 +1,40 @@
+namespace OneProject.Desktop.Componets;
+
+using System.Windows.Controls;
+using System.Windows.Threading;
+using OneProject.Desktop.Theme.Themes;
+using OneProject.Desktop.ViewModels;
+
+public partial class ConfirmWindow : UserControl
+{
+    public ConfirmWindow()
+    {
+        InitializeComponent();
+    }
+
+    public static void Open(ConfirmViewModel model)
+    {
+        Dispatcher.CurrentDispatcher.BeginInvoke(static (ConfirmViewModel data) => OpenCore(data), model);
+    }
+
+    private static void OpenCore(ConfirmViewModel model)
+    {
+        var confirm = new ConfirmWindow();
+
+        var window = ModelWindow.OpenModel(App.Current.MainWindow, model.Title, confirm, height: 200, width: 300);
+
+        var okCommand = model.OkCommand;
+
+        model.CancelCommand = new RelayCommand(window.Close);
+        model.OkCommand = new RelayCommand<object?>((parameter) =>
+        {
+            okCommand?.Execute(parameter);
+
+            window.Close();
+        });
+
+        confirm.DataContext = model;
+
+        window.ShowDialog();
+    }
+}

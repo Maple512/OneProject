@@ -5,7 +5,6 @@
                     xmlns:controlex="clr-namespace:ControlzEx;assembly=ControlzEx"
                     xmlns:converters="clr-namespace:OneProject.Desktop.Theme.Converters">
 
-    <converters:BrushRoundConverter x:Key="BrushRoundConverter" />
     
     <Style x:Key="PopupBoxButton"
            TargetType="{x:Type Button}">

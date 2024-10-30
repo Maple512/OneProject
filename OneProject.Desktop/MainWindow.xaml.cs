@@ -25,57 +25,9 @@ public partial class MainWindow : OPWindow
 
         Title = nameof(OneProject);
 
-        //ThemeText.Text = ThemeManager.CurrentTheme.Background.ToString();
-        //ThemeChangeBtn.Content = ThemeManager.CurrentTheme.IsLight ? "亮色" : "暗色";
+        LoadSettings();
 
-        WindowState = GlobalSettings.Instance.Windows.MainWindowState;
-        Height = GlobalSettings.Instance.Windows.MainWindowHeight;
-        Width = GlobalSettings.Instance.Windows.MainWindowWidth;
-        Top = GlobalSettings.Instance.Windows.MainWindowTop;
-        Left = GlobalSettings.Instance.Windows.MainWindowLeft;
-
-        var source = GlobalSettings.Instance.Windows.FontFamily;
-        if(source != null || FontFamily.Source != source)
-        {
-            var font = FontHelper.SystemFonts.FirstOrDefault(x => x.Source == source);
-
-            if(font != null)
-            {
-                FontFamily = font;
-            }
-        }
-
-        ObservableCollection<MenuItemModel> menus =
-        [
-            MenuItemModel.Create<Home>("首页",IconKind.Home),
-            MenuItemModel.Create<WindowsRegistry>("注册表",IconKind.Windows_Registy),
-            MenuItemModel.Create<Home>("首页",IconKind.Home),
-            MenuItemModel.Create<WindowsRegistry>("注册表",IconKind.Windows_Registy),
-            MenuItemModel.Create<Home>("首页",IconKind.Home),
-            MenuItemModel.Create<WindowsRegistry>("注册表",IconKind.Windows_Registy),
-            MenuItemModel.Create<Home>("首页",IconKind.Home),
-            MenuItemModel.Create<WindowsRegistry>("注册表",IconKind.Windows_Registy),
-            MenuItemModel.Create<Home>("首页",IconKind.Home),
-            MenuItemModel.Create<WindowsRegistry>("注册表",IconKind.Windows_Registy),
-            MenuItemModel.Create<Home>("首页",IconKind.Home),
-            MenuItemModel.Create<WindowsRegistry>("注册表",IconKind.Windows_Registy),
-            MenuItemModel.Create<Home>("首页",IconKind.Home),
-            MenuItemModel.Create<WindowsRegistry>("注册表",IconKind.Windows_Registy),
-            MenuItemModel.Create<Home>("首页",IconKind.Home),
-            MenuItemModel.Create<WindowsRegistry>("注册表",IconKind.Windows_Registy),
-            MenuItemModel.Create<Home>("首页",IconKind.Home),
-            MenuItemModel.Create<WindowsRegistry>("注册表",IconKind.Windows_Registy),
-            MenuItemModel.Create<Home>("首页",IconKind.Home),
-            MenuItemModel.Create<WindowsRegistry>("注册表",IconKind.Windows_Registy),
-            MenuItemModel.Create<Home>("首页",IconKind.Home),
-            MenuItemModel.Create<WindowsRegistry>("注册表",IconKind.Windows_Registy),
-            MenuItemModel.Create<Home>("首页",IconKind.Home),
-            MenuItemModel.Create<WindowsRegistry>("注册表",IconKind.Windows_Registy),
-            MenuItemModel.Create<Home>("首页",IconKind.Home),
-            MenuItemModel.Create<WindowsRegistry>("注册表",IconKind.Windows_Registy),
-        ];
-
-        DataContext = new MainWindowModel(menus);
+        LoadMenu();
     }
 
     //private void OnSelectedItemChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -98,19 +50,45 @@ public partial class MainWindow : OPWindow
         base.OnClosing(e);
     }
 
-    //private void OnThemeBtnClick(object sender, RoutedEventArgs e)
-    //{
-    //    var color = (Color)ColorConverter.ConvertFromString(ThemeText.Text);
+    void LoadMenu()
+    {
+        ObservableCollection<MenuItemModel> menus =
+        [
+            MenuItemModel.Create<Home>("首页",IconKind.Home),
+            MenuItemModel.Create<WindowsRegistry>("注册表",IconKind.Windows_Registy),
+            MenuItemModel.Create<Monitor>("监控",IconKind.Monitor),
+            MenuItemModel.Create<WindowsInfo>("系统",IconKind.Windows),
+            MenuItemModel.Create<About>("关于",IconKind.About),
+        ];
 
-    //    ThemeManager.ChangeTheme(Application.Current, color);
+        DataContext = new MainWindowModel(menus);
+    }
 
-    //    ThemeChangeBtn.Content = ThemeManager.CurrentTheme.IsLight ? "亮色" : "暗色";
-    //}
+    void LoadSettings()
+    {
+        WindowState = GlobalSettings.Instance.Windows.MainWindowState;
+        Height = GlobalSettings.Instance.Windows.MainWindowHeight;
+        Width = GlobalSettings.Instance.Windows.MainWindowWidth;
 
-    //_notificationBox = GetTemplateChild(NotificationBox) as NotificationBox;
+        if(GlobalSettings.Instance.IsLoadFile)
+        {
+            Top = GlobalSettings.Instance.Windows.MainWindowTop;
+            Left = GlobalSettings.Instance.Windows.MainWindowLeft;
+        }
+        else
+        {
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
+        }
 
-    //    NotificationManager.Initialization(_notificationBox!, model =>
-    //    {
-    //        _logger.Invoke($"Notify [{model.Type}]: {model.Content}");
-    //    });
+        var source = GlobalSettings.Instance.Windows.FontFamily;
+        if(source != null || FontFamily.Source != source)
+        {
+            var font = FontHelper.SystemFonts.FirstOrDefault(x => x.Source == source);
+
+            if(font != null)
+            {
+                FontFamily = font;
+            }
+        }
+    }
 }

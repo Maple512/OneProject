@@ -1,0 +1,42 @@
+<UserControl x:Class="OneProject.Desktop.Componets.ConfirmWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:OneProject.Desktop.Componets"
+             xmlns:viewmodels="clr-namespace:OneProject.Desktop.ViewModels"
+             xmlns:themes="http://github.com/maple512/oneproject.desktop/themes"
+             d:DataContext="{d:DesignInstance Type=viewmodels:ConfirmViewModel}"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/OneProject.Desktop.Theme;component/Themes/OPTextBlock.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0"
+                   Text="{Binding Message}"
+                   Style="{StaticResource H5}" />
+        <themes:OPStackPanel Grid.Row="1"
+                             Orientation="Horizontal"
+                             HorizontalAlignment="Center">
+            <themes:OPButton Type="Default"
+                             Content="{Binding CancelText}"
+                             Command="{Binding CancelCommand}" />
+            <themes:OPButton Type="Primary"
+                             Content="{Binding OkText}"
+                             Command="{Binding OkCommand}"
+                             CommandParameter="{Binding OkCommandParameter}" />
+        </themes:OPStackPanel>
+    </Grid>
+</UserControl>

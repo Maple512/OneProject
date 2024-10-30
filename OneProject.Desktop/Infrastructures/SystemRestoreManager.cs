@@ -1,7 +1,8 @@
-namespace OneProject.WindowsManagment;
+namespace OneProject.Desktop.Infrastructures;
 
 using System;
 using System.ComponentModel;
+using System.Management;
 using System.Runtime.InteropServices;
 using FastEnum;
 

@@ -1,9 +1,16 @@
-<UserControl x:Class="OneProject.Desktop.Pages.WindowsRegistry" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:OneProject.Desktop.Pages"
-        xmlns:models="clr-namespace:OneProject.Desktop.ViewModels" xmlns:themes="http://github.com/maple512/oneproject.desktop/themes"
-        d:DataContext="{d:DesignInstance Type=models:WindowsRegistryModel}" mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800"
-        x:Name="Page">
+<UserControl x:Class="OneProject.Desktop.Pages.WindowsRegistry"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:OneProject.Desktop.Pages"
+             xmlns:models="clr-namespace:OneProject.Desktop.ViewModels"
+             xmlns:themes="http://github.com/maple512/oneproject.desktop/themes"
+             d:DataContext="{d:DesignInstance Type=models:WindowsRegistryModel}"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             x:Name="Page">
 
     <UserControl.Resources>
         <ResourceDictionary>
@@ -11,13 +18,25 @@
         </ResourceDictionary>
     </UserControl.Resources>
 
-    <themes:OPCard Title="注册表">
+    <themes:OPCard Title="注册表"
+                   Icon="Windows_Registy"
+                   x:Name="P_Card">
         <themes:OPCard.TitleAction>
             <themes:OPStackPanel Orientation="Horizontal">
-                <themes:OPButton Content="备份" Icon="Copy" Command="{Binding BackupCommand}" />
-                <themes:OPButton Content="查询" Icon="Search" Command="{Binding QueryCommand}" />
-                <themes:OPButton Content="删除" Icon="Delete" Command="{Binding DeleteCommand}" CommandParameter="{StaticResource False}" />
-                <themes:OPButton Content="删除所有" Icon="Delete" Command="{Binding DeleteCommand}" CommandParameter="{StaticResource True}" />
+                <themes:OPButton Content="备份"
+                                 Icon="Copy"
+                                 Click="OnBackupButtonClick" />
+                <themes:OPButton Content="查询"
+                                 Icon="Search"
+                                 Command="{Binding QueryCommand}" />
+                <themes:OPButton Content="删除"
+                                 Icon="Delete"
+                                 Command="{Binding DeleteCommand}"
+                                 CommandParameter="{StaticResource False}" />
+                <themes:OPButton Content="删除所有"
+                                 Icon="Delete"
+                                 Command="{Binding DeleteCommand}"
+                                 CommandParameter="{StaticResource True}" />
                 <!--<themes:OPButton Content="还原" Icon="Restore" Command="{Binding RestoreCommand}" />-->
             </themes:OPStackPanel>
         </themes:OPCard.TitleAction>
@@ -28,9 +47,18 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <TextBlock Text="{Binding LastQueryAt,StringFormat=最后一次查询：HH:mm:ss}"
-                    Visibility="{Binding LastQueryAt,Converter={StaticResource NotNullToVisibleConverter}}" />
-            <TextBox Grid.Row="1" Text="{Binding PointSequence,UpdateSourceTrigger=PropertyChanged}" MaxLines="1" />
-            <TextBox Grid.Row="2" Text="{Binding Content,Mode=OneWay}" IsReadOnly="True" MinLines="10" VerticalScrollBarVisibility="Auto" />
+                       Visibility="{Binding LastQueryAt,Converter={StaticResource NotNullToVisibleConverter}}" />
+            <TextBox Grid.Row="1"
+                     Text="{Binding Search,UpdateSourceTrigger=PropertyChanged}"
+                     MaxLines="1" />
+            <!--<TextBox Grid.Row="1"
+                     Text="{Binding PointSequence,UpdateSourceTrigger=PropertyChanged}"
+                     MaxLines="1" />-->
+            <TextBox Grid.Row="2"
+                     Text="{Binding Content,Mode=OneWay}"
+                     IsReadOnly="True"
+                     MinLines="10"
+                     VerticalScrollBarVisibility="Auto" />
         </Grid>
     </themes:OPCard>
 </UserControl>

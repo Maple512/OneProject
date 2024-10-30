@@ -1,6 +1,6 @@
-namespace OneProject.WindowsManagment.Test;
+namespace OneProject.Desktop.Test;
 
-using System.Text.Json;
+using OneProject.Desktop.Infrastructures;
 
 public class SystemRestoreManagerTest : TestBase<SystemRestoreManagerTest>
 {
@@ -8,7 +8,8 @@ public class SystemRestoreManagerTest : TestBase<SystemRestoreManagerTest>
     public void create_and_query()
     {
         var description = DateTime.Now.ToString("mmssfff");
-        var result = SystemRestoreManager.Create(description);
+
+        SystemRestoreManager.Create(description);
 
         var points = SystemRestoreManager.Query();
 

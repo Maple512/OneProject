@@ -1,6 +1,7 @@
 namespace OneProject.Desktop.Theme.Themes;
 
 using System.Windows;
+using System.Windows.Input;
 using OneProject.Desktop.Theme.Infrastructures;
 
 [TemplatePart(Name = MinButton, Type = typeof(Button))]
@@ -59,6 +60,13 @@ public class OPWindow : Window
                 }
             }
         };
+    }
+
+    protected override void OnMouseDown(MouseButtonEventArgs e)
+    {
+        base.OnMouseDown(e);
+
+        Keyboard.ClearFocus();
     }
 
     public object TitleMenu

@@ -53,12 +53,12 @@
         <PackageReference Include="Microsoft.Extensions.Http.Polly" />
         <PackageReference Include="Serilog.Sinks.Async" />
         <PackageReference Include="Serilog.Sinks.File" />
+        <PackageReference Include="System.Management" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\OneProject.Desktop.Theme\OneProject.Desktop.Theme.csproj" />
       <ProjectReference Include="..\OneProject.Desktop.Win32Native\OneProject.Desktop.Win32Native.csproj" />
-      <ProjectReference Include="..\OneProject.WindowsManagment\OneProject.WindowsManagment.csproj" />
       <ProjectReference Include="..\OneProject\OneProject.csproj" />
     </ItemGroup>
 

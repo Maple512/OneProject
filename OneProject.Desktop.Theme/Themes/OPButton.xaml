@@ -21,8 +21,6 @@
         </ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>
 
-    <converters:NotNullToVisibleConverter x:Key="NotNullToVisibleConverter" />
-
     <Style TargetType="{x:Type themes:OPButton}">
         <Setter Property="Type"
                 Value="Primary" />

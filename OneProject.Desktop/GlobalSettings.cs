@@ -11,6 +11,8 @@ public record GlobalSettings
     //public static string FullFileName = Path.Combine(Directory, "settings.json");
 
     //public static string DownloadPath => Path.Combine(Directory, "Downloads");
+    [JsonIgnore]
+    public bool IsLoadFile { get; private set; }
 
     public static string TempPath => Path.Combine(Root, "Temps");
 
@@ -56,15 +58,17 @@ public record GlobalSettings
 
         Instance = JsonSerializer.Deserialize(json, GlobalSettingsContext.Default.GlobalSettings)
                    ?? new GlobalSettings();
+
+        Instance.IsLoadFile = true;
     }
 
     public class WindowSettings
     {
         public WindowState MainWindowState { get; set; }
 
-        public double MainWindowHeight { get; set; }
+        public double MainWindowHeight { get; set; } = 600D;
 
-        public double MainWindowWidth { get; set; }
+        public double MainWindowWidth { get; set; } = 1000D;
 
         public double MainWindowLeft { get; set; }
 

@@ -35,10 +35,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneProject.Desktop.Test", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneProject.Desktop.Win32Native", "OneProject.Desktop.Win32Native\OneProject.Desktop.Win32Native.csproj", "{EC4EB937-2D1B-44BE-B645-FF388C9591CA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneProject.WindowsManagment", "OneProject.WindowsManagment\OneProject.WindowsManagment.csproj", "{1C5FE330-8A02-48AB-B685-143AC90E765F}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneProject.WindowsManagment.Test", "OneProject.WindowsManagment.Test\OneProject.WindowsManagment.Test.csproj", "{F87881AC-CD84-415A-8B7A-4DD13D62F2D4}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,14 +65,6 @@ Global
 		{EC4EB937-2D1B-44BE-B645-FF388C9591CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC4EB937-2D1B-44BE-B645-FF388C9591CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC4EB937-2D1B-44BE-B645-FF388C9591CA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1C5FE330-8A02-48AB-B685-143AC90E765F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1C5FE330-8A02-48AB-B685-143AC90E765F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1C5FE330-8A02-48AB-B685-143AC90E765F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1C5FE330-8A02-48AB-B685-143AC90E765F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F87881AC-CD84-415A-8B7A-4DD13D62F2D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F87881AC-CD84-415A-8B7A-4DD13D62F2D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F87881AC-CD84-415A-8B7A-4DD13D62F2D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F87881AC-CD84-415A-8B7A-4DD13D62F2D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

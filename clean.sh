@@ -1,2 +1,2 @@
 #!/bin/bash
-rm -rf ./.vs/ ./**/bin/ ./**/obj/ ./**/*.user
+rm -rf ./**/bin/ ./**/obj/ ./**/*.user

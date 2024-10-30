@@ -7,23 +7,26 @@ public class ModelWindow : OPWindow
         Owner = Check.NotNull(owner);
         Icon = null;
         ResizeMode = ResizeMode.NoResize;
-        Width = 600;
-        Height = 400;
         ShowInTaskbar = false;
         IconVisibility = Visibility.Collapsed;
     }
 
-    public static Window OpenModel(Window owner, string title, object content, object? data = null)
+    public static Window OpenModel(Window owner,
+                                   string title,
+                                   object content,
+                                   object? data = null,
+                                   double height = 400,
+                                   double width = 600)
     {
         var window = new ModelWindow(owner)
         {
             Content = content,
             Title = title,
             DataContext = data,
+            Width = width,
+            Height = height,
             WindowStartupLocation = WindowStartupLocation.CenterOwner,
         };
-
-        window.ShowDialog();
 
         return window;
     }

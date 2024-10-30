@@ -15,7 +15,7 @@ public partial class MainWindowModel : ObservableObject
     public MainWindowModel(ObservableCollection<MenuItemModel> pages)
     {
         Menus = pages;
-        SelectedItem = pages[1];
+        SelectedItem = pages[0];
     }
 
     public ObservableCollection<MenuItemModel> Menus { get; }
@@ -24,5 +24,7 @@ public partial class MainWindowModel : ObservableObject
     static void OpenAboutWindow()
     {
         var aboutWindow = ModelWindow.OpenModel(App.Current.MainWindow, "关于", new About());
+
+        aboutWindow.ShowDialog();
     }
 }

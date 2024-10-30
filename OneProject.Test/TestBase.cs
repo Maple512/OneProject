@@ -18,11 +18,13 @@ public abstract class TestBase<TLogger>
     {
         var services = new ServiceCollection();
 
-        services.AddLogging(builder =>
-        {
-            builder.AddDebug()
-                .AddSerilog(ConfigureLogger());
-        });
+        Log.Logger = ConfigureLogger();
+
+        //services.AddLogging(builder =>
+        //{
+        //    builder.AddDebug()
+        //        .AddSerilog();
+        //});
 
         ConfigureServices(services);
 
@@ -33,15 +35,11 @@ public abstract class TestBase<TLogger>
         Configuration = configurationBuilder.Build();
 
         Services = services.BuildServiceProvider();
-
-        Logger = Services.GetRequiredService<ILogger<TLogger>>();
     }
 
     protected IServiceProvider Services { get; }
 
     protected IConfiguration Configuration { get; }
-
-    protected ILogger Logger { get; }
 
     protected virtual void ConfigureServices(IServiceCollection services)
     {

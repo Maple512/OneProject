@@ -5,7 +5,7 @@ using System.Text;
 using OneProject;
 
 [StackTraceHidden]
-[DebuggerStepThrough]
+//[DebuggerStepThrough]
 public static class FileHelper
 {
     /// <summary>

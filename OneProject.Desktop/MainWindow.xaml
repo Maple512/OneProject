@@ -7,12 +7,12 @@
                  xmlns:themes="http://github.com/maple512/oneproject.desktop/themes"
                  xmlns:components="clr-namespace:OneProject.Desktop.Componets"
                  mc:Ignorable="d"
-                 MinHeight="700"
-                 MinWidth="1000"
+                 MinHeight="600"
+                 MinWidth="1024"
+                 WindowStartupLocation="CenterOwner"
                  Icon="./assets/logo_32.ico"
                  xmlns:models="clr-namespace:OneProject.Desktop.ViewModels"
-                 d:DataContext="{d:DesignInstance models:MainWindowModel}"
-                 >
+                 d:DataContext="{d:DesignInstance models:MainWindowModel}">
 
     <themes:OPWindow.Resources>
         <ResourceDictionary>
@@ -20,7 +20,7 @@
                 <ResourceDictionary Source="pack://application:,,,/OneProject.Desktop.Theme;component/Themes/ThemeBase.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/OneProject.Desktop.Theme;component/Themes/OPTextBlock.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <themes:DoubleGridLengthConverter x:Key="DoubleGridLengthConverter" />
+            <themes:DoubleToGridLengthConverter x:Key="DoubleGridLengthConverter" />
             <themes:NotNullToVisibleConverter x:Key="NotNullToVisibleConverter" />
         </ResourceDictionary>
     </themes:OPWindow.Resources>
@@ -38,7 +38,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition
-                            Width="{Binding Source={StaticResource Number.Menu.Width},Converter={StaticResource DoubleGridLengthConverter}}" />
+                            Width="{Binding Source={StaticResource Number.Menu.Width},Converter={StaticResource DoubleToGridLengthConverter}}" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
@@ -48,6 +48,7 @@
                     </Grid.RowDefinitions>
                     <ListBox Grid.Row="0"
                              BorderThickness="0"
+                             Focusable="True"
                              ItemsSource="{Binding Menus}"
                              SelectedIndex="{Binding SelectedIndex}"
                              SelectedItem="{Binding SelectedItem, UpdateSourceTrigger=PropertyChanged}"
@@ -159,7 +160,7 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <Border Grid.Row="1"
+                    <!--<Border Grid.Row="1"
                             BorderThickness="0,1,0,0"
                             BorderBrush="{DynamicResource Brush.Border}">
                         <ItemsControl>
@@ -186,7 +187,7 @@
                                              HorizontalContentAlignment="Left"
                                              Command="{Binding OpenAboutWindowCommand}" />
                         </ItemsControl>
-                    </Border>
+                    </Border>-->
                 </Grid>
                 <ContentControl Grid.Column="1"
                                 Background="Transparent"

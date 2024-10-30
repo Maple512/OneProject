@@ -6,6 +6,7 @@
         <ResourceDictionary Source="pack://application:,,,/OneProject.Desktop.Theme;component/Themes/OPCard.xaml" />
         <ResourceDictionary Source="pack://application:,,,/OneProject.Desktop.Theme;component/Themes/OPLoading.xaml" />
         <ResourceDictionary Source="pack://application:,,,/OneProject.Desktop.Theme;component/Themes/OPWindow.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/OneProject.Desktop.Theme;component/Themes/OPTextBox.xaml" />
     </ResourceDictionary.MergedDictionaries>
     
 </ResourceDictionary>

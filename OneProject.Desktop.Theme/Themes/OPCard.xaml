@@ -9,14 +9,10 @@
         <ResourceDictionary Source="ThemeBase.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <converters:NullToVisibleConverter x:Key="NullToVisibleConverter" />
-    <converters:NotNullToVisibleConverter x:Key="NotNullToVisibleConverter" />
-    <converters:TrueToVisibleConverter x:Key="TrueToVisibleConverter" />
-
+    <!--<Setter Property="assists:LoadingAssist.IsLoading" Value="True" />-->
     <Style TargetType="{x:Type themes:OPCard}">
         <Setter Property="Background"
                 Value="{DynamicResource Brush.A}" />
-        <!--<Setter Property="assists:LoadingAssist.IsLoading" Value="True" />-->
         <Setter Property="Margin"
                 Value="3" />
         <Setter Property="Padding"
@@ -87,8 +83,10 @@
                                     </Border>
                                     <themes:OPLoading IsLoading="{TemplateBinding assists:LoadingAssist.IsLoading}"
                                                       Grid.Row="1">
-                                        <Border Padding="{TemplateBinding Padding}">
+                                        <Border Padding="{TemplateBinding Padding}"
+                                                >
                                             <ContentPresenter x:Name="P_ContentPresenter"
+                                                              
                                                               Content="{TemplateBinding ContentControl.Content}"
                                                               ContentStringFormat="{TemplateBinding ContentControl.ContentStringFormat}"
                                                               ContentTemplate="{TemplateBinding ContentControl.ContentTemplate}"

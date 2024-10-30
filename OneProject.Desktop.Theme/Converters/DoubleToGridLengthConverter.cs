@@ -1,9 +1,11 @@
-namespace OneProject.Desktop.Converters;
+namespace OneProject.Desktop.Theme.Converters;
 
 using System;
 using System.Globalization;
+using System.Windows;
+using System.Windows.Data;
 
-public class DoubleGridLengthConverter : IValueConverter
+public class DoubleToGridLengthConverter : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {

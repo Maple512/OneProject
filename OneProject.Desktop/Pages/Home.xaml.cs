@@ -14,9 +14,8 @@ public partial class Home : UserControl
 
     private void OnSendMessageBtnClick(object sender, RoutedEventArgs e)
     {
-        var type = RandomHelper.GetRandomOf(NotificationType.Info, NotificationType.Success, NotificationType.Warn,
-            NotificationType.Error);
-
+        var type = RandomHelper.GetRandomOf(NotificationTypeExtensions.GetValues());
+        
         NotificationManager.AddNotification($"{DateTime.Now:mm:ss}: 随机消息", type);
     }
 }

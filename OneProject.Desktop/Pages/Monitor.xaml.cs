@@ -1,5 +1,4 @@
 namespace OneProject.Desktop.Pages;
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,16 +11,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using OneProject.Desktop.Theme.Themes;
 using OneProject.Desktop.ViewModels;
 
-public partial class About : UserControl
+/// <summary>
+/// SystemPerformance.xaml 的交互逻辑
+/// </summary>
+public partial class Monitor : UserControl
 {
-    public About()
+    public Monitor()
     {
-        DataContext = new AboutModel();
-
         InitializeComponent();
+
+        DataContext = new MonitorModel();
     }
 }

@@ -18,7 +18,8 @@
                    Icon="Home">
         <themes:OPCard.TitleAction>
             <themes:OPStackPanel>
-                <themes:OPButton x:Name="SendMessageBtn" Content="发个消息"  />
+                <themes:OPButton x:Name="SendMessageBtn"
+                                 Content="发个消息" />
             </themes:OPStackPanel>
         </themes:OPCard.TitleAction>
         <Grid Grid.IsSharedSizeScope="True">
@@ -33,7 +34,9 @@
                                SharedSizeGroup="SharedHeight" />
             </Grid.RowDefinitions>
 
-            <themes:OPCard>
+            <themes:OPCard Grid.Column="0"
+                           Grid.Row="0"
+                           Title="按钮">
                 <themes:OPStackPanel Orientation="Vertical">
                     <themes:OPButton Content="Defaults Button"
                                      Type="Default" />
@@ -41,6 +44,22 @@
                                      Type="Primary" />
                     <themes:OPButton Content="Text Button"
                                      Type="Text" />
+                </themes:OPStackPanel>
+            </themes:OPCard>
+            <themes:OPCard Grid.Column="1"
+                           Grid.Row="0"
+                           Title="文本框">
+                <themes:OPStackPanel Orientation="Vertical">
+                    <themes:OPTextBox Text="输入个啥呢？" />
+                    <themes:OPTextBox Text="输入个啥呢？"
+                                      Type="UnderLine" />
+                    <themes:OPTextBox Text="输入个啥呢？"
+                                      HintText="请输入数字"
+                                      MaxHeight="200"
+                                      AcceptsReturn="True"
+                                      TextWrapping="WrapWithOverflow"
+                                      MaxLength="50"
+                                      UndoLimit="5" />
                 </themes:OPStackPanel>
             </themes:OPCard>
         </Grid>

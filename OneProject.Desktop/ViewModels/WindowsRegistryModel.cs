@@ -1,11 +1,15 @@
 namespace OneProject.Desktop.ViewModels;
 
 using System.Linq;
-using System.Text.Json;
-using OneProject.WindowsManagment;
+using Humanizer;
+using OneProject.Desktop.Componets;
+using OneProject.Desktop.Infrastructures;
 
 public partial class WindowsRegistryModel : ModelBase<WindowsRegistryModel>
 {
+    [ObservableProperty]
+    private string? search;
+
     [ObservableProperty]
     private string? content;
 
@@ -14,45 +18,81 @@ public partial class WindowsRegistryModel : ModelBase<WindowsRegistryModel>
 
     [ObservableProperty]
     private DateTime? lastQueryAt;
-    private List<SystemRestoreModel>? points = null;
+    private readonly List<SystemRestoreModel>? points = null;
 
     public WindowsRegistryModel()
     {
+        Search = "使用 Visual Studio 打开";
     }
 
-    private async Task<List<SystemRestoreModel>> GetPointsAsync()
+    private List<SystemRestoreModel> GetPoints()
     {
         if(points is null)
         {
-            await QueryAsync();
+            Query();
         }
 
         return points!;
     }
 
     [RelayCommand]
-    private static async Task BackupAsync()
+    private async Task BackupAsync()
     {
-        await Task.Run(() => SystemRestoreManager.Create());
-    }
+        var watch = Stopwatch.StartNew();
 
-    [RelayCommand]
-    private async Task QueryAsync()
-    {
-        await Task.Run(() =>
+        var file = FileHelper.TryGetFileInfo(Path.Combine(GlobalSettings.TempPath, $"Registy_backup_{DateTime.Now:yyyyMMddHHmm}.reg"));
+
+        await WindowsRegistryManager.ExportAllAsync(file);
+
+        watch.Stop();
+
+        ConfirmWindow.Open(new ConfirmViewModel($"已完成备份，用时：{watch.Elapsed.Humanize()}")
         {
-            points = SystemRestoreManager.Query();
-
-            Content = JsonSerializer.Serialize(points.OrderByDescending(x => x.SequenceNumber), JsonSerializerHelper.ToReadonlyJson);
-
-            LastQueryAt = DateTime.Now;
+            OkText = "打开目录",
+            OkCommand = RegularCommand.OpenExplorer,
+            OkCommandParameter = file.FullName,
         });
     }
 
     [RelayCommand]
-    private async Task DeleteAsync(bool isAll)
+    private void Query()
     {
-        var points = await GetPointsAsync();
+        if(string.IsNullOrWhiteSpace(Search))
+        {
+            return;
+        }
+
+        //await Task.Run(() =>
+        //{
+
+        //    //var isAdmin = WindowsIdentityManager.IsCurrentUserAdministrator();
+
+        //    //if(!isAdmin)
+        //    //{
+        //    //    WindowsIdentityManager.RequestAdministratorRights();
+        //    //}
+
+        //    var result = WindowsRegistryManager.Search(Search);
+
+        //    Content = JsonSerializer.Serialize(result, JsonSerializerHelper.ToReadonlyJson);
+        //});
+
+        //result.Count.ShouldBeGreaterThan(0);
+
+        //await Task.Run(() =>
+        //{
+        //    points = SystemRestoreManager.Query();
+
+        //    Content = JsonSerializer.Serialize(points.OrderByDescending(x => x.SequenceNumber), JsonSerializerHelper.ToReadonlyJson);
+
+        //    LastQueryAt = DateTime.Now;
+        //});
+    }
+
+    [RelayCommand]
+    private void Delete(bool isAll)
+    {
+        var points = GetPoints();
 
         if(isAll && points.Count != 0)
         {

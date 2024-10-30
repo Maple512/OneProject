@@ -9,11 +9,6 @@
         <ResourceDictionary Source="OPTextBlock.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <converters:DoubleGridLengthConverter x:Key="DoubleToGridLengthConverter" />
-    <converters:NotNullToVisibleConverter x:Key="NotNullToVisibleConverter" />
-    <converters:ThicknessDirectionConverter x:Key="ThicknessDirectionConverter"
-                                            Direction="Top" />
-
     <Style TargetType="{x:Type themes:OPWindow}"
            BasedOn="{StaticResource {x:Type Window}}">
         <Setter Property="CornerRadius"

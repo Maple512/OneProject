@@ -7,117 +7,14 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using OneProject.Desktop.Theme.Infrastructures;
 
-public class OPIcon : Control
-{
-    private static Lazy<IDictionary<IconKind, string>>? _cacher = null;
-
-    public static readonly DependencyProperty KindProperty
-        = PropertyHelper.Register<IconKind?, OPIcon>(nameof(Kind),
-            new FrameworkPropertyMetadata(default(IconKind?), KindChangedCallback));
-
-    public static readonly DependencyPropertyKey DataPropertyKey
-        = PropertyHelper.RegisterReadOnly<string, OPIcon>(nameof(Data));
-
-    public static readonly DependencyProperty DataProperty = DataPropertyKey.DependencyProperty;
-
-    static OPIcon() => DefaultStyleKeyProperty.OverrideMetadata<OPIcon>();
-
-    public IconKind? Kind
-    {
-        get => (IconKind?)GetValue(KindProperty);
-        set => SetValue(KindProperty, value);
-    }
-
-    [TypeConverter(typeof(GeometryConverter))]
-    public string? Data
-    {
-        get => (string?)GetValue(DataProperty);
-        private set => SetValue(DataPropertyKey, value);
-    }
-
-    private static void KindChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        => ((OPIcon)d).UpdateData();
-
-    public override void OnApplyTemplate()
-    {
-        base.OnApplyTemplate();
-
-        UpdateData();
-    }
-
-    private void UpdateData()
-    {
-        if(Kind is null or IconKind.None)
-        {
-            Data = null;
-            return;
-        }
-
-        _cacher ??= new(IconFactory.Creator);
-
-        if(_cacher.Value.TryGetValue(Kind.Value, out var data))
-        {
-            Data = data;
-        }
-        else
-        {
-            Data = null;
-        }
-    }
-}
-
-public enum IconKind
-{
-    None,
-    Close,
-    Min,
-    Max,
-    WindowRestore,
-    Bad,
-    Good,
-    Question,
-    Setting,
-    Score,
-    Github,
-    Game,
-    About,
-    Start,
-    Theme,
-    Home,
-    Copy,
-    Info,
-    Success,
-    Error,
-    Warn,
-    Right,
-    Download,
-    Paste,
-    Cut,
-    SelectAll,
-    CloseCircle,
-    Vedio,
-    Folder,
-    Magnifier,
-    Monitor,
-    Loading,
-    Plus,
-    DotsVertical,
-    Checked,
-    ColorExChange,
-    Delete,
-    Pause,
-    Order,
-    File,
-    Windows_Registy,
-    Search,
-    Restore,
-}
-
 internal static class IconFactory
 {
     public static Dictionary<IconKind, string> Creator()
         => new()
         {
+            { IconKind.GPU, "M903.7 171.2H236.3c-9 0-17.7 3.4-24.3 9.4L76.3 304.9c-7.5 6.8-11.7 16.5-11.7 26.6v403.9c0 19.9 16.1 36 36 36h81v45.9c0 19.9 16.1 36 36 36h212.3c19.9 0 36-16.1 36-36v-45.9h115.7v45.9c0 19.9 16.1 36 36 36h198.2c19.9 0 36-16.1 36-36v-45.9h71.9c19.9 0 36-16.1 36-36V227.2c0-30.9-25.1-56-56-56z m-16 528.1h-71.9c-19.9 0-36 16.1-36 36v45.9H653.6v-45.9c0-19.9-16.1-36-36-36H429.9c-19.9 0-36 16.1-36 36v45.9H253.6v-45.9c0-19.9-16.1-36-36-36h-81v-352l113.7-104.1h637.4v456.1z M667.2 617.2c82 0 148.6-66.7 148.6-148.6S749.1 320 667.2 320s-148.6 66.7-148.6 148.6 66.6 148.6 148.6 148.6z m0-225.3c42.3 0 76.6 34.4 76.6 76.6s-34.4 76.6-76.6 76.6-76.6-34.4-76.6-76.6 34.3-76.6 76.6-76.6zM207.8 551.8c0 19.9 16.1 36 36 36h183.6c19.9 0 36-16.1 36-36s-16.1-36-36-36H243.8c-19.8 0-36 16.1-36 36zM207.8 434.5c0 19.9 16.1 36 36 36H356c19.9 0 36-16.1 36-36s-16.1-36-36-36H243.8c-19.8 0-36 16.1-36 36z" },
+            { IconKind.CPU, "M652.224 699.712H371.84a46.08 46.08 0 0 1-47.04-46.912V372.736a46.08 46.08 0 0 1 47.04-46.912h280.448a46.08 46.08 0 0 1 47.04 46.912V652.8a47.104 47.104 0 0 1-47.04 46.912zM418.752 605.888h186.496v-186.24H418.752v186.24z M865.344 912.512H158.72a46.08 46.08 0 0 1-47.04-46.976V160a46.08 46.08 0 0 1 47.04-46.912H865.28a46.08 46.08 0 0 1 47.04 46.912v705.536a47.104 47.104 0 0 1-47.04 46.976zM205.632 818.56h612.736V206.912H205.632v611.712z M373.312 981.312a45.44 45.44 0 0 1-45.44-45.376v-67.2a45.44 45.44 0 0 1 90.88 0v67.2a45.44 45.44 0 0 1-45.44 45.44zM652.224 981.312a45.44 45.44 0 0 1-45.44-45.376v-67.2a45.44 45.44 0 0 1 90.88 0v67.2a45.44 45.44 0 0 1-45.44 45.44zM373.312 199.104a45.44 45.44 0 0 1-45.44-45.376V88.064a45.44 45.44 0 0 1 90.88 0v67.2c0 23.488-20.352 43.84-45.44 43.84zM652.224 199.104a45.44 45.44 0 0 1-45.44-45.376V88.064a45.44 45.44 0 0 1 90.88 0v67.2c0 23.488-20.352 43.84-45.44 43.84zM935.872 419.712H868.48a45.44 45.44 0 1 1 0-90.752h67.392a45.44 45.44 0 1 1 0 90.752zM935.872 693.44H868.48a45.44 45.44 0 1 1 0-90.688h67.392a45.44 45.44 0 1 1 0 90.752zM153.92 419.712H88.128a45.44 45.44 0 1 1 0-90.752H155.52a45.44 45.44 0 0 1 45.44 45.376c0 25.024-21.952 45.376-47.04 45.376zM153.92 693.44H88.128a45.44 45.44 0 1 1 0-90.688H155.52a45.44 45.44 0 0 1 45.44 45.376c0 24.96-21.952 45.312-47.04 45.312z" },
+            {IconKind.Windows,"M421.728 574.848l0 372-389.728-53.728 0-318.272 389.728 0zM421.728 150.272l0 376.576-389.728 0 0-322.848zM982.848 574.848l0 449.152-518.272-71.424 0-377.728 518.272 0zM982.848 73.152l0 453.728-518.272 0 0-382.272z" },
             { IconKind.Restore, "M486.464 83.584a424.96 424.96 0 0 0-276.928 102.336 48.256 48.256 0 0 0-6.4 6.528l-6.4-6.016-34.24-31.04-10.88-9.152-22.912-20.736-4.928-3.968c-4.864-3.52-7.68-3.84-9.536 0.384l-0.96 3.072-1.152 6.784-0.896 9.472-1.92 36.864-11.392 165.888-0.512 15.616-1.408 27.776 0.128 7.168c0.64 7.936 3.2 11.008 10.368 11.2l3.904-0.128 7.872-1.088 38.272-7.232 160.896-34.56 39.68-7.232 6.912-1.728c6.4-1.92 8.192-4.224 5.696-8.512l-1.984-2.752-4.928-5.248-88.512-80.384 10.56-8.576a328.768 328.768 0 0 1 201.6-68.736c183.616 0 332.608 150.4 332.608 336 0 185.664-148.992 336-332.608 336a331.52 331.52 0 0 1-282.56-158.656 48 48 0 1 0-81.728 50.368 427.52 427.52 0 0 0 364.288 204.288c236.8 0 428.608-193.472 428.608-432 0-238.464-191.808-432-428.608-432z" },
             { IconKind.Search, "M933.308465 890.723577l-146.767692-157.046802c59.488883-71.644737 92.202958-160.954809 92.202958-254.974136 0-220.566488-179.481767-400.048255-400.110677-400.048255-220.566488 0-400.048255 179.451068-400.048255 400.048255s179.481767 400.048255 400.078954 400.048255c57.796334-0.030699 113.530706-12.094456 165.633365-35.82288 15.479553-7.04751 22.312168-25.297153 15.264659-40.74703-7.04751-15.511275-25.38925-22.373567-40.74703-15.264659-44.101427 20.066011-91.249237 30.252001-140.181693 30.2827-186.652074 0-338.498434-151.845337-338.498434-338.498434 0-186.621375 151.845337-338.498434 338.498434-338.498434 186.682773 0 338.559832 151.845337 338.559832 338.498434 0 87.863117-33.514301 171.111123-94.326319 234.415914-11.786441 12.248975-11.387351 31.729655 0.830925 43.516096 0.923022 0.892323 2.12336 1.231037 3.170203 2.000564 0.830925 1.231037 1.261737 2.64627 2.308579 3.75451L888.346437 932.700621c6.03239 6.493901 14.248516 9.756201 22.465664 9.756201 7.53972 0 15.07944-2.739391 21.019733-8.309246C944.234305 922.606729 944.910711 903.126049 933.308465 890.723577z" },
             {
@@ -261,3 +158,113 @@ internal static class IconFactory
             {IconKind.Windows_Registy,"M332.48 500.864a25.6 25.6 0 1 0 0-51.2H192.384v-184.96a115.2 115.2 0 0 0 89.6-112.128c0-63.488-51.712-115.2-115.2-115.2s-115.2 51.712-115.2 115.2a115.2 115.2 0 0 0 89.6 112.128v696.192a25.6 25.6 0 1 0 51.2 0v-141.12c2.304 0.192 4.48 0.512 6.912 0.512h133.184a25.6 25.6 0 1 0 0-51.2H199.296c-3.456 0-5.504-0.448-6.08-0.256a29.184 29.184 0 0 1-0.896-8.576V500.8h140.16zM102.784 152.64c0-35.264 28.736-64 64-64s64 28.736 64 64-28.736 64-64 64-64-28.736-64-64zM921.216 360.064h-486.4c-28.224 0-51.2 22.976-51.2 51.2v128c0 28.224 22.976 51.2 51.2 51.2h486.4c28.224 0 51.2-22.976 51.2-51.2v-128c0-28.224-22.976-51.2-51.2-51.2z m-486.336 179.2v-128h486.4v128h-486.4zM921.216 679.616h-486.4c-28.224 0-51.2 22.976-51.2 51.2v128c0 28.224 22.976 51.2 51.2 51.2h486.4c28.224 0 51.2-22.976 51.2-51.2v-128c0-28.224-22.976-51.2-51.2-51.2z m-486.336 179.2v-128h486.4v128h-486.4z" },
         };
 }
+
+public class OPIcon : Control
+{
+    private static Lazy<IDictionary<IconKind, string>>? _cacher = null;
+
+    public static readonly DependencyProperty KindProperty
+        = PropertyHelper.Register<IconKind?, OPIcon>(nameof(Kind),
+            new FrameworkPropertyMetadata(default(IconKind?), KindChangedCallback));
+
+    public static readonly DependencyPropertyKey DataPropertyKey
+        = PropertyHelper.RegisterReadOnly<string, OPIcon>(nameof(Data));
+
+    public static readonly DependencyProperty DataProperty = DataPropertyKey.DependencyProperty;
+
+    static OPIcon() => DefaultStyleKeyProperty.OverrideMetadata<OPIcon>();
+
+    public IconKind? Kind
+    {
+        get => (IconKind?)GetValue(KindProperty);
+        set => SetValue(KindProperty, value);
+    }
+
+    [TypeConverter(typeof(GeometryConverter))]
+    public string? Data
+    {
+        get => (string?)GetValue(DataProperty);
+        private set => SetValue(DataPropertyKey, value);
+    }
+
+    private static void KindChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        => ((OPIcon)d).UpdateData();
+
+    public override void OnApplyTemplate()
+    {
+        base.OnApplyTemplate();
+
+        UpdateData();
+    }
+
+    private void UpdateData()
+    {
+        if(Kind is null or IconKind.None)
+        {
+            Data = null;
+            return;
+        }
+
+        _cacher ??= new(IconFactory.Creator);
+
+        if(_cacher.Value.TryGetValue(Kind.Value, out var data))
+        {
+            Data = data;
+        }
+        else
+        {
+            Data = null;
+        }
+    }
+}
+
+public enum IconKind
+{
+    None,
+    Close,
+    Min,
+    Max,
+    WindowRestore,
+    Bad,
+    Good,
+    Question,
+    Setting,
+    Score,
+    Github,
+    Game,
+    About,
+    Start,
+    Theme,
+    Home,
+    Copy,
+    Info,
+    Success,
+    Error,
+    Warn,
+    Right,
+    Download,
+    Paste,
+    Cut,
+    SelectAll,
+    CloseCircle,
+    Vedio,
+    Folder,
+    Magnifier,
+    Monitor,
+    Loading,
+    Plus,
+    DotsVertical,
+    Checked,
+    ColorExChange,
+    Delete,
+    Pause,
+    Order,
+    File,
+    Windows_Registy,
+    Search,
+    Restore,
+    Windows,
+    CPU,
+    GPU,
+}
+
