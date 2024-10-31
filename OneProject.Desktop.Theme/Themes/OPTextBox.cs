@@ -1,7 +1,7 @@
-namespace OneProject.Desktop.Theme.Themes;
+namespace OneProject.Desktop.Themes;
 
 using System.Windows.Controls;
-using OneProject.Desktop.Theme.Infrastructures;
+using OneProject.Desktop.Infrastructures;
 
 public enum OPTextBoxTypeEnum
 {

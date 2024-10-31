@@ -1,13 +1,14 @@
-namespace OneProject.Desktop.Theme.Themes;
+namespace OneProject.Desktop.Themes;
 
 using System.Windows.Controls;
-using OneProject.Desktop.Theme.Infrastructures;
+using OneProject.Desktop.Infrastructures;
 
 public enum OPButtonType
 {
     Default,
     Primary,
     Text,
+    Icon,
 }
 
 public class OPButton : Button
@@ -56,11 +57,11 @@ public class OPButton : Button
     }
 
     public static readonly DependencyProperty IconSizeProperty =
-        PropertyHelper.Register<double?, OPButton>(nameof(IconSize));
+        PropertyHelper.Register<double, OPButton>(nameof(IconSize), 0D);
 
-    public double? IconSize
+    public double IconSize
     {
-        get => (double?)GetValue(IconSizeProperty);
+        get => (double)GetValue(IconSizeProperty);
         set => SetValue(IconSizeProperty, value);
     }
 

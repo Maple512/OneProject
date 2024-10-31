@@ -1,4 +1,4 @@
-namespace OneProject.Desktop.Theme.Behaviors;
+namespace OneProject.Desktop.Behaviors;
 
 using Microsoft.Xaml.Behaviors;
 

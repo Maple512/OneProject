@@ -6,6 +6,7 @@
         <TargetFramework>$(WPFFramework)</TargetFramework>
         <UseWPF>true</UseWPF>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <RootNamespace>OneProject.Desktop</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -33,7 +34,13 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\OneProject\OneProject.csproj" />
+        <ProjectReference Include="..\OneProject\OneProject.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Update="Components\NotificationBox.xaml.cs">
+            <SubType>Code</SubType>
+        </Compile>
     </ItemGroup>
 
 </Project>

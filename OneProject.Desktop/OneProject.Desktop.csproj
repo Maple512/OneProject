@@ -62,10 +62,4 @@
       <ProjectReference Include="..\OneProject\OneProject.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Compile Update="Componets\NotificationBox.xaml.cs">
-        <SubType>Code</SubType>
-      </Compile>
-    </ItemGroup>
-
 </Project>

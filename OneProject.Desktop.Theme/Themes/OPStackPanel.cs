@@ -1,8 +1,8 @@
-namespace OneProject.Desktop.Theme.Themes;
+namespace OneProject.Desktop.Themes;
 
 using System.ComponentModel;
 using System.Windows.Controls;
-using OneProject.Desktop.Theme.Infrastructures;
+using OneProject.Desktop.Infrastructures;
 
 internal interface IStackMeasure
 {

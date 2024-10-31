@@ -1,7 +1,7 @@
-namespace OneProject.Desktop.Theme.Assists;
+namespace OneProject.Desktop.Assists;
 
 using System.Linq;
-using OneProject.Desktop.Theme.Infrastructures;
+using OneProject.Desktop.Infrastructures;
 
 public static class ClearTextAssist
 {

@@ -1,9 +1,9 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:themes="clr-namespace:OneProject.Desktop.Theme.Themes"
-                    xmlns:assists="clr-namespace:OneProject.Desktop.Theme.Assists"
+                    xmlns:themes="clr-namespace:OneProject.Desktop.Themes"
+                    xmlns:assists="clr-namespace:OneProject.Desktop.Assists"
                     xmlns:controlex="clr-namespace:ControlzEx;assembly=ControlzEx"
-                    xmlns:converters="clr-namespace:OneProject.Desktop.Theme.Converters">
+                    xmlns:converters="clr-namespace:OneProject.Desktop.Converters">
 
     
     <Style x:Key="PopupBoxButton"

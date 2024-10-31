@@ -1,7 +1,8 @@
 namespace OneProject.Desktop.Pages;
 
 using System.Windows.Controls;
-using OneProject.Desktop.Theme.Assists;
+using CliWrap;
+using OneProject.Desktop.Assists;
 using OneProject.Desktop.ViewModels;
 
 public partial class WindowsRegistry : UserControl
@@ -13,12 +14,22 @@ public partial class WindowsRegistry : UserControl
         DataContext = new WindowsRegistryModel();
     }
 
+    private void OnShowRegEdit(object sender, RoutedEventArgs e)
+    {
+        Dispatcher.BeginInvoke(async () =>
+        {
+            try
+            {
+                await Cli.Wrap("regedit")
+                    .ExecuteAsync();
+            }
+            catch(Exception) { }
+        });
+    }
+
     private void OnBackupButtonClick(object sender, RoutedEventArgs e)
     {
-        Task.Run(() =>
-        {
-            Dispatcher.BeginInvoke(() => Backup());
-        });
+        Dispatcher.BeginInvoke(() => Backup());
     }
 
     async Task Backup()

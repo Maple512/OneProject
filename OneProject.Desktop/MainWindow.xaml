@@ -5,7 +5,6 @@
                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                  xmlns:local="clr-namespace:OneProject.Desktop"
                  xmlns:themes="http://github.com/maple512/oneproject.desktop/themes"
-                 xmlns:components="clr-namespace:OneProject.Desktop.Componets"
                  mc:Ignorable="d"
                  MinHeight="600"
                  MinWidth="1024"
@@ -194,12 +193,6 @@
                                 Content="{Binding SelectedItem.Content, UpdateSourceTrigger=PropertyChanged,FallbackValue={x:Null}}"
                                 HorizontalContentAlignment="Left"
                                 VerticalContentAlignment="Top" />
-            </Grid>
-
-            <!--消息提示-->
-            <Grid HorizontalAlignment="Center"
-                  VerticalAlignment="Top">
-                <components:NotificationBox x:Name="P_NotificationBox" />
             </Grid>
         </Grid>
     </themes:OPWindow.Content>

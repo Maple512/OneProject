@@ -1,4 +1,4 @@
-namespace OneProject.Desktop.Theme.Colors;
+namespace OneProject.Desktop.Colors;
 
 internal record struct Xyz(double X, double Y, double Z);
 

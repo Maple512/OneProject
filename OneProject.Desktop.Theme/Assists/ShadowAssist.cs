@@ -1,4 +1,4 @@
-namespace OneProject.Desktop.Theme.Assists;
+namespace OneProject.Desktop.Assists;
 
 using System.Windows.Media.Animation;
 using System.Windows.Media.Effects;

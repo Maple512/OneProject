@@ -1,6 +1,6 @@
-namespace OneProject.Desktop.Theme.Converters;
+namespace OneProject.Desktop.Converters;
 
-using OneProject.Desktop.Theme.Colors;
+using OneProject.Desktop.Colors;
 
 public class BrushRoundConverter : IValueConverter
 {

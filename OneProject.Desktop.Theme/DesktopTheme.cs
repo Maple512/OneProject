@@ -1,6 +1,6 @@
 namespace OneProject.Desktop.Theme;
 
-using OneProject.Desktop.Theme.Colors;
+using OneProject.Desktop.Colors;
 
 public class DesktopTheme : ResourceDictionary, IThemeResourceDictionary
 {

@@ -1,4 +1,4 @@
-namespace OneProject.Desktop.Theme.Converters;
+namespace OneProject.Desktop.Converters;
 
 using System;
 using System.Collections.Generic;

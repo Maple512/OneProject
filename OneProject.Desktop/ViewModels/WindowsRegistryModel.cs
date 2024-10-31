@@ -2,7 +2,7 @@ namespace OneProject.Desktop.ViewModels;
 
 using System.Linq;
 using Humanizer;
-using OneProject.Desktop.Componets;
+using OneProject.Desktop.Components;
 using OneProject.Desktop.Infrastructures;
 
 public partial class WindowsRegistryModel : ModelBase<WindowsRegistryModel>

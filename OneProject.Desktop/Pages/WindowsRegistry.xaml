@@ -23,6 +23,9 @@
                    x:Name="P_Card">
         <themes:OPCard.TitleAction>
             <themes:OPStackPanel Orientation="Horizontal">
+                <themes:OPButton Content="打开注册表编辑器"
+                                 Icon="Windows_Registy"
+                                 Click="OnShowRegEdit" />
                 <themes:OPButton Content="备份"
                                  Icon="Copy"
                                  Click="OnBackupButtonClick" />

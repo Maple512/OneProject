@@ -1,6 +1,6 @@
-namespace OneProject.Desktop.Theme.Converters;
+namespace OneProject.Desktop.Converters;
 
-using OneProject.Desktop.Theme.Assists;
+using OneProject.Desktop.Assists;
 
 public class ElevationMarginConverter : IValueConverter
 {

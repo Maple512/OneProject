@@ -1,4 +1,4 @@
-namespace OneProject.Desktop.Theme.Themes;
+namespace OneProject.Desktop.Themes;
 
 public class ModelWindow : OPWindow
 {

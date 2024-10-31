@@ -1,4 +1,4 @@
-namespace OneProject.Desktop.Componets;
+namespace OneProject.Desktop.Components;
 
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -75,7 +75,12 @@ public static class NotificationManager
         _box = Check.NotNull(box);
     }
 
-    public static void AddNotification(string? content, NotificationType type = NotificationType.Info)
+    public static void Info(string content) => Notify(content, NotificationType.Info);
+    public static void Success(string content) => Notify(content, NotificationType.Success);
+    public static void Warn(string content) => Notify(content, NotificationType.Warn);
+    public static void Error(string content) => Notify(content, NotificationType.Error);
+
+    public static void Notify(string? content, NotificationType type = NotificationType.Info)
     {
         if(content is null or { Length: 0, })
         {
@@ -86,7 +91,7 @@ public static class NotificationManager
 
         _box?.AddNotification(model);
 
-        Log.Logger.Information($"Notify[{type.FastToString()}]: {content}");
+       // Log.Logger.Information($"Notify[{type.FastToString()}]: {content}");
     }
 
     public static void RemoveAllNotification()

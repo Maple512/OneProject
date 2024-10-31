@@ -1,0 +1,85 @@
+<UserControl x:Class="OneProject.Desktop.Pages.AddContextMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:OneProject.Desktop.Pages"
+             xmlns:themes="http://github.com/maple512/oneproject.desktop/themes"
+             xmlns:viewmodels="clr-namespace:OneProject.Desktop.ViewModels"
+             d:DataContext="{d:DesignInstance Type=viewmodels:AddContextMenuModel}"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <themes:OPStackPanel Orientation="Vertical">
+            <Grid Grid.IsSharedSizeScope="True">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"
+                                      SharedSizeGroup="SharedWidth" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="VerticalAlignment"
+                                Value="Center" />
+                        <Setter Property="HorizontalAlignment"
+                                Value="Right" />
+                    </Style>
+                </Grid.Resources>
+
+                <TextBlock Grid.Column="0"
+                           Grid.Row="0"
+                           Text="名称：" />
+                <themes:OPTextBox Grid.Column="1"
+                                  Grid.Row="0"
+                                  Margin="0,0,0,10"
+                                  HintText="可在文本后追加快捷键，如设置 N 快捷键：(&amp;N)"
+                                  Text="{Binding Title}" />
+
+                <TextBlock Grid.Column="0"
+                           Grid.Row="1"
+                           Text="图标地址：" />
+                <themes:OPTextBox Grid.Column="1"
+                                  Margin="0,0,0,10"
+                                  Grid.Row="1"
+                                  Text="{Binding Icon}">
+                    <themes:OPTextBox.SuffixContent>
+                        <themes:OPButton Type="Icon"
+                                         Icon="Folder" Click="OnSelectFolderButtonClick" />
+                    </themes:OPTextBox.SuffixContent>
+                </themes:OPTextBox>
+
+                <TextBlock Grid.Column="0"
+                           Grid.Row="2"
+                           Text="文件命令行：" />
+                <themes:OPTextBox Grid.Column="1"
+                                  Grid.Row="2"
+                                  Margin="0,0,0,10"
+                                  Text="{Binding FileCommand}" />
+
+                <TextBlock Grid.Column="0"
+                           Grid.Row="3"
+                           Text="目录命令行：" />
+                <themes:OPTextBox Grid.Column="1"
+                                  Grid.Row="3"
+                                  Margin="0,0,0,10"
+                                  Text="{Binding DirectoryCommand}" />
+            </Grid>
+        </themes:OPStackPanel>
+        <themes:OPButton Grid.Row="1"
+                         Content="添加"
+                         Icon="Plus"
+                         Click="OnAddButtonClick" />
+    </Grid>
+</UserControl>

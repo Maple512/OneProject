@@ -1,10 +1,10 @@
-namespace OneProject.Desktop.Theme.Themes;
+namespace OneProject.Desktop.Themes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using OneProject.Desktop.Theme.Infrastructures;
+using OneProject.Desktop.Infrastructures;
 
 public class OPBorder : ContentControl
 {

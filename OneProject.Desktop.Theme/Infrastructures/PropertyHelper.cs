@@ -1,4 +1,4 @@
-namespace OneProject.Desktop.Theme.Infrastructures;
+namespace OneProject.Desktop.Infrastructures;
 
 public static class PropertyHelper
 {

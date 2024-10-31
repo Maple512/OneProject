@@ -1,6 +1,6 @@
 namespace OneProject.Desktop.ViewModels;
 
-using OneProject.Desktop.Theme.Themes;
+using OneProject.Desktop.Themes;
 
 public class MenuItemModel
 {

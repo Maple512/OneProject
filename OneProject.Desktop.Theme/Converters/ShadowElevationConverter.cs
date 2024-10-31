@@ -1,8 +1,8 @@
-namespace OneProject.Desktop.Theme.Converters;
+namespace OneProject.Desktop.Converters;
 
 using System;
 using System.Windows.Media.Effects;
-using OneProject.Desktop.Theme.Assists;
+using OneProject.Desktop.Assists;
 
 public class ShadowElevationConverter : IValueConverter
 {

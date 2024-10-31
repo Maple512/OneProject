@@ -1,8 +1,8 @@
-namespace OneProject.Desktop.Componets;
+namespace OneProject.Desktop.Components;
 
 using System.Windows.Controls;
 using System.Windows.Threading;
-using OneProject.Desktop.Theme.Themes;
+using OneProject.Desktop.Themes;
 using OneProject.Desktop.ViewModels;
 
 public partial class ConfirmWindow : UserControl

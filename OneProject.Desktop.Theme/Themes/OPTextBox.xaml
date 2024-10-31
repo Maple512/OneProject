@@ -2,8 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-                    xmlns:local="clr-namespace:OneProject.Desktop.Theme.Themes"
-                    xmlns:assists="clr-namespace:OneProject.Desktop.Theme.Assists"
+                    xmlns:local="clr-namespace:OneProject.Desktop.Themes"
+                    xmlns:assists="clr-namespace:OneProject.Desktop.Assists"
                     mc:Ignorable="d"
                     d:DesignHeight="450"
                     d:DesignWidth="800">
@@ -78,7 +78,7 @@
 
                                 <ContentPresenter x:Name="C_Prefix"
                                                   Grid.Column="0"
-                                                  Margin="0,0,2,0"
+                                                  Margin="5,0"
                                                   VerticalAlignment="Center"
                                                   TextElement.FontSize="{TemplateBinding FontSize}"
                                                   Content="{TemplateBinding PrefixContent}"
@@ -100,7 +100,7 @@
                                               VerticalScrollBarVisibility="Auto" />
                                 <ContentPresenter x:Name="C_Suffix"
                                                   Grid.Column="2"
-                                                  Margin="0,0,2,0"
+                                                  Margin="5,0"
                                                   VerticalAlignment="Center"
                                                   TextElement.FontSize="{TemplateBinding FontSize}"
                                                   Content="{TemplateBinding SuffixContent}"
@@ -108,13 +108,9 @@
 
                                 <!--Background="Transparent"-->
                                 <local:OPButton Grid.Column="3"
-                                                Type="Text"
-                                                Width="15"
-                                                Padding="0"
-                                                Height="15"
                                                 Icon="CloseCircle"
-                                                BorderThickness="0"
-                                                Margin="2,0,5,0"
+                                                Type="Icon"
+                                                Margin="5,0"
                                                 Command="{x:Static assists:ClearTextAssist.ClearCommand}"
                                                 Focusable="False"
                                                 Foreground="{TemplateBinding Foreground}"
@@ -127,15 +123,18 @@
                                 Opacity="0.5"
                                 TextElement.FontSize="10"
                                 IsHitTestVisible="False">
-                            <Grid>
+                            <Grid x:Name="G_Hint">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition />
                                     <ColumnDefinition Width="auto" />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Text="{TemplateBinding HintText}" />
+                                <TextBlock x:Name="T_HintText"
+                                           Text="{TemplateBinding HintText}"
+                                           Visibility="{TemplateBinding HintText,Converter={StaticResource NotNullToVisibleConverter}}" />
                                 <Grid Grid.Column="1"
                                       HorizontalAlignment="Right">
-                                    <TextBlock  Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=MaxLength,Converter={StaticResource GreaterThanZeroToVisibleConverter}}">
+                                    <TextBlock x:Name="T_Counter"
+                                               Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=MaxLength,Converter={StaticResource GreaterThanZeroToVisibleConverter}}">
                                         <TextBlock.Text>
                                             <MultiBinding StringFormat="{}{0} / {1}">
                                                 <Binding RelativeSource="{RelativeSource TemplatedParent}"
@@ -149,6 +148,21 @@
                             </Grid>
                         </Border>
                     </Grid>
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition SourceName="T_HintText"
+                                           Property="Visibility"
+                                           Value="Visible" />
+                                <Condition SourceName="T_Counter"
+                                           Property="Visibility"
+                                           Value="Visible" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="G_Hint"
+                                    Property="Visibility"
+                                    Value="Visible" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

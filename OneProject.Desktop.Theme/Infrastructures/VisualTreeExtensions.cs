@@ -1,4 +1,4 @@
-namespace OneProject.Desktop.Theme.Infrastructures;
+namespace OneProject.Desktop.Infrastructures;
 using System;
 using System.Collections.Generic;
 using System.Linq;

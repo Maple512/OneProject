@@ -2,7 +2,7 @@ namespace OneProject.Desktop.ViewModels;
 
 using System.Collections.ObjectModel;
 using OneProject.Desktop.Pages;
-using OneProject.Desktop.Theme.Themes;
+using OneProject.Desktop.Themes;
 
 public partial class MainWindowModel : ObservableObject
 {

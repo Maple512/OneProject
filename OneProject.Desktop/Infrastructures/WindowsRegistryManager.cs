@@ -21,6 +21,101 @@ public enum RegistryType
 
 public class WindowsRegistryManager
 {
+
+    /*
+文件右键
+
+[HKEY_CLASSES_ROOT\*\shell\Open with JetBrains Rider]
+"Icon"="D:\\Rider\\bin\\rider64.exe"
+@="Edit with JetBrains Rider"
+
+[HKEY_CLASSES_ROOT\*\shell\Open with JetBrains Rider\command]
+@="\"D:\\Rider\\bin\\rider64.exe\" \"%1\""
+
+目录（或桌面）右键
+[HKEY_CLASSES_ROOT\Directory\Background\shell\搜索 Everything...]
+"Icon"="E:\\Everything\\Everything.exe,0"
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\搜索 Everything...\command]
+@="\"E:\\Everything\\Everything.exe\" -path \"%V\""
+
+    //using var key = Registry.ClassesRoot.OpenSubKey("\\*\\shell\\Open with JetBrains Rider");
+
+        //var names = key.GetValueNames();
+
+        //var kind = key.GetValueKind("");
+
+        //var value1 = key.GetValue("");
+        //var value2 = key.GetValue("Icon");
+
+        //var subKeys = key.GetSubKeyNames();
+
+        //var command = key.OpenSubKey("command").GetValue("");
+*/
+    public static void AddToDirectory(string name, string icon, string command)
+    {
+        using var key = Registry.ClassesRoot.CreateSubKey("\\Directory\\Background\\shell", true);
+
+        var subKeys = key.GetSubKeyNames();
+
+        RegistryKey subKey;
+        if(subKeys.Contains(name))
+        {
+            subKey = key.OpenSubKey(name, true)!;
+        }
+        else
+        {
+            subKey = key.CreateSubKey(name, true);
+        }
+
+        subKey.SetValue(string.Empty, name);
+        subKey.SetValue("Icon", icon);
+
+        RegistryKey commandKey;
+        if(subKeys.Contains(name))
+        {
+            commandKey = key.OpenSubKey("command", true)!;
+        }
+        else
+        {
+            commandKey = key.CreateSubKey("command", true);
+        }
+
+        commandKey.SetValue(string.Empty, command);
+    }
+
+    public static void AddToFile(string name, string icon, string command)
+    {
+        using var key = Registry.ClassesRoot.CreateSubKey("\\*\\shell", true);
+
+        var subKeys = key.GetSubKeyNames();
+
+        RegistryKey subKey;
+        if(subKeys.Contains(name))
+        {
+            subKey = key.OpenSubKey(name, true)!;
+        }
+        else
+        {
+            subKey = key.CreateSubKey(name, true);
+        }
+
+        subKey.SetValue(string.Empty, name);
+        subKey.SetValue("Icon", icon);
+
+        RegistryKey commandKey;
+        if(subKeys.Contains(name))
+        {
+            commandKey = key.OpenSubKey("command", true)!;
+        }
+        else
+        {
+            commandKey = key.CreateSubKey("command", true);
+        }
+
+        commandKey.SetValue(string.Empty, command);
+    }
+
     public static Dictionary<string, object?> Search(string pattern)
     {
         var result = SearchRegistry(Registry.ClassesRoot, pattern);

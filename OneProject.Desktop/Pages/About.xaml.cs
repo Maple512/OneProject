@@ -13,7 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using OneProject.Desktop.Theme.Themes;
+using OneProject.Desktop.Themes;
 using OneProject.Desktop.ViewModels;
 
 public partial class About : UserControl

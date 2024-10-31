@@ -1,8 +1,8 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:themes="clr-namespace:OneProject.Desktop.Theme.Themes"
-                    xmlns:converters="clr-namespace:OneProject.Desktop.Theme.Converters"
-                    xmlns:assists="clr-namespace:OneProject.Desktop.Theme.Assists">
+                    xmlns:themes="clr-namespace:OneProject.Desktop.Themes"
+                    xmlns:converters="clr-namespace:OneProject.Desktop.Converters"
+                    xmlns:assists="clr-namespace:OneProject.Desktop.Assists">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="ThemeBase.xaml" />
@@ -161,6 +161,23 @@
                      Value="Text">
                 <Setter Property="Background"
                         Value="Transparent" />
+                <Setter Property="Foreground"
+                        Value="{DynamicResource Brush.B}" />
+                <Setter Property="BorderThickness"
+                        Value="0" />
+                <Setter Property="assists:ShadowElevationAssist.Elevation"
+                        Value="Se0" />
+            </Trigger>
+            <Trigger Property="Type"
+                     Value="Icon">
+                <Setter Property="Background"
+                        Value="Transparent" />
+                <Setter Property="Padding"
+                        Value="0" />
+                <Setter Property="Height"
+                        Value="{Binding RelativeSource={RelativeSource Self},Path=IconSize}" />
+                <Setter Property="Width"
+                        Value="{Binding RelativeSource={RelativeSource Self},Path=IconSize}" />
                 <Setter Property="Foreground"
                         Value="{DynamicResource Brush.B}" />
                 <Setter Property="BorderThickness"

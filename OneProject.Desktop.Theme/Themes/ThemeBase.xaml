@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib"
                     xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
-                    xmlns:converters="clr-namespace:OneProject.Desktop.Theme.Converters">
+                    xmlns:converters="clr-namespace:OneProject.Desktop.Converters">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="Colors.xaml" />
@@ -133,7 +133,10 @@
     <converters:DoubleToGridLengthConverter x:Key="DoubleToGridLengthConverter" />
     <converters:BrushRoundConverter x:Key="BrushRoundConverter" />
     <converters:GreaterThanToVisibleConverter x:Key="GreaterThanZeroToVisibleConverter" />
-
+    <converters:AnyToVisibleConverter x:Key="AnyVisibleConverter"
+                                      Value="Visibility.Visible" />
+    <converters:AllToVisibleConverter x:Key="AllVisibleConverter"
+                                      Value="Visibility.Visible" />
     <!--#endregion-->
 
 </ResourceDictionary>

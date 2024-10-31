@@ -1,4 +1,4 @@
-namespace OneProject.Desktop.Theme.Assists;
+namespace OneProject.Desktop.Assists;
 
 public static class ValidationAssist
 {

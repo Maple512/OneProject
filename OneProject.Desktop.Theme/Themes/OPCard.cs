@@ -1,7 +1,7 @@
-namespace OneProject.Desktop.Theme.Themes;
+namespace OneProject.Desktop.Themes;
 
 using System;
-using OneProject.Desktop.Theme.Infrastructures;
+using OneProject.Desktop.Infrastructures;
 
 [TemplatePart(Name = ClipBorderPartName, Type = typeof(Border))]
 public class OPCard : ContentControl

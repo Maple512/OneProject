@@ -1,4 +1,4 @@
-namespace OneProject.Desktop.Theme.Themes;
+namespace OneProject.Desktop.Themes;
 
 using System.ComponentModel;
 using System.Linq;
@@ -6,8 +6,8 @@ using System.Runtime.InteropServices;
 using System.Windows.Markup;
 using System.Windows.Media.Animation;
 using ControlzEx;
-using OneProject.Desktop.Theme.Assists;
-using OneProject.Desktop.Theme.Infrastructures;
+using OneProject.Desktop.Assists;
+using OneProject.Desktop.Infrastructures;
 
 /// <summary>
 /// Defines how the <see cref="PopupBox"/> popup is aligned to the toggle part of the control.

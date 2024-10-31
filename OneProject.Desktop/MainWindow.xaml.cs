@@ -3,11 +3,11 @@ namespace OneProject.Desktop;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using OneProject.Desktop.Componets;
+using OneProject.Desktop.Components;
 using OneProject.Desktop.Infrastructures;
 using OneProject.Desktop.Pages;
 using OneProject.Desktop.Theme;
-using OneProject.Desktop.Theme.Themes;
+using OneProject.Desktop.Themes;
 using OneProject.Desktop.ViewModels;
 
 public partial class MainWindow : OPWindow
@@ -20,8 +20,6 @@ public partial class MainWindow : OPWindow
     protected override void OnInitialized(EventArgs e)
     {
         base.OnInitialized(e);
-
-        NotificationManager.Initialization(P_NotificationBox);
 
         Title = nameof(OneProject);
 
@@ -58,6 +56,7 @@ public partial class MainWindow : OPWindow
             MenuItemModel.Create<WindowsRegistry>("注册表",IconKind.Windows_Registy),
             MenuItemModel.Create<Monitor>("监控",IconKind.Monitor),
             MenuItemModel.Create<WindowsInfo>("系统",IconKind.Windows),
+            MenuItemModel.Create<RightMouseButton>("右键菜单",IconKind.RightMouseButton),
             MenuItemModel.Create<About>("关于",IconKind.About),
         ];
 

@@ -1,7 +1,7 @@
 namespace OneProject.Desktop.Infrastructures;
 
 using CliWrap;
-using OneProject.Desktop.Componets;
+using OneProject.Desktop.Components;
 
 /// <summary>
 ///     通用命令
@@ -68,7 +68,7 @@ public static class RegularCommand
         {
             if(Uri.TryCreate(url, UriKind.Absolute, out _) == false)
             {
-                NotificationManager.AddNotification($"Not a valid URL: {url}", NotificationType.Warn);
+                NotificationManager.Notify($"Not a valid URL: {url}", NotificationType.Warn);
 
                 return;
             }

@@ -1,8 +1,8 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:converters="clr-namespace:OneProject.Desktop.Theme.Converters"
-                    xmlns:assists="clr-namespace:OneProject.Desktop.Theme.Assists"
-                    xmlns:themes="clr-namespace:OneProject.Desktop.Theme.Themes">
+                    xmlns:converters="clr-namespace:OneProject.Desktop.Converters"
+                    xmlns:assists="clr-namespace:OneProject.Desktop.Assists"
+                    xmlns:themes="clr-namespace:OneProject.Desktop.Themes">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="OPTextBlock.xaml" />

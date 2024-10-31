@@ -1,4 +1,4 @@
-namespace OneProject.Desktop.Theme.Colors;
+namespace OneProject.Desktop.Colors;
 
 public static class ColorHelper
 {
