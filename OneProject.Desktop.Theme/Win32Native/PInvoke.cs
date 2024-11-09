@@ -1,17 +1,11 @@
-namespace OneProject.Desktop.Win32Native;
+namespace Windows.Win32;
 
 using System.Runtime.InteropServices;
+using Windows.Win32.Graphics.Gdi;
 
-internal partial class UXTheme
+internal partial class PInvoke
 {
-    /// <summary>
-    /// 获取当前用户的首选沉浸式颜色集合
-    /// </summary>
-    /// <returns></returns>
-    [LibraryImport("uxtheme.dll", EntryPoint = "#98")]
-    [UnmanagedCallConv(CallConvs = new Type[] { typeof(System.Runtime.CompilerServices.CallConvStdcall) })]
-    public static partial uint GetImmersiveUserColorSetPreference([MarshalAs(UnmanagedType.Bool)] bool forceCheckRegistry, [MarshalAs(UnmanagedType.Bool)] bool skipCheckOnFail);
-
+    #region UXTheme
     /// <summary>
     /// 获取沉浸式颜色集合的数量
     /// </summary>
@@ -42,6 +36,15 @@ internal partial class UXTheme
     public static partial uint GetImmersiveColorTypeFromName(nint name);
 
     /// <summary>
+    /// 获取当前用户的首选沉浸式颜色集合
+    /// </summary>
+    /// <returns></returns>
+    [LibraryImport("uxtheme.dll", EntryPoint = "#98")]
+    [UnmanagedCallConv(CallConvs = new Type[] { typeof(System.Runtime.CompilerServices.CallConvStdcall) })]
+    public static partial uint GetImmersiveUserColorSetPreference([MarshalAs(UnmanagedType.Bool)] bool forceCheckRegistry,
+        [MarshalAs(UnmanagedType.Bool)] bool skipCheckOnFail);
+
+    /// <summary>
     /// 根据索引获取沉浸式颜色的名称
     /// </summary>
     /// <param name="index"></param>
@@ -49,4 +52,19 @@ internal partial class UXTheme
     [LibraryImport("uxtheme.dll", EntryPoint = "#100")]
     [UnmanagedCallConv(CallConvs = [typeof(System.Runtime.CompilerServices.CallConvStdcall)])]
     public static partial nint GetImmersiveColorNamedTypeByIndex(uint index);
+    #endregion
+
+    public static unsafe MONITORINFO GetMonitorInfo(IntPtr monitor)
+    {
+        MONITORINFO monitorInfo = default;
+
+        monitorInfo.cbSize = (uint)Marshal.SizeOf<MONITORINFO>();
+
+        if(GetMonitorInfo(new HMONITOR(monitor), ref monitorInfo))
+        {
+            return monitorInfo;
+        }
+
+        return default;
+    }
 }

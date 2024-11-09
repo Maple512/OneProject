@@ -1,12 +1,16 @@
 namespace OneProject.Desktop.ViewModels;
 
+using System.Collections.Immutable;
 using System.Linq;
 using Humanizer;
 using OneProject.Desktop.Components;
 using OneProject.Desktop.Infrastructures;
+using OneProject.Desktop.Pages;
 
-public partial class WindowsRegistryModel : ModelBase<WindowsRegistryModel>
+public partial class WindowsRegistryModel : ModelBase<WindowsRegistry>
 {
+    static string Folder = Path.Combine(GlobalSettings.TempPath, "RegBackupFiles");
+
     [ObservableProperty]
     private string? search;
 
@@ -20,9 +24,25 @@ public partial class WindowsRegistryModel : ModelBase<WindowsRegistryModel>
     private DateTime? lastQueryAt;
     private readonly List<SystemRestoreModel>? points = null;
 
+    [ObservableProperty]
+    private IEnumerable<FileInfo> _backupFiles = [];
+
     public WindowsRegistryModel()
     {
         Search = "使用 Visual Studio 打开";
+
+        Dispatcher.BeginInvoke(QueryBackupFiles);
+    }
+
+    void QueryBackupFiles()
+    {
+        if(Directory.Exists(Folder) == false)
+        {
+            return;
+        }
+
+        BackupFiles = Directory.EnumerateFiles(Folder, "*.reg")
+            .Select(x => new FileInfo(x)).ToImmutableList();
     }
 
     private List<SystemRestoreModel> GetPoints()
@@ -40,18 +60,20 @@ public partial class WindowsRegistryModel : ModelBase<WindowsRegistryModel>
     {
         var watch = Stopwatch.StartNew();
 
-        var file = FileHelper.TryGetFileInfo(Path.Combine(GlobalSettings.TempPath, $"Registy_backup_{DateTime.Now:yyyyMMddHHmm}.reg"));
+        var file = FileHelper.TryGetFileInfo(Path.Combine(Folder, $"{DateTime.Now:yyyy_MM_dd_HH-mm}.reg"));
 
         await WindowsRegistryManager.ExportAllAsync(file);
 
         watch.Stop();
 
-        ConfirmWindow.Open(new ConfirmViewModel($"已完成备份，用时：{watch.Elapsed.Humanize()}")
+        ConfirmWindow.Open(new ConfirmModel($"已完成备份，用时：{watch.Elapsed.Humanize()}")
         {
             OkText = "打开目录",
             OkCommand = RegularCommand.OpenExplorer,
             OkCommandParameter = file.FullName,
         });
+
+        QueryBackupFiles();
     }
 
     [RelayCommand]
@@ -92,23 +114,23 @@ public partial class WindowsRegistryModel : ModelBase<WindowsRegistryModel>
     [RelayCommand]
     private void Delete(bool isAll)
     {
-        var points = GetPoints();
+        //var points = GetPoints();
 
-        if(isAll && points.Count != 0)
-        {
-            foreach(var point in points)
-            {
-                SystemRestoreManager.Delete(point.SequenceNumber);
-            }
+        //if(isAll && points.Count != 0)
+        //{
+        //    foreach(var point in points)
+        //    {
+        //        SystemRestoreManager.Delete(point.SequenceNumber);
+        //    }
 
-            return;
-        }
+        //    return;
+        //}
 
-        if(!(PointSequence > 0) || !points.Any(x => x.SequenceNumber == PointSequence))
-        {
-            return;
-        }
+        //if(!(PointSequence > 0) || !points.Any(x => x.SequenceNumber == PointSequence))
+        //{
+        //    return;
+        //}
 
-        SystemRestoreManager.Delete((uint)PointSequence);
+        //SystemRestoreManager.Delete((uint)PointSequence);
     }
 }

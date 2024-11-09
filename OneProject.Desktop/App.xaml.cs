@@ -9,7 +9,6 @@ using System.Windows.Interop;
 using System.Windows.Threading;
 using Microsoft.Extensions.DependencyInjection;
 using OneProject.Desktop.Infrastructures;
-using OneProject.Desktop.Theme;
 using Serilog;
 using Serilog.Core;
 using Serilog.Events;
@@ -22,18 +21,12 @@ public partial class App : Application
     private const string OutputTemplate =
         "{Timestamp:yyyy-MM-dd HH:mm:ss} {SourceContext}[{Level:u3}]: {Message:lj}{NewLine}{Exception}";
 
-    private static bool IsAlreadyRunning;
     private static Mutex? _mutex;
     private static MemoryMappedFile? _memoryFile;
+
     public App()
     {
-        _mutex = new Mutex(true, Name, out var createdNew);
-
-        IsAlreadyRunning = !createdNew;
-
         Services = ConfigureServices();
-
-        var resource = Current.Resources;
 
         InitializeComponent();
 
@@ -49,12 +42,21 @@ public partial class App : Application
 
     protected override void OnStartup(StartupEventArgs e)
     {
-        if(IsAlreadyRunning)
+        GlobalSettings.Load(Log.Logger);
+
+        if(GlobalSettings.Instance.Windows.AllowMultipleMainWindows)
         {
-            if(TryShowMainWindow())
+            _mutex = new Mutex(true, Name, out var createdNew);
+
+            if(!createdNew)
             {
-                return;
+                if(TryShowMainWindow())
+                {
+                    return;
+                }
             }
+
+            SaveProcessId();
         }
 
         base.OnStartup(e);
@@ -62,19 +64,18 @@ public partial class App : Application
         // 默认指定硬件加速
         RenderOptions.ProcessRenderMode = RenderMode.Default;
 
-        GlobalSettings.Load(Log.Logger);
-
-        SaveProcessId();
-
         var theme = GlobalSettings.Instance.Theme;
 
         ThemeManager.Initialize(this, theme.Background, theme.IsLight);
 
         Log.Logger.Information($"Application Start, Args: {e.Args.JoinAsString()}");
 
-        Task.Run(() => Services.GetRequiredService<VersionChecker>().GetLatestVersionAsync());
+        Task.Run(async () =>
+        {
+            WindowsThemeListener.Listen(Current);
 
-        Task.Run(() => WindowsThemeListener.Listen(Current));
+            await Services.GetRequiredService<VersionChecker>().GetLatestVersionAsync();
+        });
     }
 
     protected override void OnExit(ExitEventArgs e)
@@ -149,13 +150,6 @@ public partial class App : Application
 
         services.AddHttpClient();
 
-        //services.AddLogging(builder =>
-        //{
-        //    builder.AddSerilog(Log.Logger);
-        //});
-
-        //services.AddDownload();
-
         services.AddTransient<VersionChecker>();
 
         return services.BuildServiceProvider();
@@ -163,7 +157,7 @@ public partial class App : Application
 
     private static Logger ConfigureLogger()
         => new LoggerConfiguration()
-            .Enrich.FromLogContext()
+            //.Enrich.FromLogContext()
 #if DEBUG
             .MinimumLevel.Debug()
 #else

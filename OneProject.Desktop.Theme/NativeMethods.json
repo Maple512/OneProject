@@ -1,0 +1,9 @@
+{
+  "$schema": "https://aka.ms/CsWin32.schema.json",
+  "comInterop":{
+    "useIntPtrForComOutPointers": true,
+  },
+  "emitSingleFile": false,
+  "wideCharOnly": true,
+  "public": false
+}

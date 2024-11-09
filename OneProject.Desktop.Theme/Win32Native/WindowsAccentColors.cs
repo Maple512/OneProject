@@ -16,7 +16,7 @@ public static class WindowsThemeManger
     /// <returns></returns>
     private static uint GetCount()
     {
-        _colorCount ??= UXTheme.GetImmersiveColorSetCount();
+        _colorCount ??= PInvoke.GetImmersiveColorSetCount();
 
         return _colorCount.Value;
     }
@@ -29,7 +29,7 @@ public static class WindowsThemeManger
     {
         if(_userIndex is null)
         {
-            _userIndex = UXTheme.GetImmersiveUserColorSetPreference(false, false);
+            _userIndex = PInvoke.GetImmersiveUserColorSetPreference(false, false);
 
             if(_userIndex > GetCount())
             {
@@ -46,7 +46,11 @@ public static class WindowsThemeManger
 
         var type = GetColorType(colorName);
 
-        var nativeColor = UXTheme.GetImmersiveColorFromColorSetEx(
+        //PInvoke.GetWindowTheme_SafeHandle(HWND.HWND_DESKTOP);
+
+        //PInvoke.dw
+
+        var nativeColor = PInvoke.GetImmersiveColorFromColorSetEx(
                 index,
                 type,
                 false,
@@ -98,7 +102,7 @@ public static class WindowsThemeManger
         {
             name = Marshal.StringToHGlobalUni("Immersive" + colorName);
 
-            return UXTheme.GetImmersiveColorTypeFromName(name);
+            return PInvoke.GetImmersiveColorTypeFromName(name);
         }
         finally
         {

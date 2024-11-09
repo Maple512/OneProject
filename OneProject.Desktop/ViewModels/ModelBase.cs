@@ -14,7 +14,8 @@ public partial class ModelBase<TModel> : ObservableValidator
     protected ModelBase()
     {
         Services = App.Current.Services;
-        Dispatcher = Application.Current.Dispatcher;
+
+        Dispatcher = App.Current.Dispatcher;
 
         Logger = Services.GetRequiredService<ILogger<TModel>>();
     }

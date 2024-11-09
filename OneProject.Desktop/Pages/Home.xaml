@@ -15,11 +15,17 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <themes:OPCard Title="首页"
+                   Height="1000"
                    Icon="Home">
         <themes:OPCard.TitleAction>
             <themes:OPStackPanel>
                 <themes:OPButton x:Name="SendMessageBtn"
-                                 Content="发个消息" />
+                                 Content="发个消息"
+                                 Click="OnSendMessageBtnClick">
+                    <themes:OPButton.ToolTip>
+                        <themes:OPToolTip Content="发个消息哦:)" />
+                    </themes:OPButton.ToolTip>
+                </themes:OPButton>
             </themes:OPStackPanel>
         </themes:OPCard.TitleAction>
         <Grid Grid.IsSharedSizeScope="True">
@@ -36,14 +42,29 @@
 
             <themes:OPCard Grid.Column="0"
                            Grid.Row="0"
-                           Title="按钮">
+                           Title="按钮"
+                           x:Name="C_Buttons">
+                <themes:OPCard.TitleAction>
+                    <themes:OPStackPanel>
+                        <themes:OPButton Content="Loading"
+                                         Click="ShowLoadingAnimation" />
+                    </themes:OPStackPanel>
+                </themes:OPCard.TitleAction>
                 <themes:OPStackPanel Orientation="Vertical">
                     <themes:OPButton Content="Defaults Button"
-                                     Type="Default" />
+                                     Type="Default"
+                                     ToolTip="3213123" />
                     <themes:OPButton Content="Primary Button"
                                      Type="Primary" />
                     <themes:OPButton Content="Text Button"
                                      Type="Text" />
+                    <themes:OPStackPanel>
+                        <themes:OPToggleButton />
+                        <themes:OPToggleButton AContent="开"
+                                               ABackground="Green"
+                                               BContent="关"
+                                               BBackground="OrangeRed" />
+                    </themes:OPStackPanel>
                 </themes:OPStackPanel>
             </themes:OPCard>
             <themes:OPCard Grid.Column="1"
@@ -61,6 +82,27 @@
                                       MaxLength="50"
                                       UndoLimit="5" />
                 </themes:OPStackPanel>
+            </themes:OPCard>
+
+            <themes:OPCard Grid.Column="0"
+                           Grid.Row="1"
+                           Title="按钮">
+                <StackPanel Orientation="Horizontal">
+                    <CheckBox Content="多选1" />
+                    <CheckBox Content="多选2" />
+                    <themes:OPComboBox IsEditable="True">
+                        <ComboBoxItem Content="Android" />
+                        <ComboBoxItem Content="iOS" />
+                        <ComboBoxItem Content="Linux" />
+                        <ComboBoxItem Content="Windows" />
+                    </themes:OPComboBox>
+                    <ComboBox IsEditable="True">
+                        <ComboBoxItem Content="Android" />
+                        <ComboBoxItem Content="iOS" />
+                        <ComboBoxItem Content="Linux" />
+                        <ComboBoxItem Content="Windows" />
+                    </ComboBox>
+                </StackPanel>
             </themes:OPCard>
         </Grid>
 

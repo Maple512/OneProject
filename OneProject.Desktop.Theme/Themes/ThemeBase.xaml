@@ -114,7 +114,7 @@
     <system:Double x:Key="Number.Window.Height"
                    po:Freeze="true">35</system:Double>
     <system:Double x:Key="Number.Disabled.Opacity"
-                   po:Freeze="true">.5</system:Double>
+                   po:Freeze="true">.6</system:Double>
     <system:Double x:Key="Number.Pressed.Opacity"
                    po:Freeze="true">.9</system:Double>
     <system:Double x:Key="Number.IconSize"
@@ -126,8 +126,10 @@
     <!--#endregion-->
 
     <!--#region Converter -->
-    <converters:NullToVisibleConverter x:Key="NullToVisibleConverter" />
-    <converters:NotNullToVisibleConverter x:Key="NotNullToVisibleConverter" />
+    <converters:NullToVisibleConverter x:Key="NullToVisibleConverter"
+                                       po:Freeze="True" />
+    <converters:NotNullToVisibleConverter x:Key="NotNullToVisibleConverter"
+                                          po:Freeze="True" />
     <converters:TrueToVisibleConverter x:Key="TrueToVisibleConverter" />
     <converters:FalseToVisibleConverter x:Key="FalseToVisibleConverter" />
     <converters:DoubleToGridLengthConverter x:Key="DoubleToGridLengthConverter" />
@@ -137,6 +139,17 @@
                                       Value="Visibility.Visible" />
     <converters:AllToVisibleConverter x:Key="AllVisibleConverter"
                                       Value="Visibility.Visible" />
+    <converters:MathConverter x:Key="MathAddConverter"
+                              Operation="Add" />
+    <converters:MathConverter x:Key="MathSubtractConverter"
+                              Operation="Subtract" />
+    <converters:MathConverter x:Key="MathMultiplyConverter"
+                              Operation="Multiply" />
+    <converters:MathConverter x:Key="MathDivisionConverter"
+                              Operation="Divide" />
+    <converters:MathConverter x:Key="MathPowConverter"
+                              Operation="Pow" />
+    <converters:PointValueConverter x:Key="PointValueConverter" />
     <!--#endregion-->
 
 </ResourceDictionary>

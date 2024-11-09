@@ -1,10 +1,20 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/OneProject.Desktop.Theme;component/Themes/ThemeBase.xaml" />
         <ResourceDictionary Source="pack://application:,,,/OneProject.Desktop.Theme;component/Themes/OPIcon.xaml" />
         <ResourceDictionary Source="pack://application:,,,/OneProject.Desktop.Theme;component/Themes/Shadows.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/OneProject.Desktop.Theme;component/Themes/OPCheckBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/OneProject.Desktop.Theme;component/Themes/OPScrollBar.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/OneProject.Desktop.Theme;component/Themes/OPScrollViewer.xaml" />
     </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type CheckBox}"
+           BasedOn="{StaticResource OPCheckBox}" />
+
+    <Style TargetType="ScrollBar"
+           BasedOn="{StaticResource OPScrollBar}" />
 
     <Style x:Key="OPSeparator"
            TargetType="{x:Type Separator}">
@@ -29,4 +39,5 @@
             </Setter.Value>
         </Setter>
     </Style>
+
 </ResourceDictionary>

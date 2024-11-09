@@ -2,6 +2,7 @@ namespace OneProject.Desktop.Themes;
 
 using System.Windows;
 using System.Windows.Input;
+using ControlzEx;
 using OneProject.Desktop.Components;
 using OneProject.Desktop.Infrastructures;
 
@@ -45,6 +46,8 @@ public class OPWindow : Window
             manual = SizeToContent;
         };
 
+        //this.Loaded += (s, e) => { KeyboardNavigationEx.Focus(this); };
+
         ContentRendered += (sender, args) =>
         {
             SizeToContent = SizeToContent.Manual;
@@ -65,12 +68,12 @@ public class OPWindow : Window
         };
     }
 
-    protected override void OnMouseDown(MouseButtonEventArgs e)
-    {
-        base.OnMouseDown(e);
+    //protected override void OnMouseDown(MouseButtonEventArgs e)
+    //{
+    //    base.OnMouseDown(e);
 
-        Keyboard.ClearFocus();
-    }
+    //    //Keyboard.ClearFocus();
+    //}
 
     public object TitleMenu
     {

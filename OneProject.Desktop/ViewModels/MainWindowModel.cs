@@ -10,15 +10,15 @@ public partial class MainWindowModel : ObservableObject
     private int selectedIndex;
 
     [ObservableProperty]
-    private MenuItemModel selectedItem;
+    private PageItemModel selectedItem;
 
-    public MainWindowModel(ObservableCollection<MenuItemModel> pages)
+    public MainWindowModel(ObservableCollection<PageItemModel> pages)
     {
-        Menus = pages;
+        Pages = pages;
         SelectedItem = pages[0];
     }
 
-    public ObservableCollection<MenuItemModel> Menus { get; }
+    public ObservableCollection<PageItemModel> Pages { get; }
 
     [RelayCommand]
     static void OpenAboutWindow()

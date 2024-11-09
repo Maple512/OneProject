@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+namespace OneProject.Desktop.Themes;
+using OneProject.Desktop.Infrastructures;
 
-namespace OneProject.Desktop.Themes
+public class OPCheckBox : CheckBox
 {
-    public class OPCheckBox
+    static OPCheckBox()
     {
+        DefaultStyleKeyProperty.OverrideMetadata<OPCheckBox>();
     }
 }

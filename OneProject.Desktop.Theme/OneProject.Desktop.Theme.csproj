@@ -10,6 +10,14 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <None Remove="NativeMethods.txt" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <AdditionalFiles Include="NativeMethods.txt" />
+    </ItemGroup>
+
+    <ItemGroup>
         <Using Include="System.Windows" />
         <Using Include="System.Windows.Controls" />
         <Using Include="System.Windows.Controls.Primitives" />
@@ -18,29 +26,27 @@
         <Using Include="System.Windows.Input" />
         <Using Include="System.Windows.Media" />
         <Using Include="System.Windows.Media.Colors" Alias="SysColors" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <PackageReference Include="ControlzEx" />
-        <PackageReference Include="Humanizer.Core" />
+        <Using Include="Windows.Win32" />
+        <Using Include="Windows.Win32.Foundation" />
     </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="FastEnum.Extensions.Generator">
             <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+        <PackageReference Include="Microsoft.Windows.CsWin32">
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="ControlzEx" />
+        <PackageReference Include="Humanizer.Core" />
         <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" />
     </ItemGroup>
 
     <ItemGroup>
         <ProjectReference Include="..\OneProject\OneProject.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <Compile Update="Components\NotificationBox.xaml.cs">
-            <SubType>Code</SubType>
-        </Compile>
     </ItemGroup>
 
 </Project>

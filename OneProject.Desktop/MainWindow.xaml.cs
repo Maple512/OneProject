@@ -6,7 +6,7 @@ using System.ComponentModel;
 using OneProject.Desktop.Components;
 using OneProject.Desktop.Infrastructures;
 using OneProject.Desktop.Pages;
-using OneProject.Desktop.Theme;
+
 using OneProject.Desktop.Themes;
 using OneProject.Desktop.ViewModels;
 
@@ -28,9 +28,6 @@ public partial class MainWindow : OPWindow
         LoadMenu();
     }
 
-    //private void OnSelectedItemChanged(object sender, DependencyPropertyChangedEventArgs e)
-    //    => MainScrollViewer.ScrollToHome();
-
     protected override void OnClosing(CancelEventArgs e)
     {
         GlobalSettings.Instance.Windows.MainWindowState = WindowState;
@@ -50,14 +47,16 @@ public partial class MainWindow : OPWindow
 
     void LoadMenu()
     {
-        ObservableCollection<MenuItemModel> menus =
+        ObservableCollection<PageItemModel> menus =
         [
-            MenuItemModel.Create<Home>("首页",IconKind.Home),
-            MenuItemModel.Create<WindowsRegistry>("注册表",IconKind.Windows_Registy),
-            MenuItemModel.Create<Monitor>("监控",IconKind.Monitor),
-            MenuItemModel.Create<WindowsInfo>("系统",IconKind.Windows),
-            MenuItemModel.Create<RightMouseButton>("右键菜单",IconKind.RightMouseButton),
-            MenuItemModel.Create<About>("关于",IconKind.About),
+            PageItemModel.Create<Home>("首页",IconKind.Home),
+            PageItemModel.Create<Home>("首页",IconKind.Home),
+            PageItemModel.Create<WindowsRegistry>("注册表",IconKind.Windows_Registy),
+            PageItemModel.Create<Monitor>("监控",IconKind.Monitor),
+            PageItemModel.Create<WindowsInfo>("系统",IconKind.Windows),
+            PageItemModel.Create<RightMouseButton>("右键菜单",IconKind.RightMouseButton),
+            PageItemModel.Create<Setting>("设置",IconKind.Setting),
+            PageItemModel.Create<About>("关于",IconKind.About),
         ];
 
         DataContext = new MainWindowModel(menus);
@@ -89,5 +88,10 @@ public partial class MainWindow : OPWindow
                 FontFamily = font;
             }
         }
+    }
+
+    private void OnSelectedItemChanged(object sender, DependencyPropertyChangedEventArgs e)
+    {
+        MainScrollViewer.ScrollToHome();
     }
 }

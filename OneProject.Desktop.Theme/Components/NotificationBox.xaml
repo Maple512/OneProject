@@ -28,6 +28,7 @@
                       Tag="{Binding Id}"
                       Margin="0,5"
                       Height="{StaticResource Number.Height}"
+                      Background="Transparent"
                       SizeChanged="OnSizeChanged">
                     <Grid.RenderTransform>
                         <TransformGroup>

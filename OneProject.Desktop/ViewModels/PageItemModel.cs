@@ -2,10 +2,10 @@ namespace OneProject.Desktop.ViewModels;
 
 using OneProject.Desktop.Themes;
 
-public class MenuItemModel
+public class PageItemModel
 {
     private object? _content;
-    private MenuItemModel(string name, Type contentType, IconKind? icon = null, object? data = null)
+    private PageItemModel(string name, Type contentType, IconKind? icon = null, object? data = null)
     {
         Title = name;
         ContentType = contentType;
@@ -21,11 +21,11 @@ public class MenuItemModel
 
     public object? Data { get; }
 
-    public ICollection<MenuItemModel>? SubItems { get; }
+    public ICollection<PageItemModel>? SubItems { get; }
 
     public object? Content => _content ??= CreateContent();
 
-    public static MenuItemModel Create<T>(string name, IconKind? icon = null, object? dataContent = null)
+    public static PageItemModel Create<T>(string name, IconKind? icon = null, object? dataContent = null)
     => new(name, typeof(T), icon, dataContent);
 
     private object? CreateContent()

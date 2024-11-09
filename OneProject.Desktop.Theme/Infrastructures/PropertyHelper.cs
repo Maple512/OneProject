@@ -136,7 +136,7 @@ public static class PropertyHelper
         string property,
         PropertyMetadata metadata,
         ValidateValueCallback? validateValueCallback = null)
-        => DependencyProperty.Register(property, typeof(TProperty), typeof(TOwner), metadata);
+        => DependencyProperty.Register(property, typeof(TProperty), typeof(TOwner), metadata, validateValueCallback);
 
     #endregion
 

@@ -1,6 +1,7 @@
 namespace OneProject.Desktop;
 
 using System.Runtime.InteropServices;
+using Humanizer;
 
 [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
 public record GlobalSettings
@@ -64,6 +65,8 @@ public record GlobalSettings
 
     public class WindowSettings
     {
+        public bool AllowMultipleMainWindows { get; set; } = false;
+
         public WindowState MainWindowState { get; set; }
 
         public double MainWindowHeight { get; set; } = 600D;

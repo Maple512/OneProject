@@ -1,12 +1,16 @@
 namespace OneProject.Desktop.ViewModels;
 
-public class ConfirmViewModel : ModelBase<ConfirmViewModel>
+using OneProject.Desktop.Components;
+
+public class ConfirmModel : ModelBase<ConfirmWindow>
 {
     public string Title { get; init; } = "提示";
 
     public string Message { get; }
 
-    public ConfirmViewModel(string message) => Message = Check.NotNullOrWhiteSpace(message);
+    public ConfirmModel(string message) => Message = Check.NotNullOrWhiteSpace(message);
+
+    public bool ShowCancelButton { get; set; } = true;
 
     public string? CancelText { get; init; } = "取消";
 

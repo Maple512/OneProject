@@ -1,4 +1,4 @@
-namespace OneProject.Desktop.Theme;
+namespace OneProject.Desktop;
 
 public interface IThemeResourceDictionary
 {

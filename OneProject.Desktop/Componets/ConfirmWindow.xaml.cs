@@ -12,12 +12,12 @@ public partial class ConfirmWindow : UserControl
         InitializeComponent();
     }
 
-    public static void Open(ConfirmViewModel model)
+    public static void Open(ConfirmModel model)
     {
-        Dispatcher.CurrentDispatcher.BeginInvoke(static (ConfirmViewModel data) => OpenCore(data), model);
+        Dispatcher.CurrentDispatcher.BeginInvoke(static (ConfirmModel data) => OpenCore(data), model);
     }
 
-    private static void OpenCore(ConfirmViewModel model)
+    private static void OpenCore(ConfirmModel model)
     {
         var confirm = new ConfirmWindow();
 

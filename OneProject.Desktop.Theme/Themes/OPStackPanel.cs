@@ -167,7 +167,7 @@ public class OPStackPanel : Panel, IScrollInfo, IStackMeasure
     {
         EnsureScrollData();
         var scrollX = ValidateInputOffset(offset, "HorizontalOffset");
-        if(!DoubleUtil.AreClose(scrollX, _scrollData._offset.X))
+        if(!scrollX.AreClose(_scrollData._offset.X))
         {
             _scrollData._offset.X = scrollX;
             InvalidateMeasure();
@@ -181,7 +181,7 @@ public class OPStackPanel : Panel, IScrollInfo, IStackMeasure
     {
         EnsureScrollData();
         var scrollY = ValidateInputOffset(offset, "VerticalOffset");
-        if(!DoubleUtil.AreClose(scrollY, _scrollData._offset.Y))
+        if(!scrollY.AreClose(_scrollData._offset.Y))
         {
             _scrollData._offset.Y = scrollY;
             InvalidateMeasure();
@@ -233,7 +233,7 @@ public class OPStackPanel : Panel, IScrollInfo, IStackMeasure
         newOffset.X = CoerceOffset(newOffset.X, _scrollData._extent.Width, _scrollData._viewport.Width);
         newOffset.Y = CoerceOffset(newOffset.Y, _scrollData._extent.Height, _scrollData._viewport.Height);
 
-        if(!DoubleUtil.AreClose(newOffset, _scrollData._offset))
+        if(!newOffset.AreClose(_scrollData._offset))
         {
             _scrollData._offset = newOffset;
             InvalidateMeasure();
@@ -269,7 +269,7 @@ public class OPStackPanel : Panel, IScrollInfo, IStackMeasure
     ///     DependencyProperty for <see cref="Orientation" /> property.
     /// </summary>
     public static readonly DependencyProperty OrientationProperty
-        = PropertyHelper.Register<Orientation, OPStackPanel>(nameof(Orientation), Orientation.Vertical,
+        = PropertyHelper.Register<Orientation, OPStackPanel>(nameof(Orientation), Orientation.Horizontal,
             FrameworkPropertyMetadataOptions.AffectsMeasure,
     OnSizeChanged, IsValidOrientation);
 
@@ -580,7 +580,7 @@ public class OPStackPanel : Panel, IScrollInfo, IStackMeasure
             if(IsScrolling && lastViewport == -1 && i >= firstViewport)
             {
                 logicalVisibleSpace -= childLogicalSize;
-                if(DoubleUtil.LessThanOrClose(logicalVisibleSpace, 0.0))
+                if(logicalVisibleSpace.LessThanOrClose(0.0))
                 {
                     lastViewport = i;
                 }
@@ -632,7 +632,7 @@ public class OPStackPanel : Panel, IScrollInfo, IStackMeasure
                 }
 
                 // If we have run out of room, break.
-                if(DoubleUtil.LessThan(projectedLogicalVisibleSpace, 0.0))
+                if(projectedLogicalVisibleSpace.LessThan(0.0))
                 {
                     break;
                 }
@@ -647,7 +647,7 @@ public class OPStackPanel : Panel, IScrollInfo, IStackMeasure
 
             // We are conservative when estimating a viewport, not including the last element in case it is only partially visible.
             // We want to count it if it is fully visible (>= 0 space remaining) or the only element in the viewport.
-            if(logicalViewport == 0 || DoubleUtil.GreaterThanOrClose(logicalVisibleSpace, 0.0))
+            if(logicalViewport == 0 || logicalVisibleSpace.GreaterThanOrClose(0.0))
             {
                 logicalViewport++;
             }
@@ -802,9 +802,9 @@ public class OPStackPanel : Panel, IScrollInfo, IStackMeasure
 
         Debug.Assert(measureElement.IsScrolling);
 
-        fValid &= DoubleUtil.AreClose(viewport, scrollData.Viewport);
-        fValid &= DoubleUtil.AreClose(extent, scrollData.Extent);
-        fValid &= DoubleUtil.AreClose(offset, scrollData.ComputedOffset);
+        fValid &= viewport.AreClose(scrollData.Viewport);
+        fValid &= extent.AreClose(scrollData.Extent);
+        fValid &= offset.AreClose(scrollData.ComputedOffset);
         scrollData.Offset = offset;
 
         if(!fValid)
@@ -946,7 +946,7 @@ public class OPStackPanel : Panel, IScrollInfo, IStackMeasure
             var nextChildSize = fHorizontal ? childDesiredSize.Width : childDesiredSize.Height;
             var viewportSpace = _scrollData._physicalViewport - nextChildSize;
             var i = childIndex;
-            while(i > 0 && DoubleUtil.GreaterThanOrClose(viewportSpace, 0.0))
+            while(i > 0 && viewportSpace.GreaterThanOrClose(0.0))
             {
                 i--;
                 childDesiredSize = InternalChildren[i].DesiredSize;
@@ -955,7 +955,7 @@ public class OPStackPanel : Panel, IScrollInfo, IStackMeasure
                 viewportSpace -= nextChildSize;
             }
 
-            if(i != childIndex && DoubleUtil.LessThan(viewportSpace, 0.0))
+            if(i != childIndex && viewportSpace.LessThan(0.0))
             {
                 childOffsetWithinViewport -= nextChildSize;
                 i++;
@@ -1155,8 +1155,8 @@ public class OPStackPanel : Panel, IScrollInfo, IStackMeasure
         //       "Below viewport" = childTop below viewportTop, childBottom below viewportBottom
         // These child thus may overlap with the viewport, but will scroll the same direction/
 
-        var fAbove = DoubleUtil.LessThan(topChild, topView) && DoubleUtil.LessThan(bottomChild, bottomView);
-        var fBelow = DoubleUtil.GreaterThan(bottomChild, bottomView) && DoubleUtil.GreaterThan(topChild, topView);
+        var fAbove = topChild.LessThan(topView) && bottomChild.LessThan(bottomView);
+        var fBelow = bottomChild.GreaterThan(bottomView) && topChild.GreaterThan(topView);
         var fLarger = bottomChild - topChild > bottomView - topView;
 
         // Handle Cases:  1 & 4 above

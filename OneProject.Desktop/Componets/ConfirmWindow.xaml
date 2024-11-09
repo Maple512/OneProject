@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:OneProject.Desktop.Components"
              xmlns:viewmodels="clr-namespace:OneProject.Desktop.ViewModels"
              xmlns:themes="http://github.com/maple512/oneproject.desktop/themes"
-             d:DataContext="{d:DesignInstance Type=viewmodels:ConfirmViewModel}"
+             d:DataContext="{d:DesignInstance Type=viewmodels:ConfirmModel}"
              mc:Ignorable="d"
              d:DesignHeight="450"
              d:DesignWidth="800">

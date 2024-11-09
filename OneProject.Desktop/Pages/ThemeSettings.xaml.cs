@@ -1,4 +1,4 @@
-﻿namespace OneProject.Desktop.Pages;
+namespace OneProject.Desktop.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +17,9 @@ using System.Windows.Shapes;
 /// <summary>
 /// Theme.xaml 的交互逻辑
 /// </summary>
-public partial class Theme : UserControl
+public partial class ThemeSettings : UserControl
 {
-    public Theme()
+    public ThemeSettings()
     {
         InitializeComponent();
     }

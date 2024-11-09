@@ -39,6 +39,15 @@ public class WindowsRegistryManager
 [HKEY_CLASSES_ROOT\Directory\Background\shell\搜索 Everything...\command]
 @="\"E:\\Everything\\Everything.exe\" -path \"%V\""
 
+    [HKEY_CLASSES_ROOT\Directory\shell\PotPlayer.Enqueue]
+@="添加到 PotPlayer 列表(&U)"
+"Icon"="E:\\PotPlayer\\PotPlayerMini64.exe"
+
+[HKEY_CLASSES_ROOT\Directory\shell\PotPlayer.Enqueue\Command]
+@="\"E:\\PotPlayer\\PotPlayerMini64.exe\" \"%1\"  /Add"
+
+[HKEY_CLASSES_ROOT\Directory\shell\PotPlayer.Enqueue\DropTarget]
+"Clsid"="{6712D17C-CEB6-4886-9641-427AF3D488B7}"
     //using var key = Registry.ClassesRoot.OpenSubKey("\\*\\shell\\Open with JetBrains Rider");
 
         //var names = key.GetValueNames();

@@ -1,10 +1,6 @@
 namespace OneProject.Desktop.Infrastructures;
 
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 internal static class DpiHelper
 {
@@ -21,7 +17,6 @@ internal static class DpiHelper
         var dpiYProperty = typeof(SystemParameters).GetProperty("Dpi", BindingFlags.NonPublic | BindingFlags.Static)
             ?? throw new InvalidOperationException($"Could not find Dpi property on {nameof(SystemParameters)}");
 
-
         DpiX = (int)dpiXProperty.GetValue(null, null)!;
         DpiY = (int)dpiYProperty.GetValue(null, null)!;
     }
@@ -30,7 +25,9 @@ internal static class DpiHelper
     {
         var source = PresentationSource.FromVisual(visual);
         if(source?.CompositionTarget != null)
+        {
             return y * source.CompositionTarget.TransformToDevice.M22;
+        }
 
         return TransformToDeviceY(y);
     }
@@ -39,7 +36,9 @@ internal static class DpiHelper
     {
         var source = PresentationSource.FromVisual(visual);
         if(source?.CompositionTarget != null)
+        {
             return y / source.CompositionTarget.TransformToDevice.M22;
+        }
 
         return TransformFromDeviceY(y);
     }
@@ -48,7 +47,9 @@ internal static class DpiHelper
     {
         var source = PresentationSource.FromVisual(visual);
         if(source?.CompositionTarget != null)
+        {
             return x * source.CompositionTarget.TransformToDevice.M11;
+        }
 
         return TransformToDeviceX(x);
     }
@@ -57,9 +58,43 @@ internal static class DpiHelper
     {
         var source = PresentationSource.FromVisual(visual);
         if(source?.CompositionTarget != null)
+        {
             return x / source.CompositionTarget.TransformToDevice.M11;
+        }
 
         return TransformFromDeviceX(x);
+    }
+
+    public static double TransformToDeviceY(Visual visual, double y, double dpiY)
+    {
+        var source = PresentationSource.FromVisual(visual);
+        if(source?.CompositionTarget is not null)
+        {
+            return y * source.CompositionTarget.TransformToDevice.M22;
+        }
+
+        return TransformToDeviceY(y, dpiY);
+    }
+
+    public static double TransformToDeviceX(Visual visual, double x, double dpiX)
+    {
+        var source = PresentationSource.FromVisual(visual);
+        if(source?.CompositionTarget is not null)
+        {
+            return x * source.CompositionTarget.TransformToDevice.M11;
+        }
+
+        return TransformToDeviceX(x, dpiX);
+    }
+
+    public static double TransformToDeviceY(double y, double dpiY)
+    {
+        return y * dpiY / 96;
+    }
+
+    public static double TransformToDeviceX(double x, double dpiX)
+    {
+        return x * dpiX / 96;
     }
 
     public static double TransformToDeviceY(double y) => y * DpiY / StandardDpiY;
@@ -69,4 +104,18 @@ internal static class DpiHelper
     public static double TransformToDeviceX(double x) => x * DpiX / StandardDpiX;
 
     public static double TransformFromDeviceX(double x) => x / DpiX * StandardDpiX;
+
+    #region Per monitor dpi support
+
+    public static DpiScale GetDpi(this Visual visual)
+    {
+        return VisualTreeHelper.GetDpi(visual);
+    }
+
+    internal static DpiScale GetDpi(this Window window)
+    {
+        return GetDpi((Visual)window);
+    }
+
+    #endregion Per monitor dpi support
 }

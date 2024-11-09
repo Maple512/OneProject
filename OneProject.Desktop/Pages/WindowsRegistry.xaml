@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:OneProject.Desktop.Pages"
              xmlns:models="clr-namespace:OneProject.Desktop.ViewModels"
              xmlns:themes="http://github.com/maple512/oneproject.desktop/themes"
+             xmlns:io="clr-namespace:System.IO;assembly=mscorlib"
              d:DataContext="{d:DesignInstance Type=models:WindowsRegistryModel}"
              mc:Ignorable="d"
              d:DesignHeight="450"
@@ -29,39 +30,57 @@
                 <themes:OPButton Content="备份"
                                  Icon="Copy"
                                  Click="OnBackupButtonClick" />
-                <themes:OPButton Content="查询"
-                                 Icon="Search"
-                                 Command="{Binding QueryCommand}" />
-                <themes:OPButton Content="删除"
-                                 Icon="Delete"
-                                 Command="{Binding DeleteCommand}"
-                                 CommandParameter="{StaticResource False}" />
-                <themes:OPButton Content="删除所有"
-                                 Icon="Delete"
-                                 Command="{Binding DeleteCommand}"
-                                 CommandParameter="{StaticResource True}" />
                 <!--<themes:OPButton Content="还原" Icon="Restore" Command="{Binding RestoreCommand}" />-->
             </themes:OPStackPanel>
         </themes:OPCard.TitleAction>
         <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="35" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <TextBlock Text="{Binding LastQueryAt,StringFormat=最后一次查询：HH:mm:ss}"
-                       Visibility="{Binding LastQueryAt,Converter={StaticResource NotNullToVisibleConverter}}" />
-            <TextBox Grid.Row="1"
-                     Text="{Binding Search,UpdateSourceTrigger=PropertyChanged}"
-                     MaxLines="1" />
-            <!--<TextBox Grid.Row="1"
-                     Text="{Binding PointSequence,UpdateSourceTrigger=PropertyChanged}"
-                     MaxLines="1" />-->
-            <TextBox Grid.Row="2"
-                     Text="{Binding Content,Mode=OneWay}"
-                     IsReadOnly="True"
-                     MinLines="10"
-                     VerticalScrollBarVisibility="Auto" />
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="*" MinWidth="250" />
+            </Grid.ColumnDefinitions>
+            <themes:OPCard Title="查询">
+                <themes:OPCard.TitleAction>
+                    <themes:OPButton Content="查询"
+                                     Icon="Search"
+                                     Command="{Binding QueryCommand}" />
+                </themes:OPCard.TitleAction>
+                <themes:OPStackPanel Orientation="Vertical">
+                    <TextBlock Text="{Binding LastQueryAt,StringFormat=最后一次查询：HH:mm:ss}"
+                               Visibility="{Binding LastQueryAt,Converter={StaticResource NotNullToVisibleConverter}}" />
+                    <TextBox Grid.Row="1"
+                             Text="{Binding Search,UpdateSourceTrigger=PropertyChanged}"
+                             MaxLines="1" />
+                    <TextBox Grid.Row="2"
+                             Text="{Binding Content,Mode=OneWay}"
+                             IsReadOnly="True"
+                             MinLines="10"
+                             VerticalScrollBarVisibility="Auto" />
+                </themes:OPStackPanel>
+            </themes:OPCard>
+            <themes:OPCard Grid.Column="1"
+                           Title="备份">
+                <themes:OPCard.TitleAction>
+                    <themes:OPStackPanel>
+                        <themes:OPButton Content="删除"
+                                         Icon="Delete"
+                                         Command="{Binding DeleteCommand}"
+                                         CommandParameter="{StaticResource False}" />
+                        <themes:OPButton Content="删除所有"
+                                         Icon="Delete"
+                                         Command="{Binding DeleteCommand}"
+                                         CommandParameter="{StaticResource True}" />
+                    </themes:OPStackPanel>
+                </themes:OPCard.TitleAction>
+                <ListBox ItemsSource="{Binding BackupFiles}"
+                         BorderBrush="{DynamicResource Brush.Main}"
+                         SelectionMode="Multiple">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate DataType="{x:Type io:FileInfo}">
+                            <TextBlock Text="{Binding Name}" />
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </themes:OPCard>
         </Grid>
     </themes:OPCard>
 </UserControl>

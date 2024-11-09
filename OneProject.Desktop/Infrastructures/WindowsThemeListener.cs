@@ -1,22 +1,26 @@
 namespace OneProject.Desktop.Infrastructures;
 
 using Microsoft.Win32;
-using OneProject.Desktop.Theme;
+
 using OneProject.Desktop.Win32Native;
 
-/// <summary>
-/// Windows系统主题监听
-/// </summary>
-public class WindowsThemeListener
+public static class WindowsThemeListener
 {
+    static UserPreferenceChangingEventHandler? handler;
+
     public static void Listen(Application app)
     {
-        SystemEvents.UserPreferenceChanging += OnUserPreferenceChanging;
-
-        void OnUserPreferenceChanging(object sender, UserPreferenceChangingEventArgs e)
+        handler = (object sender, UserPreferenceChangingEventArgs e) =>
         {
             UpdateAccentColor(app);
-        }
+        };
+
+        SystemEvents.UserPreferenceChanging += handler;
+    }
+
+    public static void Unlisen()
+    {
+        SystemEvents.UserPreferenceChanging -= handler;
     }
 
     public static void UpdateAccentColor(Application app)
